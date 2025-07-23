@@ -10,7 +10,7 @@ func set_direction(new_direction):
 	direction = new_direction
 	velocity = direction * SPEED
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	velocity = lerp(velocity, Vector2.ZERO, DEACCELERATION)
 
 	move_and_slide()
