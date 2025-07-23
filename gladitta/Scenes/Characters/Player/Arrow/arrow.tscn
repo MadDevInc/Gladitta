@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://c2rhis6nq70vj"]
+
+[ext_resource type="Texture2D" uid="uid://bxua3445ma4pu" path="res://Scenes/Characters/Player/Arrow/Texures/arrow.png" id="1_t8c5r"]
+[ext_resource type="Script" path="res://Scenes/Characters/Player/Arrow/arrow.gd" id="1_u16h1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4y2wk"]
+size = Vector2(6, 5)
+
+[node name="Arrow" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_u16h1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_4y2wk")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_t8c5r")
