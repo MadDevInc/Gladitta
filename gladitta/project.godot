@@ -13,6 +13,7 @@ config_version=5
 config/name="Gladitta"
 run/main_scene="res://ambiente_de_teste.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
+run/max_fps=60
 config/icon="res://icon.svg"
 
 [display]

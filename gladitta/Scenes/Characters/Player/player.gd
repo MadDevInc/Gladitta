@@ -19,8 +19,8 @@ func _physics_process(delta: float) -> void:
 
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
-	if Input.is_action_just_released("jump"):
-		velocity.y *= 0.5
+	#if Input.is_action_just_released("jump"):
+		#velocity.y *= 0.5
 
 	if Input.is_action_pressed("move_right"):
 		velocity.x = SPEED
@@ -35,10 +35,10 @@ func _physics_process(delta: float) -> void:
 		$AnimatedSprite2D.play("run")
 		$AnimatedSprite2D.flip_h = true
 	elif Input.is_action_pressed("move_down"):
-		velocity.x = 0.0
+		#velocity.x = 0.0
 		move_sword("down")
 	elif Input.is_action_pressed("move_up"):
-		velocity.x = 0.0
+		#velocity.x = 0.0
 		move_sword("up")
 	else:
 		velocity.x = 0.0
@@ -48,10 +48,8 @@ func _physics_process(delta: float) -> void:
 			move_sword("left")
 		$AnimatedSprite2D.play("idle")
 
-	if Input.is_action_just_pressed("attack"):
-		$Sword/Sprite2D.show()
-		await get_tree().create_timer(0.1).timeout
-		$Sword/Sprite2D.hide()
+	if Input.is_action_just_pressed("attack") and !$Sword/AnimationPlayer.is_playing():
+		$Sword/AnimationPlayer.play("attack")
 
 	if not is_on_floor():
 		$AnimatedSprite2D.play("jump")
@@ -78,9 +76,8 @@ func move_sword(direction):
 			$Sword/Sprite2D.rotation_degrees = -90
 
 func launch(direction):
-	print("chamou")
-	velocity.y = direction * 100
+	velocity = direction * 1000
  
 func _on_sword_body_entered(body: Node2D) -> void:
-	if $Sword/Sprite2D.rotation_degrees == -90:
+	if $Sword/Sprite2D.rotation_degrees == 90:
 		launch(Vector2(0, -1))
