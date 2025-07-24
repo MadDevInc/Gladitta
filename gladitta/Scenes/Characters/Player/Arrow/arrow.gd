@@ -11,4 +11,5 @@ func set_direction(new_dir):
 func _physics_process(delta: float) -> void:
 	velocity = dir * SPEED * delta
 
-	move_and_collide(velocity)
+	var collision = move_and_collide(velocity)
+	print(collision)

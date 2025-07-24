@@ -35,9 +35,13 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("attack") and !$Sword/AnimationPlayer.is_playing():
 		$Sword/AnimationPlayer.play("attack")
 
-	if Input.is_action_just_pressed("shoot"):
+	if Input.is_action_pressed("shoot"):
 		current_state = states.AIMING
-		Engine.time_scale = 0.1
+		if not is_on_floor():
+			Engine.time_scale = 0.1
+		else:
+			velocity.x = 0.0
+			$AnimatedSprite2D.play("idle")
 		$DirectionPivot.show()
 	if Input.is_action_just_released("shoot"):
 		instantiate_arrow()
