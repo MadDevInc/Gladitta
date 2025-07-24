@@ -1,0 +1,56 @@
+[gd_scene load_steps=8 format=3 uid="uid://c3tr7ovy3vgcw"]
+
+[ext_resource type="Texture2D" uid="uid://bst3ep1s6w1f" path="res://Scenes/Characters/Player/Textures/player.png" id="1_4q8mu"]
+[ext_resource type="Script" path="res://Scenes/Characters/Enemy/enemy.gd" id="1_ugokh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ppe5l"]
+size = Vector2(6, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yfvk8"]
+atlas = ExtResource("1_4q8mu")
+region = Rect2(0, 0, 8, 9)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pruom"]
+atlas = ExtResource("1_4q8mu")
+region = Rect2(8, 0, 8, 9)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_58nbo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yfvk8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pruom")
+}],
+"loop": true,
+"name": &"default",
+"speed": 4.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_35430"]
+size = Vector2(6, 10)
+
+[node name="Enemy" type="CharacterBody2D"]
+script = ExtResource("1_ugokh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_ppe5l")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+modulate = Color(1, 0, 0, 1)
+sprite_frames = SubResource("SpriteFrames_58nbo")
+frame_progress = 0.998472
+
+[node name="ArrowDetector" type="Area2D" parent="."]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ArrowDetector"]
+shape = SubResource("RectangleShape2D_35430")
+
+[node name="SlopeDetector" type="RayCast2D" parent="."]
+target_position = Vector2(0, 6)
+
+[connection signal="area_entered" from="ArrowDetector" to="." method="_on_arrow_detector_area_entered"]
+[connection signal="body_entered" from="ArrowDetector" to="." method="_on_arrow_detector_body_entered"]

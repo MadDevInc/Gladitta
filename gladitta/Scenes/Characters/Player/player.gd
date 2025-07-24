@@ -56,12 +56,14 @@ func _physics_process(delta: float) -> void:
 			move_sword("right")
 			$AnimatedSprite2D.play("run")
 			$AnimatedSprite2D.flip_h = false
+			direction = Vector2(1, 0)
 
 		elif Input.is_action_pressed("move_left"):
 			velocity.x = -MAX_SPEED
 			move_sword("left")
 			$AnimatedSprite2D.play("run")
 			$AnimatedSprite2D.flip_h = true
+			direction = Vector2(-1, 0)
 
 		else:
 			velocity.x = 0.0
@@ -83,19 +85,19 @@ func _physics_process(delta: float) -> void:
 
 	elif current_state == states.AIMING:
 		if Input.is_action_pressed("move_right") and Input.is_action_pressed("move_down"):
-			direction = Vector2(0.5, 0.5)
+			direction = Vector2(1.0, 1.0)
 			$DirectionPivot/Bow.flip_v = false
 
 		elif Input.is_action_pressed("move_right") and Input.is_action_pressed("move_up"):
-			direction = Vector2(0.5, -0.5)
+			direction = Vector2(1.0, -1.0)
 			$DirectionPivot/Bow.flip_v = false
 
 		elif Input.is_action_pressed("move_left") and Input.is_action_pressed("move_up"):
-			direction = Vector2(-0.5, -0.5)
+			direction = Vector2(-1.0, -1.0)
 			$DirectionPivot/Bow.flip_v = true
 
 		elif Input.is_action_pressed("move_left") and Input.is_action_pressed("move_down"):
-			direction = Vector2(-0.5, 0.5)
+			direction = Vector2(-1.0, 1.0)
 			$DirectionPivot/Bow.flip_v = true
 
 		elif Input.is_action_pressed("move_down"):
@@ -120,7 +122,7 @@ func _physics_process(delta: float) -> void:
 		$AnimatedSprite2D.play("jump")
 
 	velocity.x += horizontal_forces
-	horizontal_forces = lerp(horizontal_forces, 0.0, 0.3)
+	horizontal_forces = lerp(horizontal_forces, 0.0, 0.2)
 
 	move_and_slide()
 
@@ -156,9 +158,11 @@ func instantiate_arrow():
 	get_parent().add_child(arrow_instance)
 	arrow_instance.global_position = $DirectionPivot/Bow.global_position
 
+	launch(-direction)
+
 func launch(dir):
 	velocity.y = dir.y * 250
-	horizontal_forces = dir.x * 350
+	horizontal_forces = dir.x * 400
  
 func _on_sword_body_entered(body: Node2D) -> void:
 	if body != self:

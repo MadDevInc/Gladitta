@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=4 uid="uid://bs8o1tn2kein3"]
+[gd_scene load_steps=7 format=4 uid="uid://bs8o1tn2kein3"]
 
 [ext_resource type="PackedScene" uid="uid://dlcsks5urffx5" path="res://Scenes/Characters/Player/player.tscn" id="1_4vmv7"]
 [ext_resource type="Script" path="res://ambiente_de_teste.gd" id="1_pk1cm"]
 [ext_resource type="PackedScene" uid="uid://ddyqss5v87w2q" path="res://Scenes/TileMaps/World/world_tile_map.tscn" id="3_lslh4"]
 [ext_resource type="Shader" path="res://Assets/Shaders/crt_monitor.gdshader" id="4_jjgkj"]
+[ext_resource type="PackedScene" uid="uid://c3tr7ovy3vgcw" path="res://Scenes/Characters/Enemy/enemy.tscn" id="5_1mvm8"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_3t3tu"]
 shader = ExtResource("4_jjgkj")
@@ -36,7 +37,7 @@ script = ExtResource("1_pk1cm")
 position = Vector2(160, 96)
 
 [node name="WorldTileMap" parent="." instance=ExtResource("3_lslh4")]
-tile_map_data = PackedByteArray("AAAMAAMAAAAFAAQAAAAMAA4AAAACAAQAAAANAAMAAAAFAAQAAAANAA4AAAADAAQAAAAOAAMAAAAFAAQAAAAOAA4AAAADAAQAAAAPAAMAAAAFAAQAAAAPAA4AAAADAAQAAAAQAAMAAAAFAAQAAAAQAA4AAAADAAQAAAARAAMAAAAFAAQAAAARAA4AAAADAAQAAAASAAMAAAAFAAQAAAASAA4AAAADAAQAAAATAAMAAAAFAAQAAAATAA4AAAADAAQAAAAUAAMAAAAFAAQAAAAUAA4AAAADAAQAAAAVAAMAAAAFAAQAAAAVAA4AAAADAAQAAAAWAAMAAAAFAAQAAAAWAA4AAAADAAQAAAAXAAMAAAAFAAQAAAAXAA4AAAADAAQAAAAYAAMAAAAFAAQAAAAYAA4AAAADAAQAAAAZAAMAAAAFAAQAAAAZAA4AAAADAAQAAAAMAAQAAAAFAAQAAAAMAAUAAAAFAAQAAAAMAAYAAAAFAAQAAAAMAAcAAAAFAAQAAAAMAAgAAAAFAAQAAAAMAAkAAAAFAAQAAAAMAAoAAAAFAAQAAAAMAAsAAAAFAAQAAAAMAAwAAAAFAAQAAAAMAA0AAAAFAAQAAAAaAAMAAAAFAAQAAAAaAA4AAAADAAQAAAAbAAMAAAAFAAQAAAAbAAQAAAAFAAQAAAAbAAUAAAAFAAQAAAAbAAYAAAAFAAQAAAAbAAcAAAAFAAQAAAAbAAgAAAAFAAQAAAAbAAkAAAAFAAQAAAAbAAoAAAAFAAQAAAAbAAsAAAAFAAQAAAAbAAwAAAAFAAQAAAAbAA0AAAAFAAQAAAAbAA4AAAADAAQAAAAMAA8AAAAFAAQAAAANAA8AAAAFAAQAAAAOAA8AAAAFAAQAAAAPAA8AAAAFAAQAAAAQAA8AAAAFAAQAAAARAA8AAAAFAAQAAAASAA8AAAAFAAQAAAATAA8AAAAFAAQAAAAUAA8AAAAFAAQAAAAVAA8AAAAFAAQAAAAWAA8AAAAFAAQAAAAXAA8AAAAFAAQAAAAYAA8AAAAFAAQAAAAZAA8AAAAFAAQAAAAaAA8AAAAFAAQAAAAbAA8AAAAFAAQAAAA=")
+tile_map_data = PackedByteArray("AAAMAAMAAAAFAAQAAAANAAMAAAAFAAQAAAAOAAMAAAAFAAQAAAAPAAMAAAAFAAQAAAAQAAMAAAAFAAQAAAARAAMAAAAFAAQAAAASAAMAAAAFAAQAAAATAAMAAAAFAAQAAAAUAAMAAAAFAAQAAAAVAAMAAAAFAAQAAAAWAAMAAAAFAAQAAAAXAAMAAAAFAAQAAAAYAAMAAAAFAAQAAAAZAAMAAAAFAAQAAAAMAAQAAAAFAAQAAAAMAAUAAAAFAAQAAAAMAAYAAAAFAAQAAAAMAAcAAAAFAAQAAAAMAAgAAAAFAAQAAAAMAAkAAAAFAAQAAAAMAAoAAAAFAAQAAAAaAAMAAAAFAAQAAAAbAAMAAAAFAAQAAAAbAAQAAAAFAAQAAAAbAAUAAAAFAAQAAAAbAAYAAAAFAAQAAAAbAAcAAAAFAAQAAAAbAAgAAAAFAAQAAAAbAAkAAAAFAAQAAAAOAA8AAAAFAAQAAAAPAA8AAAAFAAQAAAAQAA8AAAAFAAQAAAARAA8AAAAFAAQAAAASAA8AAAAFAAQAAAATAA8AAAAFAAQAAAAUAA8AAAAFAAQAAAAZAA8AAAAFAAQAAAAaAA8AAAAFAAQAAAAbAA8AAAAFAAQAAAAcAA8AAAAFAAQAAAAYAA8AAAAFAAQAAAAXAA8AAAAFAAQAAAAWAA8AAAAFAAQAAAAVAA8AAAAFAAQAAAAMAAsAAAAFAAQAAAAbAAoAAAAFAAQAAAAbAAsAAAAFAAQAAAANAA8AAAAFAAQAAAAMAA8AAAAFAAQAAAALAA8AAAAFAAQAAAA=")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 visible = false
@@ -45,62 +46,6 @@ custom_minimum_size = Vector2(320, 240)
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="SpinBox" type="SpinBox" parent="."]
-offset_left = 40.0
-offset_top = 160.0
-offset_right = 123.063
-offset_bottom = 191.0
-max_value = 10000.0
-value = 980.0
-
-[node name="SpinBox2" type="SpinBox" parent="."]
-offset_left = 32.0
-offset_top = 208.0
-offset_right = 115.063
-offset_bottom = 239.0
-max_value = 10000.0
-value = 50.0
-
-[node name="SpinBox3" type="SpinBox" parent="."]
-offset_left = 200.0
-offset_top = 160.0
-offset_right = 283.063
-offset_bottom = 191.0
-min_value = -1000.0
-value = -250.0
-
-[node name="SpinBox4" type="SpinBox" parent="."]
-offset_left = 200.0
-offset_top = 208.0
-offset_right = 283.063
-offset_bottom = 239.0
-max_value = 10000.0
-value = 200.0
-
-[node name="Label" type="Label" parent="."]
-offset_left = 48.0
-offset_top = 136.0
-offset_right = 101.0
-offset_bottom = 159.0
-text = "gravity"
-
-[node name="Label2" type="Label" parent="."]
-offset_left = 208.0
-offset_top = 136.0
-offset_right = 261.0
-offset_bottom = 159.0
-text = "JUMP"
-
-[node name="Label3" type="Label" parent="."]
-offset_left = 40.0
-offset_top = 191.0
-offset_right = 93.0
-offset_bottom = 214.0
-text = "SPEED"
-
-[node name="Label4" type="Label" parent="."]
-offset_left = 200.0
-offset_top = 191.0
-offset_right = 280.0
-offset_bottom = 214.0
-text = "TERMINAL"
+[node name="Enemy" parent="." instance=ExtResource("5_1mvm8")]
+position = Vector2(184, 115)
+moving = true
