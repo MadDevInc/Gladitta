@@ -15,5 +15,3 @@ func _process(delta: float) -> void:
 	collision = move_and_collide(velocity)
 	if collision != null:
 		set_process(false)
-		await get_tree().create_timer(0.02).timeout
-		$CollisionShape2D.disabled = true

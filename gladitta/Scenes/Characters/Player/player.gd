@@ -1,130 +1,83 @@
 extends CharacterBody2D
 
-enum states {WALKING, AIMING}
+const GRAVITY = 980.0
+const MAX_velocity = 75.0
+const JUMP_FORCE = -200.0
 
-const GRAVITY = 980
-const TERMINAL_FALLING_VELOCITY = 200.0
-const MAX_SPEED = 75.0
-const ACCELERATION = 25.0
-const JUMP_VELOCITY = -200.0
-const DEACCELERATION = 1.0
-
-var arrow_scene = preload("res://Scenes/Characters/Player/Arrow/arrow.tscn")
-
-var current_state = states.WALKING
+var speed = Vector2()
+var applied_forces = Vector2()
 
 var direction = Vector2(1, 0)
 
-var horizontal_forces = 0.0
-
-func _ready() -> void:
-	$Sword/Sprite2D.hide()
+var arrow_scene = preload("res://Scenes/Characters/Player/Arrow/arrow.tscn")
 
 func _physics_process(delta: float) -> void:
-	$Label.text = "vel: " + str(velocity)
-	$Label.text += "st: " + str(current_state)
-
-#add gravity
+	$Label.text = "vel: " + str(velocity).pad_decimals(0)
+	$Label.text += "\nvelocity: " + str(velocity).pad_decimals(0)
+	$Label.text += "\napplied: " + str(applied_forces).pad_decimals(0)
 	if not is_on_floor():
 		velocity.y += GRAVITY * delta
+	else:
+		applied_forces = Vector2.ZERO
 
-#handle jump
 	if Input.is_action_just_pressed("jump") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
+		velocity.y = JUMP_FORCE
 
-	if Input.is_action_just_pressed("attack") and !$Sword/AnimationPlayer.is_playing():
+	if Input.is_action_just_pressed("attack"):
 		$Sword/AnimationPlayer.play("attack")
-
+	
 	if Input.is_action_pressed("shoot"):
-		current_state = states.AIMING
-		if not is_on_floor():
-			Engine.time_scale = 0.1
-		else:
-			velocity.x = 0.0
-			$AnimatedSprite2D.play("idle")
+		Engine.time_scale = 0.05
 		$DirectionPivot.show()
 	if Input.is_action_just_released("shoot"):
+		Engine.time_scale = 1.0
+		$DirectionPivot.hide()
 		instantiate_arrow()
 
-		current_state = states.WALKING
-		$DirectionPivot.hide()
-		Engine.time_scale = 1.0
+	if Input.is_action_pressed("move_right") and applied_forces.length() < 1.0:
+		velocity.x = MAX_velocity
+		move_sword("right")
+		direction = Vector2(1, 0)
+	elif Input.is_action_pressed("move_left") and applied_forces.length() < 1.0:
+		velocity.x = -MAX_velocity
+		move_sword("left")
+		direction = Vector2(-1, 0)
+	else:
+		velocity.x = 0.0
 
-	if current_state == states.WALKING:
-		if Input.is_action_pressed("move_right"):
-			velocity.x = MAX_SPEED
-			move_sword("right")
-			$AnimatedSprite2D.play("run")
-			$AnimatedSprite2D.flip_h = false
-			direction = Vector2(1, 0)
+	if Input.is_action_pressed("move_down"):
+		move_sword("down")
+		direction = Vector2(0, 1)
+	elif Input.is_action_pressed("move_up"):
+		move_sword("up")
+		direction = Vector2(0, -1)
 
-		elif Input.is_action_pressed("move_left"):
-			velocity.x = -MAX_SPEED
-			move_sword("left")
-			$AnimatedSprite2D.play("run")
-			$AnimatedSprite2D.flip_h = true
-			direction = Vector2(-1, 0)
+	if Input.is_action_pressed("move_down") and Input.is_action_pressed("move_left"):
+		direction = Vector2(-1, 1)
+	elif Input.is_action_pressed("move_down") and Input.is_action_pressed("move_right"):
+		direction = Vector2(1, 1)
+	elif Input.is_action_pressed("move_up") and Input.is_action_pressed("move_left"):
+		direction = Vector2(-1, -1)
+	elif Input.is_action_pressed("move_up") and Input.is_action_pressed("move_right"):
+		direction = Vector2(1, -1)
 
-		else:
-			velocity.x = 0.0
-			if !$AnimatedSprite2D.flip_h:
-				move_sword("right")
-			else:
-				move_sword("left")
+	$DirectionPivot.rotation_degrees = rad_to_deg(direction.angle())
 
-		if Input.is_action_pressed("move_down"):
-			move_sword("down")
-			#velocity.x = 0.0
-
-		elif Input.is_action_pressed("move_up"):
-			move_sword("up")
-			#velocity.x = 0.0
-
-		if velocity.x == 0:
-			$AnimatedSprite2D.play("idle")
-
-	elif current_state == states.AIMING:
-		if Input.is_action_pressed("move_right") and Input.is_action_pressed("move_down"):
-			direction = Vector2(1.0, 1.0)
-			$DirectionPivot/Bow.flip_v = false
-
-		elif Input.is_action_pressed("move_right") and Input.is_action_pressed("move_up"):
-			direction = Vector2(1.0, -1.0)
-			$DirectionPivot/Bow.flip_v = false
-
-		elif Input.is_action_pressed("move_left") and Input.is_action_pressed("move_up"):
-			direction = Vector2(-1.0, -1.0)
-			$DirectionPivot/Bow.flip_v = true
-
-		elif Input.is_action_pressed("move_left") and Input.is_action_pressed("move_down"):
-			direction = Vector2(-1.0, 1.0)
-			$DirectionPivot/Bow.flip_v = true
-
-		elif Input.is_action_pressed("move_down"):
-			direction = Vector2(0, 1)
-			$DirectionPivot/Bow.flip_v = false
-
-		elif Input.is_action_pressed("move_up"):
-			direction = Vector2(0, -1)
-			$DirectionPivot/Bow.flip_v = false
-
-		elif Input.is_action_pressed("move_left"):
-			direction = Vector2(-1, 0)
-			$DirectionPivot/Bow.flip_v = false
-
-		elif Input.is_action_pressed("move_right"):
-			direction = Vector2(1, 0)
-			$DirectionPivot/Bow.flip_v = false
-
-		$DirectionPivot.rotation_degrees = rad_to_deg(direction.angle())
-
-	if not is_on_floor():
-		$AnimatedSprite2D.play("jump")
-
-	velocity.x += horizontal_forces
-	horizontal_forces = lerp(horizontal_forces, 0.0, 0.2)
+	velocity += applied_forces
+	applied_forces = lerp(applied_forces, Vector2.ZERO, 0.05)
 
 	move_and_slide()
+
+func launch(dir):
+	velocity.y = dir.y * -250
+	applied_forces.x = dir.x * -200
+
+func _on_sword_body_entered(body: Node2D) -> void:
+	if body != self:
+		if $Sword.position.y == 0:
+			launch(Vector2($Sword.position.x/8, 0.25))
+		else:
+			launch($Sword.position/8)
 
 func move_sword(new_direction):
 	if $Sword/AnimationPlayer.is_playing():
@@ -158,12 +111,7 @@ func instantiate_arrow():
 	get_parent().add_child(arrow_instance)
 	arrow_instance.global_position = $DirectionPivot/Bow.global_position
 
-	launch(-direction)
-
-func launch(dir):
-	velocity.y = dir.y * 250
-	horizontal_forces = dir.x * 400
- 
-func _on_sword_body_entered(body: Node2D) -> void:
-	if body != self:
-		launch(-$Sword.position/8)
+	if direction.y == 0.0:
+		launch(Vector2(direction.x, 0.25))
+	else:
+		launch(direction)
