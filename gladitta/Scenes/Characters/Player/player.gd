@@ -12,8 +12,7 @@ var direction = Vector2(1, 0)
 var arrow_scene = preload("res://Scenes/Characters/Player/Arrow/arrow.tscn")
 
 func _physics_process(delta: float) -> void:
-	print(direction)
-	$Label.text = "vel: " + str(velocity).pad_decimals(0)
+	$Label.text = "v5el: " + str(velocity).pad_decimals(0)
 	$Label.text += "\nvelocity: " + str(velocity).pad_decimals(0)
 	$Label.text += "\napplied: " + str(applied_forces).pad_decimals(0)
 	if not is_on_floor():
@@ -82,6 +81,10 @@ func _physics_process(delta: float) -> void:
 
 	move_and_slide()
 
+func _on_detection_body_entered(body: Node2D) -> void:
+	if body.is_in_group("Enemy"):
+		kill()
+
 func launch(dir):
 	velocity.y = dir.y * -250
 	applied_forces.x = dir.x * -200
@@ -120,6 +123,9 @@ func move_sword(new_direction):
 			$Sword/CollisionShape2D.rotation_degrees = 90
 
 func instantiate_arrow():
+	if direction.y == 1 and is_on_floor():
+		return
+
 	var arrow_instance = arrow_scene.instantiate()
 	arrow_instance.set_direction(direction)
 	get_parent().add_child(arrow_instance)
@@ -128,7 +134,7 @@ func instantiate_arrow():
 	if direction.y == 0.0:
 		launch(Vector2(direction.x, 0.25))
 	else:
-		launch(direction)
+		launch(direction * 0.85)
 
 func kill():
 	get_tree().reload_current_scene()
