@@ -4,11 +4,11 @@
 [ext_resource type="Script" path="res://Scenes/Characters/Player/Arrow/arrow.gd" id="1_u16h1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4y2wk"]
-size = Vector2(6, 5)
+size = Vector2(6, 3)
 
 [node name="Arrow" type="CharacterBody2D" groups=["Projectile"]]
-collision_layer = 3
-collision_mask = 3
+collision_layer = 2
+collision_mask = 2
 script = ExtResource("1_u16h1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

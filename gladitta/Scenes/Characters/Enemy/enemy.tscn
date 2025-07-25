@@ -43,12 +43,20 @@ sprite_frames = SubResource("SpriteFrames_58nbo")
 frame_progress = 0.998472
 
 [node name="ArrowDetector" type="Area2D" parent="."]
+collision_layer = 3
+collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ArrowDetector"]
 shape = SubResource("RectangleShape2D_35430")
 
 [node name="SlopeDetector" type="RayCast2D" parent="."]
 target_position = Vector2(0, 6)
+
+[node name="RWallDetector" type="RayCast2D" parent="."]
+target_position = Vector2(5, 0)
+
+[node name="LWallDetector" type="RayCast2D" parent="."]
+target_position = Vector2(-5, 0)
 
 [connection signal="area_entered" from="ArrowDetector" to="." method="_on_arrow_detector_area_entered"]
 [connection signal="body_entered" from="ArrowDetector" to="." method="_on_arrow_detector_body_entered"]

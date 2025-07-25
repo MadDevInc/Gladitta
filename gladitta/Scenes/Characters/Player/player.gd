@@ -12,12 +12,17 @@ var direction = Vector2(1, 0)
 var arrow_scene = preload("res://Scenes/Characters/Player/Arrow/arrow.tscn")
 
 func _physics_process(delta: float) -> void:
+	print(direction)
 	$Label.text = "vel: " + str(velocity).pad_decimals(0)
 	$Label.text += "\nvelocity: " + str(velocity).pad_decimals(0)
 	$Label.text += "\napplied: " + str(applied_forces).pad_decimals(0)
 	if not is_on_floor():
 		velocity.y += GRAVITY * delta
 	else:
+		if velocity.x != 0.0:
+			$AnimatedSprite2D.play("run")
+		else:
+			$AnimatedSprite2D.play("idle")
 		applied_forces = Vector2.ZERO
 
 	if Input.is_action_just_pressed("jump") and is_on_floor():
@@ -44,6 +49,7 @@ func _physics_process(delta: float) -> void:
 		direction = Vector2(-1, 0)
 	else:
 		velocity.x = 0.0
+		
 
 	if Input.is_action_pressed("move_down"):
 		move_sword("down")
@@ -61,7 +67,15 @@ func _physics_process(delta: float) -> void:
 	elif Input.is_action_pressed("move_up") and Input.is_action_pressed("move_right"):
 		direction = Vector2(1, -1)
 
+	if direction.x == 1:
+		$AnimatedSprite2D.flip_h = false
+	elif direction.x == -1:
+		$AnimatedSprite2D.flip_h = true
+
 	$DirectionPivot.rotation_degrees = rad_to_deg(direction.angle())
+
+	if not is_on_floor():
+		$AnimatedSprite2D.play("jump")
 
 	velocity += applied_forces
 	applied_forces = lerp(applied_forces, Vector2.ZERO, 0.05)
@@ -74,7 +88,7 @@ func launch(dir):
 
 func _on_sword_body_entered(body: Node2D) -> void:
 	if body != self:
-		if $Sword.position.y == 0:
+		if $Sword.position.y == 0 and !is_on_floor():
 			launch(Vector2($Sword.position.x/8, 0.25))
 		else:
 			launch($Sword.position/8)
@@ -115,3 +129,6 @@ func instantiate_arrow():
 		launch(Vector2(direction.x, 0.25))
 	else:
 		launch(direction)
+
+func kill():
+	get_tree().reload_current_scene()
