@@ -203,14 +203,15 @@ sprite_frames = SubResource("SpriteFrames_25lp8")
 animation = &"idle"
 
 [node name="Label" type="Label" parent="."]
-visible = false
 offset_left = -44.0
 offset_top = -34.0
 offset_right = 44.0
 offset_bottom = -6.0
 theme_override_constants/line_spacing = -4
 theme_override_font_sizes/font_size = 8
-text = "debug"
+text = "debug
+a
+a"
 horizontal_alignment = 1
 vertical_alignment = 1
 

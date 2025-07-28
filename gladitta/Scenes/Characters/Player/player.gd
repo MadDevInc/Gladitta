@@ -1,8 +1,13 @@
 extends CharacterBody2D
 
-const GRAVITY = 980.0
+signal death
+
+const GRAVITY = 800.0
 const MAX_velocity = 75.0
 const JUMP_FORCE = -200.0
+
+var MAX_JUMP_BUFFER = 5
+var jump_buffer = 0
 
 var speed = Vector2()
 var applied_forces = Vector2()
@@ -11,21 +16,35 @@ var direction = Vector2(1, 0)
 
 var arrow_scene = preload("res://Scenes/Characters/Player/Arrow/arrow.tscn")
 
+@onready var initial_position = self.global_position
+
 func _physics_process(delta: float) -> void:
 	$Label.text = "v5el: " + str(velocity).pad_decimals(0)
 	$Label.text += "\nvelocity: " + str(velocity).pad_decimals(0)
 	$Label.text += "\napplied: " + str(applied_forces).pad_decimals(0)
+	$Label.text += "\njbuff: " + str(jump_buffer).pad_decimals(0)
 	if not is_on_floor():
 		velocity.y += GRAVITY * delta
 	else:
+		if jump_buffer > 0:
+			velocity.y = JUMP_FORCE
+			jump_buffer = 0
+
 		if velocity.x != 0.0:
 			$AnimatedSprite2D.play("run")
 		else:
 			$AnimatedSprite2D.play("idle")
 		applied_forces = Vector2.ZERO
 
-	if Input.is_action_just_pressed("jump") and is_on_floor():
-		velocity.y = JUMP_FORCE
+	if Input.is_action_just_pressed("jump"):
+		if is_on_floor():
+			velocity.y = JUMP_FORCE
+			jump_buffer = 0
+		else:
+			jump_buffer = MAX_JUMP_BUFFER
+
+	if jump_buffer > 0:
+		jump_buffer -= 1
 
 	if Input.is_action_just_pressed("attack"):
 		$Sword/AnimationPlayer.play("attack")
@@ -133,8 +152,11 @@ func instantiate_arrow():
 
 	if direction.y == 0.0:
 		launch(Vector2(direction.x, 0.25))
-	else:
+	elif direction.y == 1 and direction.x == 0:
 		launch(direction * 0.85)
+	else:
+		launch(direction * 0.75)
 
 func kill():
-	get_tree().reload_current_scene()
+	self.global_position = initial_position
+	death.emit()

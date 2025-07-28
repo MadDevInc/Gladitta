@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://hq3kndj7ibrr"]
+
+[ext_resource type="Texture2D" uid="uid://dmdeye7ghf383" path="res://icon.svg" id="1_r1v8l"]
+[ext_resource type="Script" path="res://Scenes/Levels/LevelEnding/level_ending.gd" id="1_sjvh3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ac8fd"]
+size = Vector2(8, 12)
+
+[node name="LevelEnding" type="Area2D"]
+script = ExtResource("1_sjvh3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_ac8fd")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(1.66893e-06, 1.3113e-06)
+scale = Vector2(0.0625, 0.09375)
+texture = ExtResource("1_r1v8l")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

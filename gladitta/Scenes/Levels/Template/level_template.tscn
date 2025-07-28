@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://c3wi3k4u6gdm7"]
+
+[ext_resource type="Script" path="res://Scenes/Levels/Template/level_template.gd" id="1_sujfq"]
+[ext_resource type="FontFile" uid="uid://wt8txxgj3mg6" path="res://Assets/Fonts/PublicPixel.otf" id="2_cthkc"]
+[ext_resource type="PackedScene" uid="uid://hq3kndj7ibrr" path="res://Scenes/Levels/LevelEnding/level_ending.tscn" id="3_v0fcr"]
+[ext_resource type="PackedScene" uid="uid://ddyqss5v87w2q" path="res://Scenes/TileMaps/World/world_tile_map.tscn" id="4_eaww6"]
+
+[node name="LevelTemplate" type="Node2D"]
+script = ExtResource("1_sujfq")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Timer" type="Label" parent="CanvasLayer"]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -12.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("2_cthkc")
+theme_override_font_sizes/font_size = 8
+text = "00.00"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LevelEnding" parent="." instance=ExtResource("3_v0fcr")]
+
+[node name="WorldTileMap" parent="." instance=ExtResource("4_eaww6")]

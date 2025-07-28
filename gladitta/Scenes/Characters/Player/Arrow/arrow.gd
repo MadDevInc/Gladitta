@@ -15,4 +15,4 @@ func _process(delta: float) -> void:
 	collision = move_and_collide(velocity)
 	if collision != null:
 		if collision.get_collider() is TileMapLayer:
-			dir = Vector2.ZERO
+			process_mode = PROCESS_MODE_DISABLED

@@ -167,7 +167,7 @@ shape = SubResource("RectangleShape2D_as143")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_iak7v")
-animation = &"idle"
+animation = &"run"
 autoplay = "idle"
 
 [node name="Sword" type="Area2D" parent="." groups=["Sword"]]
@@ -210,7 +210,9 @@ offset_right = 44.0
 offset_bottom = -6.0
 theme_override_constants/line_spacing = -4
 theme_override_font_sizes/font_size = 8
-text = "debug"
+text = "debug
+a
+a"
 horizontal_alignment = 1
 vertical_alignment = 1
 

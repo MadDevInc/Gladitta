@@ -1,7 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://c3tr7ovy3vgcw"]
+[gd_scene load_steps=12 format=3 uid="uid://c3tr7ovy3vgcw"]
 
 [ext_resource type="Texture2D" uid="uid://bst3ep1s6w1f" path="res://Scenes/Characters/Player/Textures/player.png" id="1_4q8mu"]
-[ext_resource type="Script" path="res://Scenes/Characters/Enemy/enemy.gd" id="1_ugokh"]
+[ext_resource type="Script" path="res://Scenes/Characters/Enemy/WalkingEnemy/walking_enemy.gd" id="1_ugokh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ppe5l"]
 size = Vector2(6, 10)
@@ -14,6 +14,22 @@ region = Rect2(0, 0, 8, 9)
 atlas = ExtResource("1_4q8mu")
 region = Rect2(8, 0, 8, 9)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_kcrc3"]
+atlas = ExtResource("1_4q8mu")
+region = Rect2(32, 0, 8, 9)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hsmut"]
+atlas = ExtResource("1_4q8mu")
+region = Rect2(40, 0, 8, 9)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ne2lu"]
+atlas = ExtResource("1_4q8mu")
+region = Rect2(48, 0, 8, 9)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_611gd"]
+atlas = ExtResource("1_4q8mu")
+region = Rect2(24, 0, 8, 9)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_58nbo"]
 animations = [{
 "frames": [{
@@ -24,8 +40,25 @@ animations = [{
 "texture": SubResource("AtlasTexture_pruom")
 }],
 "loop": true,
-"name": &"default",
+"name": &"idle",
 "speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kcrc3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hsmut")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ne2lu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_611gd")
+}],
+"loop": true,
+"name": &"run",
+"speed": 10.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_35430"]
@@ -40,7 +73,8 @@ shape = SubResource("RectangleShape2D_ppe5l")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 modulate = Color(1, 0, 0, 1)
 sprite_frames = SubResource("SpriteFrames_58nbo")
-frame_progress = 0.998472
+animation = &"idle"
+autoplay = "idle"
 
 [node name="ArrowDetector" type="Area2D" parent="."]
 collision_layer = 3
@@ -49,7 +83,12 @@ collision_mask = 3
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ArrowDetector"]
 shape = SubResource("RectangleShape2D_35430")
 
-[node name="SlopeDetector" type="RayCast2D" parent="."]
+[node name="LSlopeDetector" type="RayCast2D" parent="."]
+position = Vector2(-2, 0)
+target_position = Vector2(0, 6)
+
+[node name="RSlopeDetector" type="RayCast2D" parent="."]
+position = Vector2(2, 0)
 target_position = Vector2(0, 6)
 
 [node name="RWallDetector" type="RayCast2D" parent="."]
