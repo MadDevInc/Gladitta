@@ -6,7 +6,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4y2wk"]
 size = Vector2(6, 3)
 
-[node name="Arrow" type="CharacterBody2D" groups=["Projectile"]]
+[node name="Arrow" type="CharacterBody2D" groups=["Arrow", "Projectile", "Solid"]]
 disable_mode = 1
 script = ExtResource("1_u16h1")
 

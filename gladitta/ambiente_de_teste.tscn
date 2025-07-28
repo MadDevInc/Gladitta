@@ -1,51 +1,5 @@
-[gd_scene load_steps=7 format=4 uid="uid://bs8o1tn2kein3"]
+[gd_scene load_steps=2 format=3 uid="uid://cntumncfy3npw"]
 
-[ext_resource type="PackedScene" uid="uid://dlcsks5urffx5" path="res://Scenes/Characters/Player/player.tscn" id="1_4vmv7"]
-[ext_resource type="Script" path="res://ambiente_de_teste.gd" id="1_pk1cm"]
-[ext_resource type="PackedScene" uid="uid://ddyqss5v87w2q" path="res://Scenes/TileMaps/World/world_tile_map.tscn" id="3_lslh4"]
-[ext_resource type="Shader" path="res://Assets/Shaders/crt_monitor.gdshader" id="4_jjgkj"]
-[ext_resource type="PackedScene" uid="uid://c3tr7ovy3vgcw" path="res://Scenes/Characters/Enemy/WalkingEnemy/walking_enemy.tscn" id="5_1mvm8"]
+[ext_resource type="PackedScene" uid="uid://c3wi3k4u6gdm7" path="res://Scenes/Levels/Template/level_template.tscn" id="1_5ohy6"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_3t3tu"]
-shader = ExtResource("4_jjgkj")
-shader_parameter/overlay = false
-shader_parameter/scanlines_opacity = 0.4
-shader_parameter/scanlines_width = 0.25
-shader_parameter/grille_opacity = 0.3
-shader_parameter/resolution = Vector2(320, 240)
-shader_parameter/pixelate = true
-shader_parameter/roll = true
-shader_parameter/roll_speed = 8.0
-shader_parameter/roll_size = 15.0
-shader_parameter/roll_variation = 1.8
-shader_parameter/distort_intensity = 0.05
-shader_parameter/noise_opacity = 0.4
-shader_parameter/noise_speed = 5.0
-shader_parameter/static_noise_intensity = 0.06
-shader_parameter/aberration = 0.03
-shader_parameter/brightness = 1.4
-shader_parameter/discolor = true
-shader_parameter/warp_amount = 1.0
-shader_parameter/clip_warp = false
-shader_parameter/vignette_intensity = 0.4
-shader_parameter/vignette_opacity = 0.5
-
-[node name="AmbienteDeTeste" type="Node2D"]
-script = ExtResource("1_pk1cm")
-
-[node name="Player" parent="." instance=ExtResource("1_4vmv7")]
-position = Vector2(108, 115)
-
-[node name="WorldTileMap" parent="." instance=ExtResource("3_lslh4")]
-tile_map_data = PackedByteArray("AAAhABUAAAAFAAQAAAAgABUAAAAFAAQAAAAfABQAAAAFAAQAAAAeABQAAAAFAAQAAAAdABQAAAAFAAQAAAAcABQAAAAFAAQAAAAbABQAAAAFAAQAAAAaABQAAAAFAAQAAAAZABQAAAAFAAQAAAAYABQAAAAFAAQAAAAXABQAAAAFAAQAAAAWABQAAAAFAAQAAAAVABQAAAAFAAQAAAAUABQAAAAFAAQAAAATABQAAAAFAAQAAAASABQAAAAFAAQAAAARABQAAAAFAAQAAAAQABQAAAAFAAQAAAAPABQAAAAFAAQAAAAOABQAAAAFAAQAAAANABQAAAAFAAQAAAAMABQAAAAFAAQAAAALABQAAAAFAAQAAAAKABQAAAAFAAQAAAAJABQAAAAFAAQAAAAJABUAAAAFAAQAAAAIABUAAAAFAAQAAAAHABUAAAAFAAQAAAAGABUAAAAFAAQAAAAFABUAAAAFAAQAAAAEABUAAAAFAAQAAAAEABQAAAAFAAQAAAADABQAAAAFAAQAAAACABMAAAAFAAQAAAACABIAAAAFAAQAAAACABEAAAAFAAQAAAABABEAAAAFAAQAAAABABAAAAAFAAQAAAABAA8AAAAFAAQAAAABAA4AAAAFAAQAAAABAA0AAAAFAAQAAAACAA0AAAAFAAQAAAACAAwAAAAFAAQAAAACAAsAAAAFAAQAAAACAAoAAAAFAAQAAAACAAkAAAAFAAQAAAACAAgAAAAFAAQAAAADAAgAAAAFAAQAAAADAAcAAAAFAAQAAAADAAYAAAAFAAQAAAADAAUAAAAFAAQAAAADAAQAAAAFAAQAAAADAAMAAAAFAAQAAAADAAIAAAAFAAQAAAAEAAIAAAAFAAQAAAAEAAEAAAAFAAQAAAAFAAEAAAAFAAQAAAAFAAAAAAAFAAQAAAAGAAAAAAAFAAQAAAAHAAAAAAAFAAQAAAAIAAAAAAAFAAQAAAAJAAAAAAAFAAQAAAAKAAAAAAAFAAQAAAALAAAAAAAFAAQAAAAMAAAAAAAFAAQAAAANAAAAAAAFAAQAAAAOAAAAAAAFAAQAAAAPAAAAAAAFAAQAAAAQAAAAAAAFAAQAAAARAAAAAAAFAAQAAAASAAAAAAAFAAQAAAATAAAAAAAFAAQAAAAUAAAAAAAFAAQAAAAVAAAAAAAFAAQAAAAWAAAAAAAFAAQAAAAXAAAAAAAFAAQAAAAYAAAAAAAFAAQAAAAZAAAAAAAFAAQAAAAaAAAAAAAFAAQAAAAbAAAAAAAFAAQAAAAcAAAAAAAFAAQAAAAdAAAAAAAFAAQAAAAeAAAAAAAFAAQAAAAfAAAAAAAFAAQAAAAgAAEAAAAFAAQAAAAhAAEAAAAFAAQAAAAiAAEAAAAFAAQAAAAiAAIAAAAFAAQAAAAjAAIAAAAFAAQAAAAkAAIAAAAFAAQAAAAkAAMAAAAFAAQAAAAlAAMAAAAFAAQAAAAlAAQAAAAFAAQAAAAlAAUAAAAFAAQAAAAlAAYAAAAFAAQAAAAlAAcAAAAFAAQAAAAlAAgAAAAFAAQAAAAlAAkAAAAFAAQAAAAlAAoAAAAFAAQAAAAlAAsAAAAFAAQAAAAlAAwAAAAFAAQAAAAlAA0AAAAFAAQAAAAlAA4AAAAFAAQAAAAlAA8AAAAFAAQAAAAlABAAAAAFAAQAAAAlABEAAAAFAAQAAAAlABIAAAAFAAQAAAAlABMAAAAFAAQAAAAkABMAAAAFAAQAAAAkABQAAAAFAAQAAAAkABUAAAAFAAQAAAAjABUAAAAFAAQAAAAiABUAAAAFAAQAAAA=")
-
-[node name="ColorRect" type="ColorRect" parent="."]
-visible = false
-material = SubResource("ShaderMaterial_3t3tu")
-custom_minimum_size = Vector2(320, 240)
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="Enemy" parent="." instance=ExtResource("5_1mvm8")]
-position = Vector2(51, 121)
-moving = true
+[node name="AmbienteDeTeste" instance=ExtResource("1_5ohy6")]

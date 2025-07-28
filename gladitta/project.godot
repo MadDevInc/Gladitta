@@ -19,7 +19,7 @@ config/icon="res://icon.svg"
 [display]
 
 window/size/viewport_width=320
-window/size/viewport_height=180
+window/size/viewport_height=240
 window/size/window_width_override=960
 window/size/window_height_override=660
 window/stretch/mode="viewport"
@@ -30,6 +30,8 @@ Projectile=""
 Sword=""
 Player=""
 Enemy=""
+Solid=""
+Arrow=""
 
 [input]
 

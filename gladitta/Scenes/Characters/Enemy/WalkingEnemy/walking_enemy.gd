@@ -28,10 +28,10 @@ func _physics_process(delta: float) -> void:
 		velocity.x = SPEED * direction
 
 		if $RWallDetector.get_collider() != null and direction == 1:
-			if $RWallDetector.get_collider() is TileMapLayer or $RWallDetector.get_collider().is_in_group("Projectile"):
+			if $RWallDetector.get_collider().is_in_group("Solid"):
 				switch_directions()
 		if $LWallDetector.get_collider() != null and direction == -1:
-			if $LWallDetector.get_collider() is TileMapLayer or $LWallDetector.get_collider().is_in_group("Projectile"):
+			if $LWallDetector.get_collider().is_in_group("Solid"):
 				switch_directions()
 		
 		if !flying and activate_walk:
@@ -54,6 +54,7 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func _on_arrow_detector_body_entered(body: Node2D) -> void:
+	print("entrou")
 	if body.is_in_group("Projectile"):
 		if body.velocity != Vector2.ZERO:
 			self.queue_free()

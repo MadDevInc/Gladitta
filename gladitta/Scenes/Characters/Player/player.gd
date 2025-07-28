@@ -16,6 +16,8 @@ var direction = Vector2(1, 0)
 
 var arrow_scene = preload("res://Scenes/Characters/Player/Arrow/arrow.tscn")
 
+@export var arrow_count = 3
+
 @onready var initial_position = self.global_position
 
 func _physics_process(delta: float) -> void:
@@ -49,13 +51,14 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("attack"):
 		$Sword/AnimationPlayer.play("attack")
 	
-	if Input.is_action_pressed("shoot"):
+	if Input.is_action_pressed("shoot") and arrow_count > 0:
 		Engine.time_scale = 0.05
 		$DirectionPivot.show()
-	if Input.is_action_just_released("shoot"):
+	if Input.is_action_just_released("shoot") and arrow_count > 0:
 		Engine.time_scale = 1.0
 		$DirectionPivot.hide()
 		instantiate_arrow()
+		arrow_count -= 1
 
 	if Input.is_action_pressed("move_right") and applied_forces.length() < 1.0:
 		velocity.x = MAX_velocity
@@ -67,7 +70,10 @@ func _physics_process(delta: float) -> void:
 		direction = Vector2(-1, 0)
 	else:
 		velocity.x = 0.0
-		
+		if !$AnimatedSprite2D.flip_h:
+			move_sword("right")
+		else:
+			move_sword("left")
 
 	if Input.is_action_pressed("move_down"):
 		move_sword("down")
@@ -103,6 +109,9 @@ func _physics_process(delta: float) -> void:
 func _on_detection_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Enemy"):
 		kill()
+	if body.is_in_group("Arrow"):
+		arrow_count += 1
+		body.queue_free()
 
 func launch(dir):
 	velocity.y = dir.y * -250
@@ -160,3 +169,6 @@ func instantiate_arrow():
 func kill():
 	self.global_position = initial_position
 	death.emit()
+
+func get_arrow_count():
+	return arrow_count
