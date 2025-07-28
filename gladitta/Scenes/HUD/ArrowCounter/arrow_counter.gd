@@ -4,7 +4,7 @@ extends Control
 
 var arrow_icon_scene = load("res://Scenes/HUD/ArrowCounter/ArrowIcon/arrow_icon.tscn")
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if player.get_arrow_count() > $VBoxContainer.get_child_count():
 		add_arrow()
 	if player.get_arrow_count() < $VBoxContainer.get_child_count():

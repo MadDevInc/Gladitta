@@ -92,10 +92,12 @@ position = Vector2(2, 0)
 target_position = Vector2(0, 6)
 
 [node name="RWallDetector" type="RayCast2D" parent="."]
-target_position = Vector2(5, 0)
+position = Vector2(0, 5)
+target_position = Vector2(6, 0)
 
 [node name="LWallDetector" type="RayCast2D" parent="."]
-target_position = Vector2(-5, 0)
+position = Vector2(0, 5)
+target_position = Vector2(-6, 0)
 
 [connection signal="area_entered" from="ArrowDetector" to="." method="_on_arrow_detector_area_entered"]
 [connection signal="body_entered" from="ArrowDetector" to="." method="_on_arrow_detector_body_entered"]

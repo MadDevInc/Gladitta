@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=3 uid="uid://bcihlg3c0g46"]
+
+[ext_resource type="Script" path="res://Scenes/PowerUps/Bomb/bomb.gd" id="1_4vbei"]
+[ext_resource type="Texture2D" uid="uid://dmdeye7ghf383" path="res://icon.svg" id="1_ov426"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1asgu"]
+size = Vector2(8, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_71x1j"]
+size = Vector2(9, 9)
+
+[node name="Bomb" type="CharacterBody2D" groups=["Solid"]]
+script = ExtResource("1_4vbei")
+metadata/_edit_vertical_guides_ = [4.0]
+metadata/_edit_horizontal_guides_ = [-4.0]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_1asgu")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.0625, 0.0625)
+texture = ExtResource("1_ov426")
+
+[node name="Detector" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Detector"]
+shape = SubResource("RectangleShape2D_71x1j")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -20.0
+offset_top = -30.0
+offset_right = 20.0
+offset_bottom = -3.0
+theme_override_font_sizes/font_size = 8
+text = " "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="body_entered" from="Detector" to="." method="_on_detector_body_entered"]

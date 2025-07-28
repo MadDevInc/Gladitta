@@ -58,7 +58,6 @@ func _physics_process(delta: float) -> void:
 		Engine.time_scale = 1.0
 		$DirectionPivot.hide()
 		instantiate_arrow()
-		arrow_count -= 1
 
 	if Input.is_action_pressed("move_right") and applied_forces.length() < 1.0:
 		velocity.x = MAX_velocity
@@ -71,8 +70,10 @@ func _physics_process(delta: float) -> void:
 	else:
 		velocity.x = 0.0
 		if !$AnimatedSprite2D.flip_h:
+			direction = Vector2(1, 0)
 			move_sword("right")
 		else:
+			direction = Vector2(-1, 0)
 			move_sword("left")
 
 	if Input.is_action_pressed("move_down"):
@@ -110,8 +111,9 @@ func _on_detection_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Enemy"):
 		kill()
 	if body.is_in_group("Arrow"):
-		arrow_count += 1
-		body.queue_free()
+		if body.velocity == Vector2.ZERO:
+			arrow_count += 1
+			body.queue_free()
 
 func launch(dir):
 	velocity.y = dir.y * -250
@@ -153,6 +155,8 @@ func move_sword(new_direction):
 func instantiate_arrow():
 	if direction.y == 1 and is_on_floor():
 		return
+
+	arrow_count -= 1
 
 	var arrow_instance = arrow_scene.instantiate()
 	arrow_instance.set_direction(direction)

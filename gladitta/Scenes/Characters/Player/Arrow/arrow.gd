@@ -1,10 +1,13 @@
 extends CharacterBody2D
 
-const SPEED = 400
+const SPEED = 400.0
 
 var dir = Vector2()
 
 var collision = null
+
+func get_direction():
+	return dir
 
 func set_direction(new_dir):
 	dir = new_dir

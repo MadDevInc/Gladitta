@@ -1,5 +1,15 @@
-[gd_scene load_steps=2 format=3 uid="uid://cntumncfy3npw"]
+[gd_scene load_steps=4 format=3 uid="uid://cntumncfy3npw"]
 
 [ext_resource type="PackedScene" uid="uid://c3wi3k4u6gdm7" path="res://Scenes/Levels/Template/level_template.tscn" id="1_5ohy6"]
+[ext_resource type="PackedScene" uid="uid://c3tr7ovy3vgcw" path="res://Scenes/Characters/Enemy/WalkingEnemy/walking_enemy.tscn" id="2_j1kes"]
+[ext_resource type="PackedScene" uid="uid://bcihlg3c0g46" path="res://Scenes/PowerUps/Bomb/bomb.tscn" id="3_dhx28"]
 
 [node name="AmbienteDeTeste" instance=ExtResource("1_5ohy6")]
+
+[node name="Enemy" parent="Enemies" index="0" instance=ExtResource("2_j1kes")]
+position = Vector2(174, 210)
+moving = true
+direction = -1
+
+[node name="Bomb" parent="." index="5" instance=ExtResource("3_dhx28")]
+position = Vector2(85, 80)
