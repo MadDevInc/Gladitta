@@ -157,9 +157,9 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3dtuv"]
-size = Vector2(6.2, 10.2)
+size = Vector2(6.5, 10.5)
 
-[node name="Player" type="CharacterBody2D" groups=["Player"]]
+[node name="Player" type="CharacterBody2D" groups=["Player", "Solid"]]
 script = ExtResource("1_1cf6x")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -203,7 +203,6 @@ sprite_frames = SubResource("SpriteFrames_25lp8")
 animation = &"idle"
 
 [node name="Label" type="Label" parent="."]
-visible = false
 offset_left = -44.0
 offset_top = -34.0
 offset_right = 44.0

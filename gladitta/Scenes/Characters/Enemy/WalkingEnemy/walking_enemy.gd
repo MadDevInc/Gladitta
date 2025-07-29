@@ -5,20 +5,14 @@ enum Directions {right = 1, left = -1}
 const SPEED = 15.0
 const GRAVITY = 800.0
 
-@export var flying : bool
-@export var moving : bool
-@export var direction : Directions = Directions.right
-
-@onready var initial_position = self.global_position
-@onready var initial_direction = direction
+var flying : bool
+var moving : bool
+var direction : Directions = Directions.right
 
 var activate_walk = false
 
-func _ready() -> void:
-	if moving:
-		$AnimatedSprite2D.play("run")
-
 func _physics_process(delta: float) -> void:
+	#print(velocity)
 	if not is_on_floor() and !flying:
 		velocity.y += GRAVITY * delta
 	elif is_on_floor():
@@ -46,7 +40,7 @@ func _physics_process(delta: float) -> void:
 		else:
 			$AnimatedSprite2D.flip_h = true
 	else:
-		if get_parent().get_node("Player").global_position.x > self.global_position.x:
+		if get_parent().get_parent().get_parent().get_node("Player").global_position.x > self.global_position.x:
 			$AnimatedSprite2D.flip_h = false
 		else:
 			$AnimatedSprite2D.flip_h = true
@@ -67,3 +61,7 @@ func switch_directions():
 		direction = Directions.left
 	else:
 		direction = Directions.right
+
+func launch(dir):
+	velocity.y = dir.y * 200
+	velocity.x = dir.x * SPEED

@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 const GRAVITY = 800.0
 const TERMINAL_FALLING_VELOCITY = 150.0
-const SPEED = 400.0
+const SPEED = 250.0
 
 var triggered = false
 
@@ -14,22 +14,25 @@ func _physics_process(delta: float) -> void:
 
 	velocity.x = lerp(velocity.x, 0.0, 0.05)
 
-	if get_last_slide_collision() != null:
-		triggered = true
-
 	move_and_slide()
 
 func launch(direction):
-	print(direction)
-	velocity = direction * SPEED
+	velocity.y = direction.y * 200
+	velocity.x = direction.x * SPEED
 
 func _on_detector_body_entered(body: Node2D) -> void:
-	if body.is_in_group("Arrow"):
-		if !triggered:
-			launch(body.get_direction())
-		else:
-			explode()
-		body.queue_free()
+	if body != self:
+		if body.is_in_group("Arrow"):
+			if !triggered:
+				launch(body.get_direction())
+			else:
+				explode()
+		triggered = true
 
 func explode():
+	for body in $Detector.get_overlapping_bodies():
+		if body is not TileMapLayer and body != self:
+			print(body)
+			body.launch( (body.global_position - self.global_position).normalized() )
+	await get_tree().create_timer(0.2).timeout
 	self.queue_free()

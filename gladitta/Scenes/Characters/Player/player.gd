@@ -16,15 +16,16 @@ var direction = Vector2(1, 0)
 
 var arrow_scene = preload("res://Scenes/Characters/Player/Arrow/arrow.tscn")
 
-@export var arrow_count = 3
+@export var max_arrows = 3
 
 @onready var initial_position = self.global_position
+@onready var arrow_count = max_arrows
 
 func _physics_process(delta: float) -> void:
-	$Label.text = "v5el: " + str(velocity).pad_decimals(0)
-	$Label.text += "\nvelocity: " + str(velocity).pad_decimals(0)
-	$Label.text += "\napplied: " + str(applied_forces).pad_decimals(0)
-	$Label.text += "\njbuff: " + str(jump_buffer).pad_decimals(0)
+	$Label.text = "direction" + str(direction).pad_decimals(0)
+	if Input.is_action_just_pressed("reset"):
+		kill()
+	
 	if not is_on_floor():
 		velocity.y += GRAVITY * delta
 	else:
@@ -160,7 +161,7 @@ func instantiate_arrow():
 
 	var arrow_instance = arrow_scene.instantiate()
 	arrow_instance.set_direction(direction)
-	get_parent().add_child(arrow_instance)
+	get_parent().get_node("Arrows").add_child(arrow_instance)
 	arrow_instance.global_position = $DirectionPivot/Bow.global_position
 
 	if direction.y == 0.0:
@@ -172,6 +173,7 @@ func instantiate_arrow():
 
 func kill():
 	self.global_position = initial_position
+	arrow_count = max_arrows
 	death.emit()
 
 func get_arrow_count():

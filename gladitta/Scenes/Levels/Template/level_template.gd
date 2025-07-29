@@ -9,5 +9,12 @@ func _on_level_ending_level_finished() -> void:
 	print("Passou de nível!")
 
 func _process(_delta: float) -> void:
-	if $Enemies.get_child_count() <= 0:
-		$LevelEnding.unlock()
+	for child in $Enemies.get_children():
+		if child.current_enemy != null:
+			return
+	$LevelEnding.unlock()
+
+func _on_player_death() -> void:
+	$CanvasLayer/Timer.reset()
+	for child in $Arrows.get_children():
+		child.queue_free()

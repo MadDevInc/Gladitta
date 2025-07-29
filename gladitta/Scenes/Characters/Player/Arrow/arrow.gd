@@ -14,10 +14,14 @@ func set_direction(new_dir):
 	self.look_at(dir)
 
 func _process(delta: float) -> void:
+	#print(velocity)
 	velocity = dir * SPEED * delta
 	collision = move_and_collide(velocity)
 	if collision != null:
-		if collision.get_collider() is TileMapLayer:
-			process_mode = PROCESS_MODE_DISABLED
+		if collision.get_collider().is_in_group("Solid"):
+			#process_mode = PROCESS_MODE_DISABLED
 			velocity = Vector2.ZERO
-			set_process(false)
+			#set_process(false)
+
+func launch(direction):
+	dir = direction

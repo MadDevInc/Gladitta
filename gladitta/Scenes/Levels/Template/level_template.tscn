@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=4 uid="uid://c3wi3k4u6gdm7"]
+[gd_scene load_steps=9 format=4 uid="uid://c3wi3k4u6gdm7"]
 
 [ext_resource type="Script" path="res://Scenes/Levels/Template/level_template.gd" id="1_sujfq"]
 [ext_resource type="PackedScene" uid="uid://bfjadmqnpg80t" path="res://Scenes/HUD/Timer/timer.tscn" id="1_y4pis"]
@@ -6,6 +6,31 @@
 [ext_resource type="PackedScene" uid="uid://hq3kndj7ibrr" path="res://Scenes/Levels/LevelEnding/level_ending.tscn" id="3_v0fcr"]
 [ext_resource type="PackedScene" uid="uid://ddyqss5v87w2q" path="res://Scenes/TileMaps/World/world_tile_map.tscn" id="4_eaww6"]
 [ext_resource type="PackedScene" uid="uid://dlcsks5urffx5" path="res://Scenes/Characters/Player/player.tscn" id="6_rq5da"]
+[ext_resource type="Shader" path="res://Assets/Shaders/crt_monitor.gdshader" id="7_cg8si"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wm770"]
+shader = ExtResource("7_cg8si")
+shader_parameter/overlay = false
+shader_parameter/scanlines_opacity = 0.4
+shader_parameter/scanlines_width = 0.25
+shader_parameter/grille_opacity = 0.3
+shader_parameter/resolution = Vector2(640, 480)
+shader_parameter/pixelate = true
+shader_parameter/roll = true
+shader_parameter/roll_speed = 8.0
+shader_parameter/roll_size = 15.0
+shader_parameter/roll_variation = 1.8
+shader_parameter/distort_intensity = 0.05
+shader_parameter/noise_opacity = 0.4
+shader_parameter/noise_speed = 5.0
+shader_parameter/static_noise_intensity = 0.06
+shader_parameter/aberration = 0.03
+shader_parameter/brightness = 1.4
+shader_parameter/discolor = true
+shader_parameter/warp_amount = 1.0
+shader_parameter/clip_warp = false
+shader_parameter/vignette_intensity = 0.4
+shader_parameter/vignette_opacity = 0.5
 
 [node name="LevelTemplate" type="Node2D"]
 script = ExtResource("1_sujfq")
@@ -28,4 +53,13 @@ position = Vector2(45, 211)
 
 [node name="Enemies" type="Node2D" parent="."]
 
+[node name="Arrows" type="Node2D" parent="."]
+
+[node name="CRTshader" type="ColorRect" parent="."]
+visible = false
+material = SubResource("ShaderMaterial_wm770")
+offset_right = 320.0
+offset_bottom = 240.0
+
 [connection signal="level_finished" from="LevelEnding" to="." method="_on_level_ending_level_finished"]
+[connection signal="death" from="Player" to="." method="_on_player_death"]
