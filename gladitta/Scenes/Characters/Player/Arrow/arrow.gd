@@ -11,10 +11,10 @@ func get_direction():
 
 func set_direction(new_dir):
 	dir = new_dir
-	self.look_at(dir)
+	self.look_at(Vector2(global_position.x, global_position.y + dir.y))
 
 func _process(delta: float) -> void:
-	#print(velocity)
+	print(velocity)
 	velocity = dir * SPEED * delta
 	collision = move_and_collide(velocity)
 	if collision != null:
@@ -24,4 +24,5 @@ func _process(delta: float) -> void:
 			#set_process(false)
 
 func launch(direction):
-	dir = direction
+	velocity = Vector2.ZERO
+	set_direction(direction)

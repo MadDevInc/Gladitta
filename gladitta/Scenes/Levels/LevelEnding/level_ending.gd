@@ -4,6 +4,8 @@ signal level_finished
 
 @export var locked = true
 
+var reset_lock = locked
+
 var is_player_inside = false
 
 func unlock():
@@ -20,3 +22,6 @@ func _on_body_exited(body: Node2D) -> void:
 func _process(_delta: float) -> void:
 	if is_player_inside and !locked:
 		level_finished.emit()
+
+func reset():
+	locked = reset_lock

@@ -16,5 +16,6 @@ func _process(_delta: float) -> void:
 
 func _on_player_death() -> void:
 	$CanvasLayer/Timer.reset()
+	$LevelEnding.reset()
 	for child in $Arrows.get_children():
 		child.queue_free()

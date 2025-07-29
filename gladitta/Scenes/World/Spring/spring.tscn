@@ -1,0 +1,43 @@
+[gd_scene load_steps=7 format=3 uid="uid://cctoxsupqu7tp"]
+
+[ext_resource type="Texture2D" uid="uid://c1hncxv671b1u" path="res://Scenes/World/Spring/Textures/trampolim.png" id="1_ah8kh"]
+[ext_resource type="Script" path="res://Scenes/World/Spring/spring.gd" id="1_ea6b8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x4cgl"]
+atlas = ExtResource("1_ah8kh")
+region = Rect2(24, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_du26l"]
+atlas = ExtResource("1_ah8kh")
+region = Rect2(32, 0, 8, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_n7n7d"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x4cgl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_du26l")
+}],
+"loop": false,
+"name": &"launch",
+"speed": 15.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_810ku"]
+size = Vector2(8, 8)
+
+[node name="Spring" type="Area2D" groups=["Solid"]]
+script = ExtResource("1_ea6b8")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_n7n7d")
+animation = &"launch"
+frame = 1
+frame_progress = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_810ku")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

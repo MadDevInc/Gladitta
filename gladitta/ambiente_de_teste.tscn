@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=4 uid="uid://cntumncfy3npw"]
 
 [ext_resource type="PackedScene" uid="uid://c3wi3k4u6gdm7" path="res://Scenes/Levels/Template/level_template.tscn" id="1_5ohy6"]
-[ext_resource type="PackedScene" uid="uid://bcihlg3c0g46" path="res://Scenes/PowerUps/Bomb/bomb.tscn" id="2_xrq5m"]
+[ext_resource type="PackedScene" uid="uid://cctoxsupqu7tp" path="res://Scenes/World/Spring/spring.tscn" id="3_20uff"]
 [ext_resource type="PackedScene" uid="uid://cur55mkndr5k6" path="res://Scenes/Characters/Enemy/EnemySpawner/enemy_spawner.tscn" id="3_ona6a"]
 
 [node name="AmbienteDeTeste" instance=ExtResource("1_5ohy6")]
@@ -17,5 +17,5 @@ position = Vector2(203, 199)
 moving = true
 direction = -1
 
-[node name="Bomb" parent="." index="7" instance=ExtResource("2_xrq5m")]
-position = Vector2(82, 50)
+[node name="Spring" parent="." index="7" instance=ExtResource("3_20uff")]
+position = Vector2(134, 212)
