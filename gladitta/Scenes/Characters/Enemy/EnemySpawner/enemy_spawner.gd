@@ -11,7 +11,7 @@ enum Directions {right = 1, left = -1}
 
 var current_enemy = null
 
-var enemy_scene = load("res://Scenes/Characters/Enemy/WalkingEnemy/walking_enemy.tscn")
+var enemy_scene = load("res://Scenes/Characters/Enemy/Enemy/enemy.tscn")
 
 func _ready() -> void:
 	get_parent().get_parent().get_node("Player").death.connect(_on_player_death)

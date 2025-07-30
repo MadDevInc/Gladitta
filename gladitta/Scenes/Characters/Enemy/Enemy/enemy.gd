@@ -12,7 +12,6 @@ var direction : Directions = Directions.right
 var activate_walk = false
 
 func _physics_process(delta: float) -> void:
-	#print(velocity)
 	if not is_on_floor() and !flying:
 		velocity.y += GRAVITY * delta
 	elif is_on_floor():
@@ -47,21 +46,8 @@ func _physics_process(delta: float) -> void:
 
 	move_and_slide()
 
-func _on_arrow_detector_body_entered(body: Node2D) -> void:
-	if body.is_in_group("Arrow"):
-		if body.velocity != Vector2.ZERO:
-			self.queue_free()
-
-func _on_arrow_detector_area_entered(area: Area2D) -> void:
-	if area.is_in_group("Sword"):
-		pass
-
 func switch_directions():
 	if direction == Directions.right:
 		direction = Directions.left
 	else:
 		direction = Directions.right
-
-func launch(dir):
-	velocity.y = dir.y * 200
-	velocity.x = dir.x * SPEED

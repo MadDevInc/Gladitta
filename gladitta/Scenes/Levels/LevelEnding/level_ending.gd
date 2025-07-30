@@ -4,7 +4,7 @@ signal level_finished
 
 @export var locked = true
 
-var reset_lock = locked
+@onready var reset_lock = locked
 
 var is_player_inside = false
 

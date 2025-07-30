@@ -11,18 +11,15 @@ func get_direction():
 
 func set_direction(new_dir):
 	dir = new_dir
-	self.look_at(Vector2(global_position.x, global_position.y + dir.y))
+	self.look_at(global_position + dir)
 
-func _process(delta: float) -> void:
-	print(velocity)
-	velocity = dir * SPEED * delta
-	collision = move_and_collide(velocity)
-	if collision != null:
-		if collision.get_collider().is_in_group("Solid"):
-			#process_mode = PROCESS_MODE_DISABLED
-			velocity = Vector2.ZERO
-			#set_process(false)
+func _physics_process(delta: float) -> void:
+	if is_on_floor() or is_on_ceiling() or is_on_wall():
+		velocity = Vector2.ZERO
+	else:
+		velocity = dir * SPEED
+
+	move_and_slide()
 
 func launch(direction):
-	velocity = Vector2.ZERO
 	set_direction(direction)

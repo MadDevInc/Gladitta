@@ -61,5 +61,9 @@ material = SubResource("ShaderMaterial_wm770")
 offset_right = 320.0
 offset_bottom = 240.0
 
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+
 [connection signal="level_finished" from="LevelEnding" to="." method="_on_level_ending_level_finished"]
 [connection signal="death" from="Player" to="." method="_on_player_death"]

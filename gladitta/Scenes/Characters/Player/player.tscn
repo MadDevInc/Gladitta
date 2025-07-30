@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://dlcsks5urffx5"]
+[gd_scene load_steps=21 format=3 uid="uid://dlcsks5urffx5"]
 
 [ext_resource type="Script" path="res://Scenes/Characters/Player/player.gd" id="1_1cf6x"]
 [ext_resource type="Texture2D" uid="uid://bst3ep1s6w1f" path="res://Scenes/Characters/Player/Textures/player.png" id="1_iia6l"]
@@ -156,10 +156,7 @@ animations = [{
 "speed": 12.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_3dtuv"]
-size = Vector2(6.5, 10.5)
-
-[node name="Player" type="CharacterBody2D" groups=["Player", "Solid"]]
+[node name="Player" type="CharacterBody2D" groups=["Player"]]
 script = ExtResource("1_1cf6x")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -170,7 +167,7 @@ sprite_frames = SubResource("SpriteFrames_iak7v")
 animation = &"idle"
 autoplay = "idle"
 
-[node name="Sword" type="Area2D" parent="." groups=["Sword"]]
+[node name="Sword" type="Area2D" parent="."]
 position = Vector2(8, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sword"]
@@ -213,10 +210,4 @@ text = "debug"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Detection" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Detection"]
-shape = SubResource("RectangleShape2D_3dtuv")
-
 [connection signal="body_entered" from="Sword" to="." method="_on_sword_body_entered"]
-[connection signal="body_entered" from="Detection" to="." method="_on_detection_body_entered"]
