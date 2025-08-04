@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://c3tr7ovy3vgcw"]
+[gd_scene load_steps=14 format=3 uid="uid://c3tr7ovy3vgcw"]
 
 [ext_resource type="Script" path="res://Scenes/Characters/Enemy/Enemy/enemy.gd" id="1_6offc"]
 [ext_resource type="Texture2D" uid="uid://bst3ep1s6w1f" path="res://Scenes/Characters/Player/Textures/player.png" id="2_0ef6u"]
@@ -61,6 +61,15 @@ animations = [{
 "speed": 10.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vk3dr"]
+size = Vector2(0.15, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ka35n"]
+size = Vector2(0.15, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4pv1n"]
+size = Vector2(7, 11)
+
 [node name="Enemy" type="CharacterBody2D" groups=["Enemy"]]
 script = ExtResource("1_6offc")
 
@@ -81,10 +90,26 @@ target_position = Vector2(0, 6)
 position = Vector2(2, 0)
 target_position = Vector2(0, 6)
 
-[node name="RWallDetector" type="RayCast2D" parent="."]
-position = Vector2(0, 5)
-target_position = Vector2(6, 0)
+[node name="RWallDetector" type="Area2D" parent="."]
 
-[node name="LWallDetector" type="RayCast2D" parent="."]
-position = Vector2(0, 5)
-target_position = Vector2(-6, 0)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RWallDetector"]
+position = Vector2(3.075, 0)
+shape = SubResource("RectangleShape2D_vk3dr")
+
+[node name="LWallDetector" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LWallDetector"]
+position = Vector2(-3.075, 0)
+shape = SubResource("RectangleShape2D_ka35n")
+
+[node name="Detector" type="Area2D" parent="."]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Detector"]
+shape = SubResource("RectangleShape2D_4pv1n")
+
+[connection signal="body_entered" from="RWallDetector" to="." method="_on_r_wall_detector_body_entered"]
+[connection signal="body_entered" from="LWallDetector" to="." method="_on_l_wall_detector_body_entered"]
+[connection signal="area_entered" from="Detector" to="." method="_on_detector_area_entered"]
+[connection signal="body_entered" from="Detector" to="." method="_on_detector_body_entered"]

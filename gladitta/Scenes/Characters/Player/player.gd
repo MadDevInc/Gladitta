@@ -5,6 +5,7 @@ signal death
 const GRAVITY = 800.0
 const MAX_velocity = 75.0
 const JUMP_FORCE = -200.0
+const MAX_DASH_FRAMES = 7
 
 var MAX_JUMP_BUFFER = 5
 var jump_buffer = 0
@@ -18,7 +19,9 @@ var shoot_direction = Vector2()
 
 var arrow_scene = preload("res://Scenes/Characters/Player/Arrow/arrow.tscn")
 
-var dashing = false
+var primed_dash = false
+var dashing = 0
+var was_dashing = false
 
 @export var max_arrows = 3
 
@@ -32,9 +35,23 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("reset"):
 		kill()
 
-	if !dashing:
-		if Input.is_action_just_pressed("dash_trigger"):
-			dashing = true
+	if dashing <= 0:
+		if Input.is_action_pressed("dash_trigger"):
+			if Input.is_action_pressed("jump"):
+				primed_dash = true
+				Engine.time_scale = 0.05
+				$DirectionPivot.show()
+				$DirectionPivot/Bow.hide()
+		if Input.is_action_just_released("dash_trigger") and primed_dash:
+			Engine.time_scale = 1.0
+			$DirectionPivot.hide()
+			dashing = MAX_DASH_FRAMES
+			primed_dash = false
+		elif Input.is_action_just_released("jump") and primed_dash:
+			Engine.time_scale = 1.0
+			$DirectionPivot.hide()
+			dashing = MAX_DASH_FRAMES
+			primed_dash = false
 
 		if not is_on_floor():
 			velocity.y += GRAVITY * delta
@@ -49,7 +66,7 @@ func _physics_process(delta: float) -> void:
 				$AnimatedSprite2D.play("idle")
 			applied_forces = Vector2.ZERO
 
-		if Input.is_action_just_pressed("jump"):
+		if Input.is_action_just_pressed("jump") and !Input.is_action_pressed("dash_trigger"):
 			if is_on_floor():
 				velocity.y = JUMP_FORCE
 				jump_buffer = 0
@@ -65,6 +82,7 @@ func _physics_process(delta: float) -> void:
 		if Input.is_action_pressed("shoot") and arrow_count > 0:
 			Engine.time_scale = 0.05
 			$DirectionPivot.show()
+			$DirectionPivot/Bow.show()
 		if Input.is_action_just_released("shoot") and arrow_count > 0:
 			shoot_direction = direction
 			Engine.time_scale = 1.0
@@ -91,6 +109,11 @@ func _physics_process(delta: float) -> void:
 			velocity.x = -MAX_velocity
 		else:
 			velocity.x = 0.0
+			if was_dashing:
+				velocity.y *= 0.25
+		
+		if velocity.y > 0:
+			was_dashing = false
 
 		if Input.is_action_pressed("move_down"):
 			move_sword("down")
@@ -121,20 +144,29 @@ func _physics_process(delta: float) -> void:
 		velocity += applied_forces
 		applied_forces = lerp(applied_forces, Vector2.ZERO, 0.05)
 	else:
-		velocity = direction * 200
+		applied_forces = Vector2.ZERO
+		if direction.x == 0 or direction.y == 0:
+			velocity = direction * 250
+		else:
+			velocity = direction * 0.5 * 250
+		dashing -= 1
+		was_dashing = true
 
 	move_and_slide()
 
 func launch(dir):
-	velocity.y = dir.y * -250
-	applied_forces.x = dir.x * -200
+	velocity.y = dir.y * -300
+	applied_forces.x = dir.x * -250
 
 func _on_sword_body_entered(body: Node2D) -> void:
 	if body != self:
+		if $Sword.position.y == 0 and is_on_floor():
+			return
+
 		if $Sword.position.y == 0 and !is_on_floor():
 			launch(Vector2($Sword.position.x/8, 0.25))
 		else:
-			launch($Sword.position/8)
+			launch(Vector2($Sword.position.x/8, 0.875))
 
 func move_sword(new_direction):
 	if $Sword/AnimationPlayer.is_playing():
@@ -188,3 +220,7 @@ func kill():
 
 func get_arrow_count():
 	return arrow_count
+
+func _on_detector_body_entered(body: Node2D) -> void:
+	if body.is_in_group("Enemy"):
+		kill()

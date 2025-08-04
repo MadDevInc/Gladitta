@@ -19,13 +19,6 @@ func _physics_process(delta: float) -> void:
 
 	if moving:
 		velocity.x = SPEED * direction
-
-		if $RWallDetector.get_collider() != null and direction == 1:
-			if $RWallDetector.get_collider().is_in_group("Solid"):
-				switch_directions()
-		if $LWallDetector.get_collider() != null and direction == -1:
-			if $LWallDetector.get_collider().is_in_group("Solid"):
-				switch_directions()
 		
 		if !flying and activate_walk:
 			if $LSlopeDetector.get_collider() == null and direction == Directions.left:
@@ -46,8 +39,31 @@ func _physics_process(delta: float) -> void:
 
 	move_and_slide()
 
+func launch(dir):
+	velocity.y = dir.y * -300
+	velocity.x = dir.x * -250
+
+func _on_r_wall_detector_body_entered(body: Node2D) -> void:
+	if body.is_in_group("Solid"):
+		switch_directions()
+
+func _on_l_wall_detector_body_entered(body: Node2D) -> void:
+	if body.is_in_group("Solid"):
+		switch_directions()
+
 func switch_directions():
 	if direction == Directions.right:
 		direction = Directions.left
 	else:
 		direction = Directions.right
+
+func _on_detector_area_entered(area: Area2D) -> void:
+	if area.is_in_group("Sword"):
+		kill()
+
+func _on_detector_body_entered(body: Node2D) -> void:
+	if body.is_in_group("Arrow"):
+		kill()
+
+func kill():
+	queue_free()

@@ -1,0 +1,73 @@
+[gd_scene load_steps=10 format=3 uid="uid://dpfb3582tyngx"]
+
+[ext_resource type="Script" path="res://Scenes/Gadgets/Spring/spring.gd" id="1_c8y6u"]
+[ext_resource type="Texture2D" uid="uid://d2vp16tf3d8tu" path="res://Scenes/Gadgets/Spring/Textures/trampolim.png" id="1_cecs8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jsjm8"]
+size = Vector2(8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ofm7f"]
+atlas = ExtResource("1_cecs8")
+region = Rect2(24, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_txgll"]
+atlas = ExtResource("1_cecs8")
+region = Rect2(32, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_05gsk"]
+atlas = ExtResource("1_cecs8")
+region = Rect2(8, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bq8et"]
+atlas = ExtResource("1_cecs8")
+region = Rect2(32, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_47cki"]
+atlas = ExtResource("1_cecs8")
+region = Rect2(0, 0, 8, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cfy4r"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ofm7f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_txgll")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_05gsk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bq8et")
+}],
+"loop": false,
+"name": &"expand",
+"speed": 24.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_47cki")
+}],
+"loop": false,
+"name": &"idle",
+"speed": 1.0
+}]
+
+[node name="Spring" type="Area2D"]
+script = ExtResource("1_c8y6u")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_jsjm8")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_cfy4r")
+animation = &"expand"
+autoplay = "idle"
+frame = 3
+frame_progress = 1.0
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(0, -1)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
