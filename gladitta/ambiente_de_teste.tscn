@@ -16,6 +16,7 @@ tile_map_data = PackedByteArray("AAAEAAUAAAADAAQAAAAEAAYAAAADAAQAAAAEAAcAAAADAAQ
 [node name="EnemySpawner" parent="Enemies" index="0" instance=ExtResource("3_ona6a")]
 position = Vector2(205, 200)
 moving = true
+direction = -1
 
 [node name="Spring" parent="." index="7" instance=ExtResource("4_lmear")]
 position = Vector2(151, 212)

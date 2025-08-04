@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://8voflvnukgsy"
-path="res://.godot/imported/wood_door.png-d9d3accaff7f5cb011424aca2edc07a8.ctex"
+path="res://.godot/imported/wood_door.png-0718ece35e6e01ccdc68595522bb7e54.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ArquivosBubu/wood_door.png"
-dest_files=["res://.godot/imported/wood_door.png-d9d3accaff7f5cb011424aca2edc07a8.ctex"]
+source_file="res://Scenes/Levels/LevelEnding/Textures/wood_door.png"
+dest_files=["res://.godot/imported/wood_door.png-0718ece35e6e01ccdc68595522bb7e54.ctex"]
 
 [params]
 
