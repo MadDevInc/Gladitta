@@ -12,7 +12,8 @@ func _process(_delta: float) -> void:
 	for child in $Enemies.get_children():
 		if child.current_enemy != null:
 			return
-	$LevelEnding.unlock()
+	if $LevelEnding.is_locked():
+		$LevelEnding.unlock()
 
 func _on_player_death() -> void:
 	$CanvasLayer/Timer.reset()

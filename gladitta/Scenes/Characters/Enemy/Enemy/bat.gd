@@ -11,28 +11,25 @@ var direction : Directions = Directions.right
 
 var activate_walk = false
 
+@onready var player = get_parent().get_parent().get_parent().get_node("Player")
+
 func _physics_process(delta: float) -> void:
 	if not is_on_floor() and !flying:
 		velocity.y += GRAVITY * delta
 	elif is_on_floor():
 		activate_walk = true
 
+	$AnimatedSprite2D.play("idle")
+
 	if moving:
 		velocity.x = SPEED * direction
-		
-		if !flying and activate_walk:
-			if $LSlopeDetector.get_collider() == null and direction == Directions.left:
-				switch_directions()
-			
-			if $RSlopeDetector.get_collider() == null and direction == Directions.right:
-				switch_directions()
-		
+
 		if direction == Directions.right:
 			$AnimatedSprite2D.flip_h = false
 		else:
 			$AnimatedSprite2D.flip_h = true
 	else:
-		if get_parent().get_parent().get_parent().get_node("Player").global_position.x > self.global_position.x:
+		if player.global_position.x > self.global_position.x:
 			$AnimatedSprite2D.flip_h = false
 		else:
 			$AnimatedSprite2D.flip_h = true

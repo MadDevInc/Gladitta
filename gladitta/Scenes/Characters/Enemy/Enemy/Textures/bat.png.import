@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://b2h551fkxu38j"
-path="res://.godot/imported/bat.png-761b1831c7cbf60dc0e7a5ddb30440b9.ctex"
+path="res://.godot/imported/bat.png-4f4ce9706ae540f3f5d524f4468d57a7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ArquivosBubu/bat.png"
-dest_files=["res://.godot/imported/bat.png-761b1831c7cbf60dc0e7a5ddb30440b9.ctex"]
+source_file="res://Scenes/Characters/Enemy/Enemy/Textures/bat.png"
+dest_files=["res://.godot/imported/bat.png-4f4ce9706ae540f3f5d524f4468d57a7.ctex"]
 
 [params]
 

@@ -1,43 +1,35 @@
-[gd_scene load_steps=14 format=3 uid="uid://c3tr7ovy3vgcw"]
+[gd_scene load_steps=12 format=3 uid="uid://svqbqgswci3y"]
 
-[ext_resource type="Script" path="res://Scenes/Characters/Enemy/Enemy/enemy.gd" id="1_6offc"]
-[ext_resource type="Texture2D" uid="uid://bst3ep1s6w1f" path="res://Scenes/Characters/Player/Textures/player.png" id="2_0ef6u"]
+[ext_resource type="Script" path="res://Scenes/Characters/Enemy/Enemy/skeleton.gd" id="1_2n3iy"]
+[ext_resource type="Texture2D" uid="uid://dftes77haxc8p" path="res://Scenes/Characters/Enemy/Enemy/Textures/skeleton.png" id="2_hqild"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ppe5l"]
-size = Vector2(6, 10)
+size = Vector2(8, 9)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_yfvk8"]
-atlas = ExtResource("2_0ef6u")
+[sub_resource type="AtlasTexture" id="AtlasTexture_sh7k4"]
+atlas = ExtResource("2_hqild")
 region = Rect2(0, 0, 8, 9)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_pruom"]
-atlas = ExtResource("2_0ef6u")
+[sub_resource type="AtlasTexture" id="AtlasTexture_hs4s6"]
+atlas = ExtResource("2_hqild")
 region = Rect2(8, 0, 8, 9)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_kcrc3"]
-atlas = ExtResource("2_0ef6u")
-region = Rect2(32, 0, 8, 9)
+[sub_resource type="AtlasTexture" id="AtlasTexture_2jngj"]
+atlas = ExtResource("2_hqild")
+region = Rect2(16, 0, 8, 9)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_hsmut"]
-atlas = ExtResource("2_0ef6u")
-region = Rect2(40, 0, 8, 9)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ne2lu"]
-atlas = ExtResource("2_0ef6u")
-region = Rect2(48, 0, 8, 9)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_611gd"]
-atlas = ExtResource("2_0ef6u")
+[sub_resource type="AtlasTexture" id="AtlasTexture_iaseo"]
+atlas = ExtResource("2_hqild")
 region = Rect2(24, 0, 8, 9)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_58nbo"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_yfvk8")
+"texture": SubResource("AtlasTexture_sh7k4")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_pruom")
+"texture": SubResource("AtlasTexture_hs4s6")
 }],
 "loop": true,
 "name": &"idle",
@@ -45,16 +37,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_kcrc3")
+"texture": SubResource("AtlasTexture_2jngj")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_hsmut")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ne2lu")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_611gd")
+"texture": SubResource("AtlasTexture_iaseo")
 }],
 "loop": true,
 "name": &"run",
@@ -62,44 +48,42 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vk3dr"]
-size = Vector2(0.15, 10)
+size = Vector2(0.15, 9)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ka35n"]
-size = Vector2(0.15, 10)
+size = Vector2(0.15, 9)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4pv1n"]
-size = Vector2(7, 11)
+size = Vector2(9, 10)
 
-[node name="Enemy" type="CharacterBody2D" groups=["Enemy"]]
-script = ExtResource("1_6offc")
+[node name="Skeleton" type="CharacterBody2D" groups=["Enemy"]]
+script = ExtResource("1_2n3iy")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_ppe5l")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-modulate = Color(1, 0, 0, 1)
 sprite_frames = SubResource("SpriteFrames_58nbo")
-animation = &"idle"
-autoplay = "idle"
+animation = &"run"
 
 [node name="LSlopeDetector" type="RayCast2D" parent="."]
-position = Vector2(-2, 0)
+position = Vector2(-3, 0)
 target_position = Vector2(0, 6)
 
 [node name="RSlopeDetector" type="RayCast2D" parent="."]
-position = Vector2(2, 0)
+position = Vector2(3, 0)
 target_position = Vector2(0, 6)
 
 [node name="RWallDetector" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RWallDetector"]
-position = Vector2(3.075, 0)
+position = Vector2(4.075, 0)
 shape = SubResource("RectangleShape2D_vk3dr")
 
 [node name="LWallDetector" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LWallDetector"]
-position = Vector2(-3.075, 0)
+position = Vector2(-4.075, 0)
 shape = SubResource("RectangleShape2D_ka35n")
 
 [node name="Detector" type="Area2D" parent="."]

@@ -8,6 +8,9 @@ signal level_finished
 
 var is_player_inside = false
 
+func is_locked():
+	return locked
+
 func unlock():
 	locked = false
 	$AnimatedSprite2D.play("iron")
@@ -26,3 +29,4 @@ func _process(_delta: float) -> void:
 
 func reset():
 	locked = reset_lock
+	$AnimatedSprite2D.frame = 0

@@ -1,3 +1,4 @@
+@tool
 extends Node2D
 
 enum Directions {right = 1, left = -1}
@@ -11,17 +12,22 @@ enum Directions {right = 1, left = -1}
 
 var current_enemy = null
 
-var enemy_scene = load("res://Scenes/Characters/Enemy/Enemy/enemy.tscn")
+var skeleton_scene = load("res://Scenes/Characters/Enemy/Enemy/skeleton.tscn")
+var bat_scene = load("res://Scenes/Characters/Enemy/Enemy/bat.tscn")
 
 func _ready() -> void:
-	get_parent().get_parent().get_node("Player").death.connect(_on_player_death)
-	current_enemy = $Enemy
-	current_enemy.flying = flying
-	current_enemy.moving = moving
-	current_enemy.direction = direction
+	if !Engine.is_editor_hint():
+		$Sprite2D.hide()
+		get_parent().get_parent().get_node("Player").death.connect(_on_player_death)
+		generate_enemy()
 
 func generate_enemy():
-	var enemy_instance = enemy_scene.instantiate()
+	var enemy_instance
+	if flying:
+		enemy_instance = bat_scene.instantiate()
+	else:
+		enemy_instance = skeleton_scene.instantiate()
+
 	self.call_deferred("add_child", enemy_instance)
 	current_enemy = enemy_instance
 	current_enemy.flying = flying
@@ -32,3 +38,10 @@ func _on_player_death():
 	if current_enemy != null:
 		current_enemy.queue_free()
 	generate_enemy()
+
+func _process(delta: float) -> void:
+	if Engine.is_editor_hint():
+		if flying:
+			$Sprite2D.texture = load("res://Scenes/Characters/Enemy/Enemy/Textures/bat.png")
+		else:
+			$Sprite2D.texture = load("res://Scenes/Characters/Enemy/Enemy/Textures/skeleton.png")

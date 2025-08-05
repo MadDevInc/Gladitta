@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dftes77haxc8p"
-path="res://.godot/imported/skeleton.png-6529883ff9b6e5bbf0dc3dec2da86497.ctex"
+uid="uid://cmoxrcvntydlt"
+path="res://.godot/imported/bat2.png-34ea32e82855d93cf31dbf69e55199c4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ArquivosBubu/skeleton.png"
-dest_files=["res://.godot/imported/skeleton.png-6529883ff9b6e5bbf0dc3dec2da86497.ctex"]
+source_file="res://Scenes/Characters/Enemy/Enemy/Textures/bat2.png"
+dest_files=["res://.godot/imported/bat2.png-34ea32e82855d93cf31dbf69e55199c4.ctex"]
 
 [params]
 
