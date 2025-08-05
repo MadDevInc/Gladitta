@@ -10,6 +10,7 @@ var is_player_inside = false
 
 func unlock():
 	locked = false
+	$AnimatedSprite2D.play("iron")
 
 func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Player"):

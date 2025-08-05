@@ -4,9 +4,6 @@
 [ext_resource type="Texture2D" uid="uid://8voflvnukgsy" path="res://Scenes/Levels/LevelEnding/Textures/wood_door.png" id="2_pdbcs"]
 [ext_resource type="Texture2D" uid="uid://4nscwipsd6r0" path="res://Scenes/Levels/LevelEnding/Textures/iron_gate.png" id="2_yssim"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ac8fd"]
-size = Vector2(8, 12)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_l0lac"]
 atlas = ExtResource("2_yssim")
 region = Rect2(0, 0, 16, 16)
@@ -79,8 +76,8 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_rpqpl")
 }],
-"loop": true,
-"name": &"door",
+"loop": false,
+"name": &"iron",
 "speed": 12.0
 }, {
 "frames": [{
@@ -100,19 +97,23 @@ animations = [{
 "texture": SubResource("AtlasTexture_clk1l")
 }],
 "loop": false,
-"name": &"gate",
+"name": &"wood",
 "speed": 12.0
 }]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ac8fd"]
+size = Vector2(7, 10)
 
 [node name="LevelEnding" type="Area2D"]
 script = ExtResource("1_sjvh3")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_ac8fd")
-
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_2id0o")
-animation = &"door"
+animation = &"iron"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 3)
+shape = SubResource("RectangleShape2D_ac8fd")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]

@@ -9,7 +9,7 @@ size = Vector2(6, 3)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y8qi0"]
 size = Vector2(2, 2)
 
-[node name="Arrow" type="CharacterBody2D"]
+[node name="Arrow" type="CharacterBody2D" groups=["Arrow"]]
 script = ExtResource("1_u16h1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
