@@ -195,7 +195,7 @@ animation = &"idle"
 autoplay = "idle"
 
 [node name="Sword" type="Area2D" parent="." groups=["Sword"]]
-position = Vector2(8, 0)
+position = Vector2(-8, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sword"]
 shape = SubResource("RectangleShape2D_atcx3")

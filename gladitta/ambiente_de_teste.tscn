@@ -1,14 +1,10 @@
-[gd_scene load_steps=5 format=4 uid="uid://cntumncfy3npw"]
+[gd_scene load_steps=4 format=4 uid="uid://cntumncfy3npw"]
 
 [ext_resource type="PackedScene" uid="uid://c3wi3k4u6gdm7" path="res://Scenes/Levels/Template/level_template.tscn" id="1_5ohy6"]
-[ext_resource type="PackedScene" uid="uid://i65wpc3p3ox8" path="res://Scenes/HUD/ArrowCounter/arrow_counter.tscn" id="2_sbtkr"]
 [ext_resource type="PackedScene" uid="uid://cur55mkndr5k6" path="res://Scenes/Characters/Enemy/EnemySpawner/enemy_spawner.tscn" id="3_ona6a"]
 [ext_resource type="PackedScene" uid="uid://dpfb3582tyngx" path="res://Scenes/Gadgets/Spring/spring.tscn" id="4_lmear"]
 
 [node name="AmbienteDeTeste" instance=ExtResource("1_5ohy6")]
-
-[node name="ArrowCounter" parent="CanvasLayer" index="1" node_paths=PackedStringArray("player") instance=ExtResource("2_sbtkr")]
-player = NodePath("../../Player")
 
 [node name="LevelEnding" parent="." index="1"]
 position = Vector2(273, 208)

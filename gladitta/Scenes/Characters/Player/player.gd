@@ -19,6 +19,8 @@ var shoot_direction = Vector2()
 
 var arrow_scene = preload("res://Scenes/Characters/Player/Arrow/arrow.tscn")
 
+var dash_particle = load("res://Scenes/Characters/Player/DashParticle/dash_particle.tscn")
+
 var primed_dash = false
 var dashing = 0
 var was_dashing = false
@@ -151,6 +153,11 @@ func _physics_process(delta: float) -> void:
 			velocity = direction * 0.5 * 250
 		dashing -= 1
 		was_dashing = true
+		var new_dash_particle = dash_particle.instantiate()
+		get_parent().add_child(new_dash_particle)
+		new_dash_particle.global_position = self.global_position
+		new_dash_particle.flip_h = $AnimatedSprite2D.flip_h
+		new_dash_particle.set_animation_and_frame($AnimatedSprite2D.animation, $AnimatedSprite2D.frame)
 
 	move_and_slide()
 
@@ -175,24 +182,16 @@ func move_sword(new_direction):
 	match new_direction:
 		"right":
 			$Sword.position = Vector2(8, 0)
-			$Sword/Sprite2D.flip_h = false
-			$Sword/Sprite2D.rotation_degrees = 0
-			$Sword/CollisionShape2D.rotation_degrees = 0
+			$Sword.rotation_degrees = 0
 		"left":
 			$Sword.position = Vector2(-8, 0)
-			$Sword/Sprite2D.flip_h = true
-			$Sword/Sprite2D.rotation_degrees = 0
-			$Sword/CollisionShape2D.rotation_degrees = 0
+			$Sword.rotation_degrees = 180
 		"down":
 			$Sword.position = Vector2(0, 8)
-			$Sword/Sprite2D.flip_h = false
-			$Sword/Sprite2D.rotation_degrees = 90
-			$Sword/CollisionShape2D.rotation_degrees = 90
+			$Sword.rotation_degrees = 90
 		"up":
 			$Sword.position = Vector2(0, -8)
-			$Sword/Sprite2D.flip_h = false
-			$Sword/Sprite2D.rotation_degrees = -90
-			$Sword/CollisionShape2D.rotation_degrees = 90
+			$Sword.rotation_degrees = -90
 
 func instantiate_arrow():
 	if shoot_direction.y == 1 and is_on_floor():

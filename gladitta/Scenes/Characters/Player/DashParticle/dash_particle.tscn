@@ -1,0 +1,121 @@
+[gd_scene load_steps=14 format=3 uid="uid://b2w30lqvfnaq4"]
+
+[ext_resource type="Texture2D" uid="uid://bst3ep1s6w1f" path="res://Scenes/Characters/Player/Textures/player.png" id="1_vymwk"]
+[ext_resource type="Script" path="res://Scenes/Characters/Player/DashParticle/dash_particle.gd" id="2_epwxh"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f7mnv"]
+atlas = ExtResource("1_vymwk")
+region = Rect2(0, 0, 8, 9)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0fnxi"]
+atlas = ExtResource("1_vymwk")
+region = Rect2(8, 0, 8, 9)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h6wnb"]
+atlas = ExtResource("1_vymwk")
+region = Rect2(16, 0, 8, 9)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wt4qp"]
+atlas = ExtResource("1_vymwk")
+region = Rect2(32, 0, 8, 9)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_smuum"]
+atlas = ExtResource("1_vymwk")
+region = Rect2(40, 0, 8, 9)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f5txm"]
+atlas = ExtResource("1_vymwk")
+region = Rect2(48, 0, 8, 9)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p5g62"]
+atlas = ExtResource("1_vymwk")
+region = Rect2(24, 0, 8, 9)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_58b2w"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f7mnv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0fnxi")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h6wnb")
+}],
+"loop": true,
+"name": &"jump",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wt4qp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_smuum")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f5txm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p5g62")
+}],
+"loop": true,
+"name": &"run",
+"speed": 10.0
+}]
+
+[sub_resource type="Animation" id="Animation_frnp7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_nol83"]
+resource_name = "fade_out"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ge6q6"]
+_data = {
+"RESET": SubResource("Animation_frnp7"),
+"fade_out": SubResource("Animation_nol83")
+}
+
+[node name="DashParticle" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_58b2w")
+animation = &"idle"
+script = ExtResource("2_epwxh")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ge6q6")
+}
+autoplay = "fade_out"
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
