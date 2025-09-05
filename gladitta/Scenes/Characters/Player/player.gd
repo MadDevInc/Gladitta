@@ -19,11 +19,16 @@ var shoot_direction = Vector2()
 
 var arrow_scene = preload("res://Scenes/Characters/Player/Arrow/arrow.tscn")
 
+var boomerang_scene = preload("res://Scenes/Characters/Player/Boomerang/boomerang.tscn")
+
 var dash_particle = load("res://Scenes/Characters/Player/DashParticle/dash_particle.tscn")
 
 var primed_dash = false
 var dashing = 0
 var was_dashing = false
+
+var first_click = false
+var double_click = false
 
 @export var max_arrows = 3
 
@@ -31,31 +36,13 @@ var was_dashing = false
 @onready var arrow_count = max_arrows
 
 func _physics_process(delta: float) -> void:
-	$Label.text = "direction" + str(direction).pad_decimals(0)
-	$Label.text += "\nvelocity" + str(velocity).pad_decimals(0)
-	$Label.text += "\napplied" + str(applied_forces)
+	$Label.text = "first_click: "  + str(first_click) + "\ndouble_click: " + str(double_click)
 	if Input.is_action_just_pressed("reset"):
 		kill()
 
 	if dashing <= 0:
-		if Input.is_action_pressed("dash_trigger"):
-			if Input.is_action_pressed("jump"):
-				primed_dash = true
-				Engine.time_scale = 0.05
-				$DirectionPivot.show()
-				$DirectionPivot/Bow.hide()
-		if Input.is_action_just_released("dash_trigger") and primed_dash:
-			Engine.time_scale = 1.0
-			$DirectionPivot.hide()
-			dashing = MAX_DASH_FRAMES
-			primed_dash = false
-		elif Input.is_action_just_released("jump") and primed_dash:
-			Engine.time_scale = 1.0
-			$DirectionPivot.hide()
-			dashing = MAX_DASH_FRAMES
-			primed_dash = false
-
 		if not is_on_floor():
+			$AnimatedSprite2D.play("jump")
 			velocity.y += GRAVITY * delta
 		else:
 			if jump_buffer > 0:
@@ -68,6 +55,24 @@ func _physics_process(delta: float) -> void:
 				$AnimatedSprite2D.play("idle")
 			applied_forces = Vector2.ZERO
 
+		if Input.is_action_pressed("dash_trigger"):
+			if Input.is_action_pressed("jump"):
+				primed_dash = true
+				Engine.time_scale = 0.05
+				$DirectionPivot.show()
+				$DirectionPivot/Bow.hide()
+				$DirectionPivot/Boomerang.hide()
+		if Input.is_action_just_released("dash_trigger") and primed_dash:
+			Engine.time_scale = 1.0
+			$DirectionPivot.hide()
+			dashing = MAX_DASH_FRAMES
+			primed_dash = false
+		elif Input.is_action_just_released("jump") and primed_dash:
+			Engine.time_scale = 1.0
+			$DirectionPivot.hide()
+			dashing = MAX_DASH_FRAMES
+			primed_dash = false
+
 		if Input.is_action_just_pressed("jump") and !Input.is_action_pressed("dash_trigger"):
 			if is_on_floor():
 				velocity.y = JUMP_FORCE
@@ -78,6 +83,27 @@ func _physics_process(delta: float) -> void:
 		if jump_buffer > 0:
 			jump_buffer -= 1
 
+		if Input.is_action_just_pressed("boomerang"):
+			if first_click:
+				double_click = true
+			else:
+				first_click = true
+				$double_click.start(0.5)
+		if double_click:
+			$double_click.stop()
+			Engine.time_scale = 0.05
+			$DirectionPivot.show()
+			$DirectionPivot/Bow.hide()
+			$DirectionPivot/Boomerang.show()
+		if Input.is_action_just_released("boomerang"):
+			if double_click:
+				first_click = false
+				double_click = false
+				instantiate_boomerang()
+			Engine.time_scale = 1.0
+			$DirectionPivot.hide()
+			$DirectionPivot/Boomerang.hide()
+
 		if Input.is_action_just_pressed("attack"):
 			$Sword/AnimationPlayer.play("attack")
 		
@@ -85,6 +111,7 @@ func _physics_process(delta: float) -> void:
 			Engine.time_scale = 0.05
 			$DirectionPivot.show()
 			$DirectionPivot/Bow.show()
+			$DirectionPivot/Boomerang.hide()
 		if Input.is_action_just_released("shoot") and arrow_count > 0:
 			shoot_direction = direction
 			Engine.time_scale = 1.0
@@ -139,9 +166,6 @@ func _physics_process(delta: float) -> void:
 			$AnimatedSprite2D.flip_h = true
 
 		$DirectionPivot.rotation_degrees = rad_to_deg(direction.angle())
-
-		if not is_on_floor():
-			$AnimatedSprite2D.play("jump")
 
 		velocity += applied_forces
 		applied_forces = lerp(applied_forces, Vector2.ZERO, 0.05)
@@ -211,6 +235,12 @@ func instantiate_arrow():
 	else:
 		launch(shoot_direction * 0.75)
 
+func instantiate_boomerang():
+	var boomerang_instance = boomerang_scene.instantiate()
+	boomerang_instance.set_direction(direction)
+	get_parent().add_child(boomerang_instance)
+	boomerang_instance.global_position = $DirectionPivot/Boomerang.global_position
+
 func kill():
 	self.global_position = initial_position
 	arrow_count = max_arrows
@@ -223,3 +253,6 @@ func get_arrow_count():
 func _on_detector_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Enemy"):
 		kill()
+
+func _on_double_click_timeout() -> void:
+	first_click = false

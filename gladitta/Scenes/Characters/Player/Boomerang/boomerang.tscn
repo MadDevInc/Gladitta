@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dj86m6xm0ver6"]
+[gd_scene load_steps=9 format=3 uid="uid://dj86m6xm0ver6"]
 
 [ext_resource type="Texture2D" uid="uid://josgv6eno2nw" path="res://Scenes/Characters/Player/Boomerang/Textures/boomer.png" id="1_8g8lq"]
 [ext_resource type="Script" path="res://Scenes/Characters/Player/Boomerang/boomerang.gd" id="1_rweex"]
@@ -43,6 +43,12 @@ _data = {
 "spin": SubResource("Animation_4t00a")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wbjn3"]
+size = Vector2(6.5, 6)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_38x7l"]
+size = Vector2(6, 6.5)
+
 [node name="Boomerang" type="CharacterBody2D"]
 script = ExtResource("1_rweex")
 
@@ -57,3 +63,16 @@ region_rect = Rect2(10, 0, 5, 8)
 libraries = {
 "": SubResource("AnimationLibrary_rthr7")
 }
+
+[node name="HorizontalDetector" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HorizontalDetector"]
+shape = SubResource("RectangleShape2D_wbjn3")
+
+[node name="VerticalDetector" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="VerticalDetector"]
+shape = SubResource("RectangleShape2D_38x7l")
+
+[connection signal="body_entered" from="HorizontalDetector" to="." method="_on_horizontal_detector_body_entered"]
+[connection signal="body_entered" from="VerticalDetector" to="." method="_on_vertical_detector_body_entered"]
