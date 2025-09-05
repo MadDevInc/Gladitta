@@ -39,7 +39,7 @@ func _on_player_death():
 		current_enemy.queue_free()
 	generate_enemy()
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if Engine.is_editor_hint():
 		if flying:
 			$Sprite2D.texture = load("res://Scenes/Characters/Enemy/Enemy/Textures/bat.png")

@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3 uid="uid://de0jhnjgot7o"]
+
+[ext_resource type="Texture2D" uid="uid://blc1dv7m0rj24" path="res://Scenes/Characters/Enemy/Enemy/Textures/death_particle.png" id="1_5g4hc"]
+[ext_resource type="Script" path="res://Scenes/Characters/Enemy/Enemy/skeleton_death_particles.gd" id="1_51k68"]
+
+[sub_resource type="Curve" id="Curve_slbib"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.895455, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_0ffto"]
+curve = SubResource("Curve_slbib")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_sddnp"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(3, 4, 1)
+direction = Vector3(0, -1, 0)
+initial_velocity_max = 10.0
+gravity = Vector3(0, 98, 0)
+color = Color(0.721569, 0.721569, 0.721569, 1)
+alpha_curve = SubResource("CurveTexture_0ffto")
+collision_mode = 1
+collision_friction = 1.0
+collision_bounce = 0.0
+
+[node name="SkeletonDeathParticles" type="GPUParticles2D"]
+emitting = false
+amount = 28
+process_material = SubResource("ParticleProcessMaterial_sddnp")
+texture = ExtResource("1_5g4hc")
+lifetime = 3.0
+one_shot = true
+explosiveness = 1.0
+script = ExtResource("1_51k68")
+
+[connection signal="finished" from="." to="." method="_on_finished"]

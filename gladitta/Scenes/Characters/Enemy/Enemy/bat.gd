@@ -13,6 +13,8 @@ var activate_walk = false
 
 @onready var player = get_parent().get_parent().get_parent().get_node("Player")
 
+var death_particles_scene = preload("res://Scenes/Characters/Enemy/Enemy/bat_death_particles.tscn")
+
 func _physics_process(delta: float) -> void:
 	if not is_on_floor() and !flying:
 		velocity.y += GRAVITY * delta
@@ -63,4 +65,7 @@ func _on_detector_body_entered(body: Node2D) -> void:
 		kill()
 
 func kill():
+	var death_particles_instance = death_particles_scene.instantiate()
+	get_parent().add_child(death_particles_instance)
+	death_particles_instance.global_position = global_position
 	queue_free()

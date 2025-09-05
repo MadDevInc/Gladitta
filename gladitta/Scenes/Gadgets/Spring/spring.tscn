@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dpfb3582tyngx"]
+[gd_scene load_steps=11 format=3 uid="uid://dpfb3582tyngx"]
 
 [ext_resource type="Script" path="res://Scenes/Gadgets/Spring/spring.gd" id="1_c8y6u"]
 [ext_resource type="Texture2D" uid="uid://d2vp16tf3d8tu" path="res://Scenes/Gadgets/Spring/Textures/trampolim.png" id="1_cecs8"]
@@ -54,6 +54,9 @@ animations = [{
 "speed": 1.0
 }]
 
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_lww5u"]
+polygon = PackedVector2Array(-3, -1, -4, -1, -4, 0, -1, 0, -1, 3, -2, 3, -2, 4, 2, 4, 2, 3, 1, 3, 1, 0, 4, 0, 4, -1, 3, -1, 3, -2, -3.00166, -2)
+
 [node name="Spring" type="Area2D"]
 collision_layer = 3
 collision_mask = 3
@@ -71,5 +74,8 @@ frame_progress = 1.0
 
 [node name="Marker2D" type="Marker2D" parent="."]
 position = Vector2(0, -8)
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+occluder = SubResource("OccluderPolygon2D_lww5u")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=3 uid="uid://b0qj1tnemt3jf"]
+
+[ext_resource type="Texture2D" uid="uid://blc1dv7m0rj24" path="res://Scenes/Characters/Enemy/Enemy/Textures/death_particle.png" id="1_ipiq0"]
+[ext_resource type="Script" path="res://Scenes/Characters/Enemy/Enemy/bat_death_particles.gd" id="2_6gokg"]
+
+[sub_resource type="Curve" id="Curve_idnod"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.895455, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_11do2"]
+curve = SubResource("Curve_idnod")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_v3q4g"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(4, 3, 1)
+direction = Vector3(0, -1, 0)
+spread = 180.0
+initial_velocity_min = 15.0
+initial_velocity_max = 30.0
+gravity = Vector3(0, 98, 0)
+color = Color(0.368627, 0.25098, 0.411765, 1)
+alpha_curve = SubResource("CurveTexture_11do2")
+collision_mode = 1
+collision_friction = 1.0
+collision_bounce = 0.2
+
+[node name="BatDeathParticles" type="GPUParticles2D"]
+emitting = false
+amount = 28
+process_material = SubResource("ParticleProcessMaterial_v3q4g")
+texture = ExtResource("1_ipiq0")
+lifetime = 3.0
+one_shot = true
+explosiveness = 1.0
+script = ExtResource("2_6gokg")
+
+[connection signal="finished" from="." to="." method="_on_finished"]
