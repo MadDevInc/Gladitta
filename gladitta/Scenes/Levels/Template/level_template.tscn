@@ -52,8 +52,6 @@ position = Vector2(45, 211)
 
 [node name="Enemies" type="Node2D" parent="."]
 
-[node name="Arrows" type="Node2D" parent="."]
-
 [node name="CRTshader" type="ColorRect" parent="."]
 visible = false
 material = SubResource("ShaderMaterial_wm770")

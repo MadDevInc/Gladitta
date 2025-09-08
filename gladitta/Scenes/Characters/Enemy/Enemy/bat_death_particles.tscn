@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://Scenes/Characters/Enemy/Enemy/bat_death_particles.gd" id="2_6gokg"]
 
 [sub_resource type="Curve" id="Curve_idnod"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.895455, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.9, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 3
 
 [sub_resource type="CurveTexture" id="CurveTexture_11do2"]
@@ -30,7 +30,7 @@ emitting = false
 amount = 28
 process_material = SubResource("ParticleProcessMaterial_v3q4g")
 texture = ExtResource("1_ipiq0")
-lifetime = 3.0
+lifetime = 5.0
 one_shot = true
 explosiveness = 1.0
 script = ExtResource("2_6gokg")

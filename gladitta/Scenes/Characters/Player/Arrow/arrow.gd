@@ -6,6 +6,9 @@ var dir = Vector2()
 
 var collision = null
 
+func _ready() -> void:
+	get_parent().get_node("Player").death.connect(_on_player_death)
+
 func get_direction():
 	return dir
 
@@ -23,3 +26,6 @@ func _physics_process(_delta: float) -> void:
 
 func launch(direction):
 	set_direction(direction)
+
+func _on_player_death():
+	self.queue_free()

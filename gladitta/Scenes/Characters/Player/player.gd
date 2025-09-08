@@ -197,7 +197,10 @@ func _on_sword_body_entered(body: Node2D) -> void:
 		if $Sword.position.y == 0 and !is_on_floor():
 			launch(Vector2($Sword.position.x/8, 0.25))
 		else:
-			launch(Vector2($Sword.position.x/8, 0.875))
+			launch(Vector2($Sword.position.x/8, 0.875 * sign($Sword.position.y)))
+	
+	if body.is_in_group("Enemy"):
+		body.kill()
 
 func move_sword(new_direction):
 	if $Sword/AnimationPlayer.is_playing():
@@ -225,7 +228,7 @@ func instantiate_arrow():
 
 	var arrow_instance = arrow_scene.instantiate()
 	arrow_instance.set_direction(shoot_direction)
-	get_parent().get_node("Arrows").add_child(arrow_instance)
+	get_parent().add_child(arrow_instance)
 	arrow_instance.global_position = $DirectionPivot/Bow.global_position
 
 	if shoot_direction.y == 0.0:
