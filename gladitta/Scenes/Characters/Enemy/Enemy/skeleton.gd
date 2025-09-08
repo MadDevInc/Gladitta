@@ -52,11 +52,11 @@ func launch(dir):
 	velocity.x = dir.x * -250
 
 func _on_r_wall_detector_body_entered(body: Node2D) -> void:
-	if body.is_in_group("Solid"):
+	if body.is_in_group("Solid") and body != self:
 		switch_directions()
 
 func _on_l_wall_detector_body_entered(body: Node2D) -> void:
-	if body.is_in_group("Solid"):
+	if body.is_in_group("Solid") and body != self:
 		switch_directions()
 
 func switch_directions():
@@ -72,8 +72,14 @@ func _on_detector_area_entered(area: Area2D) -> void:
 
 func _on_detector_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Arrow"):
+		if body.name == "Tip":
+			if body.get_parent().is_traveling():
+				kill()
+		else:
+			if body.is_traveling():
+				kill()
+	if body.is_in_group("Boomerang"):
 		kill()
-		pass
 
 func kill():
 	var death_particles_instance = death_particles_scene.instantiate()

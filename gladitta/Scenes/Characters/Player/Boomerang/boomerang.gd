@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-const SPEED = 75.0
+const SPEED = 70.0
 
 var dir
 
@@ -13,7 +13,7 @@ func set_direction(new_dir):
 func _physics_process(_delta: float) -> void:
 	velocity = dir * SPEED
 
-	if velocity.x > 0:
+	if velocity.x > 0 or velocity.y > 0:
 		$AnimationPlayer.play("spin_clockwise")
 	else:
 		$AnimationPlayer.play("spin_counterclockwise")

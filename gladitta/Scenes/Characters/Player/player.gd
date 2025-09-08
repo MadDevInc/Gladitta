@@ -254,8 +254,15 @@ func get_arrow_count():
 	return arrow_count
 
 func _on_detector_body_entered(body: Node2D) -> void:
-	if body.is_in_group("Enemy"):
+	if body.is_in_group("Enemy") or body.is_in_group("Boomerang"):
 		kill()
+	if body.is_in_group("Arrow"):
+		if body.name == "Tip":
+			if body.get_parent().is_traveling():
+				kill()
+		else:
+			if body.is_traveling():
+				kill()
 
 func _on_double_click_timeout() -> void:
 	first_click = false

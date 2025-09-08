@@ -56,7 +56,7 @@ size = Vector2(0.15, 9)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4pv1n"]
 size = Vector2(9, 10)
 
-[node name="Skeleton" type="CharacterBody2D" groups=["Enemy"]]
+[node name="Skeleton" type="CharacterBody2D" groups=["Enemy", "Solid"]]
 script = ExtResource("1_2n3iy")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
