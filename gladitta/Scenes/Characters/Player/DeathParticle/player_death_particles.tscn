@@ -1,3 +1,49 @@
-[gd_scene format=3 uid="uid://bk66if5tm7nxl"]
+[gd_scene load_steps=7 format=3 uid="uid://bk66if5tm7nxl"]
 
-[node name="player_death_particles" type="GPUParticles2D"]
+[ext_resource type="Script" path="res://Scenes/Characters/Player/DeathParticle/player_death_particles.gd" id="1_00c1q"]
+[ext_resource type="Texture2D" uid="uid://blc1dv7m0rj24" path="res://Scenes/Characters/Enemy/Enemy/Textures/death_particle.png" id="1_g0l6b"]
+
+[sub_resource type="Curve" id="Curve_2t3kw"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.904545, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_1qk81"]
+curve = SubResource("Curve_2t3kw")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_5ahyn"]
+particle_flag_disable_z = true
+gravity = Vector3(0, 98, 0)
+color = Color(0.341176, 0.447059, 0.466667, 1)
+alpha_curve = SubResource("CurveTexture_1qk81")
+collision_mode = 1
+collision_friction = 1.0
+collision_bounce = 0.5
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_w7bu7"]
+particle_flag_disable_z = true
+gravity = Vector3(0, 98, 0)
+color = Color(0.105882, 0.0823529, 0.109804, 1)
+collision_mode = 1
+collision_friction = 1.0
+collision_bounce = 0.5
+
+[node name="PlayerDeathParticles" type="GPUParticles2D"]
+emitting = false
+amount = 11
+process_material = SubResource("ParticleProcessMaterial_5ahyn")
+texture = ExtResource("1_g0l6b")
+lifetime = 5.0
+one_shot = true
+explosiveness = 1.0
+script = ExtResource("1_00c1q")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 4
+process_material = SubResource("ParticleProcessMaterial_w7bu7")
+texture = ExtResource("1_g0l6b")
+lifetime = 5.0
+one_shot = true
+explosiveness = 1.0
+
+[connection signal="finished" from="." to="." method="_on_finished"]

@@ -21,11 +21,11 @@ func _physics_process(_delta: float) -> void:
 	move_and_slide()
 
 func _on_horizontal_detector_body_entered(body: Node2D) -> void:
-	if body.is_in_group("Solid"):
+	if body.is_in_group("Solid") and !body.is_in_group("Enemy"):
 		dir.x = -dir.x
 
 func _on_vertical_detector_body_entered(body: Node2D) -> void:
-	if body.is_in_group("Solid"):
+	if body.is_in_group("Solid") and !body.is_in_group("Enemy"):
 		dir.y = -dir.y
 
 func _on_player_death():

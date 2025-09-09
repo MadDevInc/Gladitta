@@ -21,7 +21,9 @@ var arrow_scene = preload("res://Scenes/Characters/Player/Arrow/arrow.tscn")
 
 var boomerang_scene = preload("res://Scenes/Characters/Player/Boomerang/boomerang.tscn")
 
-var dash_particle = load("res://Scenes/Characters/Player/DashParticle/dash_particle.tscn")
+var dash_particle = preload("res://Scenes/Characters/Player/DashParticle/dash_particle.tscn")
+
+var death_partcile = preload("res://Scenes/Characters/Player/DeathParticle/player_death_particles.tscn")
 
 var primed_dash = false
 var dashing = 0
