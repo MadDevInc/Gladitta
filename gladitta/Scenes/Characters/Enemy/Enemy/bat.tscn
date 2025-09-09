@@ -37,7 +37,7 @@ size = Vector2(0.15, 6)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4pv1n"]
 size = Vector2(9, 7)
 
-[node name="Bat" type="CharacterBody2D" groups=["Enemy"]]
+[node name="Bat" type="CharacterBody2D" groups=["Enemy", "Solid"]]
 motion_mode = 1
 script = ExtResource("1_njhdb")
 

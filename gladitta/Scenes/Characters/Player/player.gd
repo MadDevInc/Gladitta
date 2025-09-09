@@ -190,6 +190,8 @@ func launch(dir):
 	applied_forces.x = dir.x * -250
 
 func _on_sword_body_entered(body: Node2D) -> void:
+	if body.is_in_group("Enemy"):
+		body.kill()
 	if body != self:
 		if $Sword.position.y == 0 and is_on_floor():
 			return
@@ -198,9 +200,6 @@ func _on_sword_body_entered(body: Node2D) -> void:
 			launch(Vector2($Sword.position.x/8, 0.25))
 		else:
 			launch(Vector2($Sword.position.x/8, 0.875 * sign($Sword.position.y)))
-	
-	if body.is_in_group("Enemy"):
-		body.kill()
 
 func move_sword(new_direction):
 	if $Sword/AnimationPlayer.is_playing():
