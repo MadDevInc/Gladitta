@@ -23,7 +23,7 @@ var boomerang_scene = preload("res://Scenes/Characters/Player/Boomerang/boomeran
 
 var dash_particle = preload("res://Scenes/Characters/Player/DashParticle/dash_particle.tscn")
 
-var death_partcile = preload("res://Scenes/Characters/Player/DeathParticle/player_death_particles.tscn")
+var death_partcile_scene = preload("res://Scenes/Characters/Player/DeathParticle/player_death_particles.tscn")
 
 var primed_dash = false
 var dashing = 0
@@ -246,6 +246,9 @@ func instantiate_boomerang():
 	boomerang_instance.global_position = $DirectionPivot/Boomerang.global_position
 
 func kill():
+	var death_particle_instance = death_partcile_scene.instantiate()
+	get_parent().add_child(death_particle_instance)
+	death_particle_instance.global_position = self.global_position
 	self.global_position = initial_position
 	arrow_count = max_arrows
 	$AnimatedSprite2D.flip_h = false
@@ -255,15 +258,16 @@ func get_arrow_count():
 	return arrow_count
 
 func _on_detector_body_entered(body: Node2D) -> void:
-	if body.is_in_group("Enemy") or body.is_in_group("Boomerang"):
+	pass
+	if body.is_in_group("Enemy"):
 		kill()
-	if body.is_in_group("Arrow"):
-		if body.name == "Tip":
-			if body.get_parent().is_traveling():
-				kill()
-		else:
-			if body.is_traveling():
-				kill()
+	#if body.is_in_group("Arrow"):
+		#if body.name == "Tip":
+			#if body.get_parent().is_traveling():
+				#kill()
+		#else:
+			#if body.is_traveling():
+				#kill()
 
 func _on_double_click_timeout() -> void:
 	first_click = false
