@@ -6,8 +6,15 @@ var dir = Vector2()
 
 var _is_traveling = true
 
+var shooter = null
+
 func _ready() -> void:
 	get_parent().get_node("Player").death.connect(_on_player_death)
+
+func set_shooter(node):
+	shooter = node
+	await get_tree().create_timer(0.2).timeout
+	shooter = null
 
 func get_direction():
 	return dir

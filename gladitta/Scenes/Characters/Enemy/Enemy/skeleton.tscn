@@ -65,6 +65,7 @@ shape = SubResource("RectangleShape2D_ppe5l")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_58nbo")
 animation = &"run"
+frame_progress = 0.894531
 
 [node name="LSlopeDetector" type="RayCast2D" parent="."]
 position = Vector2(-3, 0)

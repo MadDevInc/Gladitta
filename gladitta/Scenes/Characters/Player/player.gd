@@ -230,6 +230,7 @@ func instantiate_arrow():
 	var arrow_instance = arrow_scene.instantiate()
 	arrow_instance.set_direction(shoot_direction)
 	get_parent().add_child(arrow_instance)
+	arrow_instance.set_shooter(self)
 	arrow_instance.global_position = $DirectionPivot/Bow.global_position
 
 	if shoot_direction.y == 0.0:
@@ -243,6 +244,7 @@ func instantiate_boomerang():
 	var boomerang_instance = boomerang_scene.instantiate()
 	boomerang_instance.set_direction(direction)
 	get_parent().add_child(boomerang_instance)
+	boomerang_instance.set_shooter(self)
 	boomerang_instance.global_position = $DirectionPivot/Boomerang.global_position
 
 func kill():
@@ -258,16 +260,19 @@ func get_arrow_count():
 	return arrow_count
 
 func _on_detector_body_entered(body: Node2D) -> void:
-	pass
 	if body.is_in_group("Enemy"):
 		kill()
-	#if body.is_in_group("Arrow"):
-		#if body.name == "Tip":
-			#if body.get_parent().is_traveling():
-				#kill()
-		#else:
-			#if body.is_traveling():
-				#kill()
+	if body.is_in_group("Arrow"):
+		if body.shooter != self:
+			if body.name == "Tip":
+				if body.get_parent().is_traveling():
+					kill()
+			else:
+				if body.is_traveling():
+					kill()
+	if body.is_in_group("Boomerang"):
+		if body.shooter != self:
+			kill()
 
 func _on_double_click_timeout() -> void:
 	first_click = false

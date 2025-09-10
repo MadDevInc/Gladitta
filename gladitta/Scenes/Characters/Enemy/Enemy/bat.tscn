@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://b2h551fkxu38j" path="res://Scenes/Characters/Enemy/Enemy/Textures/bat.png" id="3_magvo"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ppe5l"]
-size = Vector2(8, 6)
+size = Vector2(8, 7)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8pv2w"]
 atlas = ExtResource("3_magvo")
@@ -29,19 +29,20 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vk3dr"]
-size = Vector2(0.15, 6)
+size = Vector2(0.15, 7)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ka35n"]
-size = Vector2(0.15, 6)
+size = Vector2(0.15, 7)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4pv1n"]
-size = Vector2(9, 7)
+size = Vector2(9, 8)
 
 [node name="Bat" type="CharacterBody2D" groups=["Enemy", "Solid"]]
 motion_mode = 1
 script = ExtResource("1_njhdb")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_ppe5l")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -52,13 +53,13 @@ frame_progress = 0.4394
 [node name="RWallDetector" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RWallDetector"]
-position = Vector2(4.075, 0)
+position = Vector2(4.075, -0.5)
 shape = SubResource("RectangleShape2D_vk3dr")
 
 [node name="LWallDetector" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LWallDetector"]
-position = Vector2(-4.075, 0)
+position = Vector2(-4.075, -0.5)
 shape = SubResource("RectangleShape2D_ka35n")
 
 [node name="Detector" type="Area2D" parent="."]
@@ -66,6 +67,7 @@ collision_layer = 3
 collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Detector"]
+position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_4pv1n")
 
 [connection signal="body_entered" from="RWallDetector" to="." method="_on_r_wall_detector_body_entered"]

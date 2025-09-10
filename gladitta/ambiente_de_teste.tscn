@@ -15,7 +15,7 @@ flying = true
 direction = -1
 
 [node name="EnemySpawner2" parent="Enemies" index="1" instance=ExtResource("3_ona6a")]
-position = Vector2(174, 187)
+position = Vector2(176, 212)
 
 [node name="EnemySpawner3" parent="Enemies" index="2" instance=ExtResource("3_ona6a")]
 position = Vector2(193, 192)
