@@ -101,6 +101,7 @@ func _physics_process(delta: float) -> void:
 			if double_click:
 				first_click = false
 				double_click = false
+				shoot_direction = direction
 				instantiate_boomerang()
 			Engine.time_scale = 1.0
 			$DirectionPivot.hide()
@@ -241,6 +242,9 @@ func instantiate_arrow():
 		launch(shoot_direction * 0.75)
 
 func instantiate_boomerang():
+	if shoot_direction.y == 1 and is_on_floor():
+		return
+
 	var boomerang_instance = boomerang_scene.instantiate()
 	boomerang_instance.set_direction(direction)
 	get_parent().add_child(boomerang_instance)

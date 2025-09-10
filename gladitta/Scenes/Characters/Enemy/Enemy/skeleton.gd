@@ -79,7 +79,6 @@ func _on_detector_body_entered(body: Node2D) -> void:
 			if body.is_traveling():
 				kill()
 	if body.is_in_group("Boomerang"):
-		print("achou")
 		kill()
 
 func kill():
