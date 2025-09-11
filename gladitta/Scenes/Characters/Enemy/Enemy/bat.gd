@@ -9,8 +9,6 @@ var flying : bool
 var moving : bool
 var direction : Directions = Directions.right
 
-var activate_walk = false
-
 @onready var player = get_parent().get_parent().get_parent().get_node("Player")
 
 var death_particles_scene = preload("res://Scenes/Characters/Enemy/Enemy/bat_death_particles.tscn")
@@ -18,8 +16,6 @@ var death_particles_scene = preload("res://Scenes/Characters/Enemy/Enemy/bat_dea
 func _physics_process(delta: float) -> void:
 	if not is_on_floor() and !flying:
 		velocity.y += GRAVITY * delta
-	elif is_on_floor():
-		activate_walk = true
 
 	$AnimatedSprite2D.play("idle")
 

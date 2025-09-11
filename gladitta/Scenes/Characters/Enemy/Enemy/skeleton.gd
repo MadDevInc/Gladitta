@@ -9,30 +9,31 @@ var flying : bool
 var moving : bool
 var direction : Directions = Directions.right
 
-var activate_walk = false
+var was_launched = false
 
 @onready var player = get_parent().get_parent().get_parent().get_node("Player")
 
 var death_particles_scene = preload("res://Scenes/Characters/Enemy/Enemy/skeleton_death_particles.tscn")
 
 func _physics_process(delta: float) -> void:
+	print(was_launched)
 	if not is_on_floor() and !flying:
 		velocity.y += GRAVITY * delta
 	elif is_on_floor():
-		activate_walk = true
+		was_launched = false
 
 	if moving:
 		velocity.x = SPEED * direction
 
 		$AnimatedSprite2D.play("run")
 
-		if !flying and activate_walk:
+		if !was_launched:
 			if $LSlopeDetector.get_collider() == null and direction == Directions.left:
 				switch_directions()
 			
 			if $RSlopeDetector.get_collider() == null and direction == Directions.right:
 				switch_directions()
-		
+
 		if direction == Directions.right:
 			$AnimatedSprite2D.flip_h = false
 		else:
@@ -48,8 +49,14 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func launch(dir):
+	#$LSlopeDetector.enabled = false
+	#$RSlopeDetector.enabled = false
+	was_launched = true
 	velocity.y = dir.y * -300
 	velocity.x = dir.x * -250
+	#await get_tree().create_timer(0.1).timeout
+	#$LSlopeDetector.enabled = true
+	#$RSlopeDetector.enabled = true
 
 func _on_r_wall_detector_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Solid") and body != self:
@@ -60,6 +67,7 @@ func _on_l_wall_detector_body_entered(body: Node2D) -> void:
 		switch_directions()
 
 func switch_directions():
+	print("i switched directions")
 	if direction == Directions.right:
 		direction = Directions.left
 	else:
@@ -71,6 +79,8 @@ func _on_detector_area_entered(area: Area2D) -> void:
 		pass
 
 func _on_detector_body_entered(body: Node2D) -> void:
+	if body.is_in_group("Spikes"):
+		kill()
 	if body.is_in_group("Arrow"):
 		if body.name == "Tip":
 			if body.get_parent().is_traveling():

@@ -24,7 +24,6 @@ func set_direction(new_dir):
 	self.look_at(global_position + dir)
 
 func _physics_process(_delta: float) -> void:
-	$Label.text = "is_traveling: " + "\n" + str(_is_traveling) + "\nvelocity: " + str(velocity)
 	if is_on_floor() or is_on_ceiling() or is_on_wall():
 		velocity = Vector2.ZERO
 	else:
