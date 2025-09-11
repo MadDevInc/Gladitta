@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://c3xfchmcdunum"]
+
+[ext_resource type="Texture2D" uid="uid://s55occ8b64xx" path="res://Scenes/Gadgets/Spikes/Textures/spikes.png" id="1_fhmit"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ry5bi"]
+texture = ExtResource("1_fhmit")
+texture_region_size = Vector2i(8, 8)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-3, 2, 4, 2, 4, 4, -3, 4)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-3, 2, 4, 2, 4, 4, -3, 4)
+
+[sub_resource type="TileSet" id="TileSet_f3h48"]
+tile_size = Vector2i(8, 8)
+physics_layer_0/collision_layer = 1
+sources/3 = SubResource("TileSetAtlasSource_ry5bi")
+
+[node name="Spikes" type="TileMapLayer" groups=["Enemy"]]
+tile_set = SubResource("TileSet_f3h48")

@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-const SPEED = 70.0
+const SPEED = 75.0
 
 var dir
 
@@ -25,7 +25,7 @@ func _physics_process(_delta: float) -> void:
 	else:
 		$AnimationPlayer.play("spin_counterclockwise")
 
-	$Tip.position = 8 * velocity.normalized()
+	$Tip.position = 6 * velocity.normalized()
 
 	move_and_slide()
 
