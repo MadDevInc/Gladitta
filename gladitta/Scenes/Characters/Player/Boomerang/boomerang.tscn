@@ -111,7 +111,7 @@ size = Vector2(2, 2)
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_ar61a"]
 polygon = PackedVector2Array(-1, -4, 1, -4, 1, -3, 2, -3, 2, -2, 3, -2, 3, 1, 2, 1, 2, 2, 1, 2, 1, 3, -1, 3, -1, 2, -2, 2, -2, 1, -1, 1, -1, 0, 0, 0, 0, -1, -1, -1, -1, -2, -2, -2, -2, -3, -1, -3)
 
-[node name="Boomerang" type="CharacterBody2D" groups=["Boomerang"]]
+[node name="Boomerang" type="CharacterBody2D" groups=["Boomerang", "Solid"]]
 motion_mode = 1
 script = ExtResource("1_rweex")
 

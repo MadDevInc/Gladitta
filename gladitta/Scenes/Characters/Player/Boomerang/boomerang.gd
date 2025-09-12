@@ -30,14 +30,14 @@ func _physics_process(_delta: float) -> void:
 	move_and_slide()
 
 func _on_horizontal_detector_body_entered(body: Node2D) -> void:
-	if body.is_in_group("Solid") and !body.is_in_group("Enemy"):
+	if body.is_in_group("Solid") and !body.is_in_group("Enemy") and body != self:
 		dir.x = -dir.x
 	if body.is_in_group("Solid") and body is TileMapLayer:
 		shooter = null
 		reset_collider()
 
 func _on_vertical_detector_body_entered(body: Node2D) -> void:
-	if body.is_in_group("Solid") and !body.is_in_group("Enemy"):
+	if body.is_in_group("Solid") and !body.is_in_group("Enemy") and body != self:
 		dir.y = -dir.y
 	if body.is_in_group("Solid") and body is TileMapLayer:
 		shooter = null

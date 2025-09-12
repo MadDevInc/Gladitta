@@ -47,14 +47,14 @@ animations = [{
 "speed": 10.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_vk3dr"]
-size = Vector2(0.15, 9)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jjonp"]
+size = Vector2(0.5, 9)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ka35n"]
-size = Vector2(0.15, 9)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0heto"]
+size = Vector2(0.5, 9)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_4pv1n"]
-size = Vector2(10, 11)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8h86v"]
+size = Vector2(8.5, 9.5)
 
 [sub_resource type="Animation" id="Animation_hcm80"]
 length = 0.001
@@ -115,21 +115,21 @@ target_position = Vector2(0, 6)
 [node name="RWallDetector" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RWallDetector"]
-position = Vector2(4.075, 0)
-shape = SubResource("RectangleShape2D_vk3dr")
+position = Vector2(4.25, 0)
+shape = SubResource("RectangleShape2D_jjonp")
 
 [node name="LWallDetector" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LWallDetector"]
-position = Vector2(-4.075, 0)
-shape = SubResource("RectangleShape2D_ka35n")
+position = Vector2(-4.25, 0)
+shape = SubResource("RectangleShape2D_0heto")
 
 [node name="Detector" type="Area2D" parent="."]
 collision_layer = 3
 collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Detector"]
-shape = SubResource("RectangleShape2D_4pv1n")
+shape = SubResource("RectangleShape2D_8h86v")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

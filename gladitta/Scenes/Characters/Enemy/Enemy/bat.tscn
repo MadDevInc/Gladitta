@@ -29,13 +29,13 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vk3dr"]
-size = Vector2(0.15, 7)
+size = Vector2(0.5, 7)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ka35n"]
-size = Vector2(0.15, 7)
+size = Vector2(0.5, 7)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4pv1n"]
-size = Vector2(10, 9)
+size = Vector2(9.5, 7.5)
 
 [sub_resource type="Animation" id="Animation_tv2m0"]
 length = 0.001
@@ -90,13 +90,13 @@ animation = &"idle"
 [node name="RWallDetector" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RWallDetector"]
-position = Vector2(4.075, -0.5)
+position = Vector2(4.25, -0.5)
 shape = SubResource("RectangleShape2D_vk3dr")
 
 [node name="LWallDetector" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LWallDetector"]
-position = Vector2(-4.075, -0.5)
+position = Vector2(-4.25, -0.5)
 shape = SubResource("RectangleShape2D_ka35n")
 
 [node name="Detector" type="Area2D" parent="."]

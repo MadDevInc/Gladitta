@@ -9,20 +9,28 @@ var flying : bool
 var moving : bool
 var direction : Directions = Directions.right
 
+#was_launched precisa de um buffer pra garantir que o check is_on_floor
+#na linha25  não flipe a variável no instante em que ela muda
+var was_launched_buffer = 0
 var was_launched = false
+
 
 @onready var player = get_parent().get_parent().get_parent().get_node("Player")
 
 var death_particles_scene = preload("res://Scenes/Characters/Enemy/Enemy/skeleton_death_particles.tscn")
 
 func _physics_process(delta: float) -> void:
-	print(was_launched)
 	if not is_on_floor() and !flying:
 		velocity.y += GRAVITY * delta
 	elif is_on_floor():
-		was_launched = false
+		if was_launched_buffer <= 0:
+			was_launched = false
+
+	if was_launched_buffer > 0:
+		was_launched_buffer -= 1
 
 	if moving:
+		print(was_launched_buffer)
 		velocity.x = SPEED * direction
 
 		$AnimatedSprite2D.play("run")
@@ -52,6 +60,7 @@ func launch(dir):
 	#$LSlopeDetector.enabled = false
 	#$RSlopeDetector.enabled = false
 	was_launched = true
+	was_launched_buffer = 3
 	velocity.y = dir.y * -300
 	velocity.x = dir.x * -250
 	#await get_tree().create_timer(0.1).timeout

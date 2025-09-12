@@ -17,6 +17,7 @@ tile_map_data = PackedByteArray("AAAEAAUAAAAAAAEAAAAEAAYAAAAAAAEAAAAEAAcAAAAAAAE
 [node name="EnemySpawner" parent="Enemies" index="0" instance=ExtResource("3_ona6a")]
 position = Vector2(64, 187)
 flying = true
+moving = true
 direction = -1
 
 [node name="EnemySpawner2" parent="Enemies" index="1" instance=ExtResource("3_ona6a")]
@@ -53,4 +54,4 @@ theme_override_font_sizes/font_size = 16
 text = "按X跳跃 (aperte X para pular)"
 
 [node name="Spikes" parent="." index="8" instance=ExtResource("5_sw3sf")]
-tile_map_data = PackedByteArray("AAAMABoAAwAAAAAAAAA=")
+tile_map_data = PackedByteArray("AAAGABcAAwAAAAAAADALABcAAwAAAAAAADA=")
