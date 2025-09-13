@@ -1,0 +1,90 @@
+[gd_scene load_steps=11 format=3 uid="uid://37bndto4lgoc"]
+
+[ext_resource type="Script" path="res://Scenes/Characters/Player/Arrow/DeathParticles/arrow_death_particles.gd" id="1_58bqe"]
+
+[sub_resource type="Curve" id="Curve_nf3dp"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.9, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_g6cm7"]
+curve = SubResource("Curve_nf3dp")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_8tkal"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(3, 4, 1)
+direction = Vector3(0, -1, 0)
+initial_velocity_max = 10.0
+gravity = Vector3(0, 98, 0)
+color = Color(0.505882, 0.592157, 0.588235, 1)
+alpha_curve = SubResource("CurveTexture_g6cm7")
+collision_mode = 1
+collision_friction = 1.0
+collision_bounce = 0.0
+
+[sub_resource type="Curve" id="Curve_pcb1v"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.9, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_2w574"]
+curve = SubResource("Curve_pcb1v")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_2st2l"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(3, 4, 1)
+direction = Vector3(0, -1, 0)
+initial_velocity_max = 10.0
+gravity = Vector3(0, 98, 0)
+color = Color(0.27451, 0.278431, 0.298039, 1)
+alpha_curve = SubResource("CurveTexture_2w574")
+collision_mode = 1
+collision_friction = 1.0
+collision_bounce = 0.0
+
+[sub_resource type="Curve" id="Curve_40hp6"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.9, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_ou5sm"]
+curve = SubResource("Curve_40hp6")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_l52v6"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(3, 4, 1)
+direction = Vector3(0, -1, 0)
+initial_velocity_max = 10.0
+gravity = Vector3(0, 98, 0)
+color = Color(0.505882, 0.34902, 0.568627, 1)
+alpha_curve = SubResource("CurveTexture_ou5sm")
+collision_mode = 1
+collision_friction = 1.0
+collision_bounce = 0.0
+
+[node name="arrow_death_particles" type="GPUParticles2D"]
+emitting = false
+amount = 4
+process_material = SubResource("ParticleProcessMaterial_8tkal")
+lifetime = 5.0
+one_shot = true
+explosiveness = 1.0
+script = ExtResource("1_58bqe")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 4
+process_material = SubResource("ParticleProcessMaterial_2st2l")
+lifetime = 5.0
+one_shot = true
+explosiveness = 1.0
+
+[node name="GPUParticles2D2" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 4
+process_material = SubResource("ParticleProcessMaterial_l52v6")
+lifetime = 5.0
+one_shot = true
+explosiveness = 1.0
+
+[connection signal="finished" from="." to="." method="_on_finished"]

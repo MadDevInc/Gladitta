@@ -48,13 +48,13 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jjonp"]
-size = Vector2(0.5, 9)
+size = Vector2(0.75, 9)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0heto"]
-size = Vector2(0.5, 9)
+size = Vector2(0.75, 9)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8h86v"]
-size = Vector2(8.5, 9.5)
+size = Vector2(9, 10)
 
 [sub_resource type="Animation" id="Animation_hcm80"]
 length = 0.001
@@ -115,13 +115,13 @@ target_position = Vector2(0, 6)
 [node name="RWallDetector" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RWallDetector"]
-position = Vector2(4.25, 0)
+position = Vector2(4.375, 0)
 shape = SubResource("RectangleShape2D_jjonp")
 
 [node name="LWallDetector" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LWallDetector"]
-position = Vector2(-4.25, 0)
+position = Vector2(-4.375, 0)
 shape = SubResource("RectangleShape2D_0heto")
 
 [node name="Detector" type="Area2D" parent="."]

@@ -1,0 +1,60 @@
+[gd_scene load_steps=3 format=3 uid="uid://umwkft7ae34l"]
+
+[ext_resource type="PackedScene" uid="uid://bfna51xr3cyqr" path="res://Scenes/Levels/LevelSelection/StageIcon/stage_icon.tscn" id="1_ncxy5"]
+[ext_resource type="Script" path="res://Scenes/Levels/LevelSelection/level_selection.gd" id="1_ty86t"]
+
+[node name="LevelSelection" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ty86t")
+
+[node name="Stages" type="HBoxContainer" parent="."]
+clip_contents = true
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -64.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 0
+alignment = 1
+
+[node name="StageIcon" parent="Stages" instance=ExtResource("1_ncxy5")]
+layout_mode = 2
+
+[node name="StageIcon2" parent="Stages" instance=ExtResource("1_ncxy5")]
+layout_mode = 2
+
+[node name="StageIcon3" parent="Stages" instance=ExtResource("1_ncxy5")]
+layout_mode = 2
+
+[node name="StageIcon4" parent="Stages" instance=ExtResource("1_ncxy5")]
+layout_mode = 2
+
+[node name="StageIcon5" parent="Stages" instance=ExtResource("1_ncxy5")]
+layout_mode = 2
+
+[node name="StageIcon6" parent="Stages" instance=ExtResource("1_ncxy5")]
+layout_mode = 2
+
+[node name="StageIcon7" parent="Stages" instance=ExtResource("1_ncxy5")]
+layout_mode = 2
+
+[node name="StageIcon8" parent="Stages" instance=ExtResource("1_ncxy5")]
+layout_mode = 2
+
+[node name="StageIcon9" parent="Stages" instance=ExtResource("1_ncxy5")]
+layout_mode = 2
+
+[node name="StageIcon10" parent="Stages" instance=ExtResource("1_ncxy5")]
+layout_mode = 2
+
+[node name="PreviewSlot" type="Node2D" parent="."]
+position = Vector2(80, 60)
+scale = Vector2(0.5, 0.5)

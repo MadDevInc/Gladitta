@@ -30,7 +30,6 @@ func _physics_process(delta: float) -> void:
 		was_launched_buffer -= 1
 
 	if moving:
-		print(was_launched_buffer)
 		velocity.x = SPEED * direction
 
 		$AnimatedSprite2D.play("run")
@@ -76,7 +75,6 @@ func _on_l_wall_detector_body_entered(body: Node2D) -> void:
 		switch_directions()
 
 func switch_directions():
-	print("i switched directions")
 	if direction == Directions.right:
 		direction = Directions.left
 	else:

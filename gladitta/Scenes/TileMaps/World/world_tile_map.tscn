@@ -1,6 +1,6 @@
 [gd_scene load_steps=43 format=3 uid="uid://ddyqss5v87w2q"]
 
-[ext_resource type="Texture2D" uid="uid://cjjqrtktaoxpe" path="res://Assets/TileMaps/World/tilemap.png" id="1_25vnh"]
+[ext_resource type="Texture2D" uid="uid://3wouam33xsyn" path="res://Assets/TileMaps/World/tilemap.png" id="1_25vnh"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_75rt4"]
 polygon = PackedVector2Array(-4, -4, 4, -4, 4, 4, -4, 4)

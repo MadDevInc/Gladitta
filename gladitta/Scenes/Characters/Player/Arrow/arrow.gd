@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+class_name Arrow
+
 const SPEED = 200.0
 
 var dir = Vector2()
@@ -7,6 +9,8 @@ var dir = Vector2()
 var _is_traveling = true
 
 var shooter = null
+
+var death_particles_scene = preload("res://Scenes/Characters/Player/Arrow/DeathParticles/arrow_death_particles.tscn")
 
 func _ready() -> void:
 	get_parent().get_node("Player").death.connect(_on_player_death)
@@ -32,6 +36,19 @@ func _physics_process(_delta: float) -> void:
 	if get_last_slide_collision() != null:
 		if get_last_slide_collision().get_collider() is TileMapLayer:
 			_is_traveling = false
+			add_to_group("Solid")
+			self.process_mode = Node.PROCESS_MODE_DISABLED
+		if get_last_slide_collision().get_collider() is Arrow:
+			if get_last_slide_collision().get_collider().is_traveling():
+				var death_particles_instance = death_particles_scene.instantiate()
+				get_parent().add_child(death_particles_instance)
+				death_particles_instance.global_position = self.global_position
+				#self.queue_free()
+				get_last_slide_collision().get_collider().queue_free()
+		else:
+			_is_traveling = false
+			add_to_group("Solid")
+			self.process_mode = Node.PROCESS_MODE_DISABLED
 
 	move_and_slide()
 
