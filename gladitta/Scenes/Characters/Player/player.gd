@@ -32,7 +32,7 @@ var was_dashing = false
 var first_click = false
 var double_click = false
 
-@export var max_arrows = 3
+@export var max_arrows = 2
 
 @onready var initial_position = self.global_position
 @onready var arrow_count = max_arrows
