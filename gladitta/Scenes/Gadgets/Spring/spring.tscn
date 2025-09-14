@@ -73,7 +73,7 @@ frame = 3
 frame_progress = 1.0
 
 [node name="Marker2D" type="Marker2D" parent="."]
-position = Vector2(0, -8)
+position = Vector2(0, -10)
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="."]
 occluder = SubResource("OccluderPolygon2D_lww5u")
