@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=4 uid="uid://cntumncfy3npw"]
+[gd_scene load_steps=6 format=4 uid="uid://cntumncfy3npw"]
 
 [ext_resource type="PackedScene" uid="uid://c3wi3k4u6gdm7" path="res://Scenes/Levels/Template/level_template.tscn" id="1_5ohy6"]
+[ext_resource type="PackedScene" uid="uid://cur55mkndr5k6" path="res://Scenes/Characters/Enemy/EnemySpawner/enemy_spawner.tscn" id="2_raaks"]
 [ext_resource type="PackedScene" uid="uid://dpfb3582tyngx" path="res://Scenes/Gadgets/Spring/spring.tscn" id="3_sjp2j"]
 [ext_resource type="FontFile" uid="uid://yccdtkbk8acw" path="res://Assets/Fonts/unifont-17.0.01.otf" id="4_rrcmt"]
 [ext_resource type="PackedScene" uid="uid://c3xfchmcdunum" path="res://Scenes/Gadgets/Spikes/spikes.tscn" id="5_sw3sf"]
@@ -10,14 +11,14 @@
 [node name="WorldTileMap" parent="." index="2"]
 tile_map_data = PackedByteArray("AAAEAAUAAAAAAAEAAAAEAAYAAAAAAAEAAAAEAAcAAAAAAAEAAAAEAAgAAAAAAAEAAAAEAAkAAAAAAAEAAAAEAAoAAAAAAAEAAAAEAAsAAAAAAAEAAAAEAAwAAAAAAAEAAAAEAA0AAAAAAAEAAAAEAA4AAAAAAAEAAAAEAA8AAAAAAAEAAAAEABAAAAAAAAEAAAAEABEAAAAAAAEAAAAEABIAAAAAAAEAAAAEABMAAAAAAAEAAAAEABQAAAAAAAEAAAAEABUAAAAAAAEAAAAEABYAAAAAAAEAAAAEABcAAAAAAAEAAAAEABgAAAAAAAEAAAAEABkAAAAAAAEAAAAjAAQAAAAAAAEAAAAjAAUAAAAAAAEAAAAjAAYAAAAAAAEAAAAjAAcAAAAAAAEAAAAjAAgAAAAAAAEAAAAjAAkAAAAAAAEAAAAjAAoAAAAAAAEAAAAjAAsAAAAAAAEAAAAjAAwAAAAAAAEAAAAjAA0AAAAAAAEAAAAjAA4AAAAAAAEAAAAjAA8AAAAAAAEAAAAjABAAAAAAAAEAAAAjABEAAAAAAAEAAAAjABIAAAAAAAEAAAAjABMAAAAAAAEAAAAjABQAAAAAAAEAAAAjABUAAAAAAAEAAAAjABYAAAAAAAEAAAAjABcAAAAAAAEAAAAjABgAAAAAAAEAAAAjABkAAAAAAAEAAAAEABoAAAAAAAEAAAAEABsAAAALAAQAAAAFABsAAAALAAQAAAAGABsAAAALAAQAAAAHABsAAAALAAQAAAAIABsAAAALAAQAAAAJABsAAAALAAQAAAAKABsAAAALAAQAAAALABsAAAALAAQAAAAMABsAAAALAAQAAAANABsAAAALAAQAAAAOABsAAAALAAQAAAAPABsAAAALAAQAAAAQABsAAAALAAQAAAARABsAAAALAAQAAAASABsAAAALAAQAAAATABsAAAALAAQAAAAUABsAAAALAAQAAAAVABsAAAALAAQAAAAWABsAAAALAAQAAAAXABsAAAALAAQAAAAYABsAAAALAAQAAAAZABsAAAALAAQAAAAaABsAAAALAAQAAAAbABsAAAALAAQAAAAcABsAAAALAAQAAAAdABsAAAALAAQAAAAeABsAAAALAAQAAAAfABsAAAALAAQAAAAgABsAAAALAAQAAAAhABsAAAALAAQAAAAiABsAAAALAAQAAAAjABoAAAAAAAEAAAAEAAIAAAAAAAEAAAAEAAMAAAAAAAEAAAAGAAIAAAAAAAEAAAAHAAIAAAAAAAEAAAAIAAIAAAAAAAEAAAAJAAIAAAAAAAEAAAAKAAIAAAAAAAEAAAALAAIAAAAAAAEAAAAMAAIAAAAAAAEAAAANAAIAAAAAAAEAAAAOAAIAAAAAAAEAAAAPAAIAAAAAAAEAAAAQAAIAAAAAAAEAAAARAAIAAAAAAAEAAAASAAIAAAAAAAEAAAAfAAIAAAAAAAEAAAAgAAIAAAAAAAEAAAAhAAIAAAAAAAEAAAAiAAIAAAAAAAEAAAAjAAIAAAAAAAEAAAAjAAMAAAAAAAEAAAAeAAIAAAAAAAEAAAAdAAIAAAAAAAEAAAAcAAIAAAAAAAEAAAAbAAIAAAAAAAEAAAAFAAIAAAAAAAEAAAAaAAIAAAAAAAEAAAAZAAIAAAAAAAEAAAAYAAIAAAAAAAEAAAAXAAIAAAAAAAEAAAAWAAIAAAAAAAEAAAAVAAIAAAAAAAEAAAAUAAIAAAAAAAEAAAATAAIAAAAAAAEAAAAEAAQAAAAAAAEAAAAjABsAAAALAAQAAAA=")
 
-[node name="Spring" parent="." index="6" instance=ExtResource("3_sjp2j")]
-position = Vector2(169, 212)
+[node name="EnemySpawner" parent="Enemies" index="0" instance=ExtResource("2_raaks")]
+position = Vector2(185, 210)
 
-[node name="Spring4" parent="." index="7" instance=ExtResource("3_sjp2j")]
-position = Vector2(170, 31)
-rotation = 3.14159
+[node name="EnemySpawner2" parent="Enemies" index="1" instance=ExtResource("2_raaks")]
+position = Vector2(205, 210)
+flying = true
 
-[node name="Label" type="Label" parent="." index="8"]
+[node name="Label" type="Label" parent="." index="6"]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -33,20 +34,7 @@ theme_override_fonts/font = ExtResource("4_rrcmt")
 theme_override_font_sizes/font_size = 16
 text = "按X跳跃 (aperte X para pular)"
 
-[node name="Spikes" parent="." index="9" instance=ExtResource("5_sw3sf")]
+[node name="Spikes" parent="." index="7" instance=ExtResource("5_sw3sf")]
 
-[node name="Spring2" parent="." index="10" instance=ExtResource("3_sjp2j")]
-position = Vector2(46, 210)
-rotation = 0.785398
-
-[node name="Spring3" parent="." index="11" instance=ExtResource("3_sjp2j")]
-position = Vector2(223, 33)
-rotation = -2.35619
-
-[node name="Spring5" parent="." index="12" instance=ExtResource("3_sjp2j")]
-position = Vector2(240, 210)
-rotation = -0.785398
-
-[node name="Spring6" parent="." index="13" instance=ExtResource("3_sjp2j")]
-position = Vector2(68, 33)
-rotation = 2.35619
+[node name="Spring" parent="." index="8" instance=ExtResource("3_sjp2j")]
+position = Vector2(127, 202)

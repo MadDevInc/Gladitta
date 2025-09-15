@@ -173,6 +173,8 @@ size = Vector2(7, 10)
 polygon = PackedVector2Array(-3, 0, -2, 0, -2, -3, 2, -3, 2, 0, 3, 0, 3, 3, 2, 3, 2, 5, 1, 5, 1, 4, -1, 4, -1, 5, -2, 5, -2, 4, -3, 4)
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
+collision_layer = 3
+collision_mask = 3
 script = ExtResource("1_1cf6x")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -185,6 +187,8 @@ autoplay = "idle"
 
 [node name="Sword" type="Area2D" parent="." groups=["Sword"]]
 position = Vector2(-8, 0)
+collision_layer = 3
+collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sword"]
 shape = SubResource("RectangleShape2D_atcx3")
@@ -233,6 +237,8 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Detector" type="Area2D" parent="."]
+collision_layer = 3
+collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Detector"]
 shape = SubResource("RectangleShape2D_m5wcg")

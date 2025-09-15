@@ -50,6 +50,10 @@ func _physics_process(_delta: float) -> void:
 				get_parent().add_child(death_particles_instance)
 				death_particles_instance.global_position = self.global_position
 				get_last_slide_collision().get_collider().queue_free()
+			else:
+				_is_traveling = false
+				add_to_group("Solid")
+				self.process_mode = Node.PROCESS_MODE_DISABLED
 
 	move_and_slide()
 

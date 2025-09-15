@@ -62,4 +62,9 @@ func _on_player_death():
 
 func _on_arrow_detector_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Arrow"):
-		kill()
+		if body.name == "Tip":
+			if body.get_parent().is_traveling():
+				kill()
+		else:
+			if body.is_traveling():
+				kill()

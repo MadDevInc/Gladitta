@@ -275,8 +275,12 @@ func _on_detector_body_entered(body: Node2D) -> void:
 				if body.is_traveling():
 					kill()
 	if body.is_in_group("Boomerang"):
-		if body.shooter != self:
-			kill()
+		if body.name == "Tip":
+			if body.get_parent().shooter != self:
+				kill()
+		else:
+			if body.shooter != self:
+				kill()
 	if body.is_in_group("Spikes"):
 		kill()
 

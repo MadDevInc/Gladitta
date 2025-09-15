@@ -54,7 +54,7 @@ size = Vector2(0.75, 9)
 size = Vector2(0.75, 9)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8h86v"]
-size = Vector2(9, 10)
+size = Vector2(8.5, 9.5)
 
 [sub_resource type="Animation" id="Animation_hcm80"]
 length = 0.001
@@ -125,8 +125,8 @@ position = Vector2(-4.375, 0)
 shape = SubResource("RectangleShape2D_0heto")
 
 [node name="Detector" type="Area2D" parent="."]
-collision_layer = 3
-collision_mask = 3
+collision_layer = 7
+collision_mask = 7
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Detector"]
 shape = SubResource("RectangleShape2D_8h86v")
