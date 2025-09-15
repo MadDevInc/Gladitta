@@ -158,9 +158,14 @@ tracks/0/keys = {
 "values": [Vector2(16, 8)]
 }
 
+[sub_resource type="Animation" id="Animation_qtjmf"]
+resource_name = "unhover"
+length = 0.2
+step = 0.1
+
 [sub_resource type="Animation" id="Animation_rybe2"]
 resource_name = "hover"
-length = 0.1
+length = 0.2
 step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -175,28 +180,11 @@ tracks/0/keys = {
 "values": [Vector2(16, 7), Vector2(16, 8)]
 }
 
-[sub_resource type="Animation" id="Animation_gjchi"]
-resource_name = "unhover"
-length = 0.1
-step = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite2D:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(16, 9), Vector2(16, 8)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_71ejl"]
 _data = {
 "RESET": SubResource("Animation_g5ujt"),
 "hover": SubResource("Animation_rybe2"),
-"unhover": SubResource("Animation_gjchi")
+"unhover": SubResource("Animation_qtjmf")
 }
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_77arg"]
@@ -216,6 +204,20 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 script = ExtResource("1_cgwyd")
 
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+handle_input_locally = false
+size = Vector2i(320, 240)
+render_target_update_mode = 0
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(16, 8)
 sprite_frames = SubResource("SpriteFrames_r5i6e")
@@ -228,29 +230,7 @@ libraries = {
 "": SubResource("AnimationLibrary_71ejl")
 }
 
-[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
-layout_mode = 0
-offset_left = -119.0
-offset_top = 87.0
-offset_right = 201.0
-offset_bottom = 327.0
-
-[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
-handle_input_locally = false
-size = Vector2i(320, 240)
-render_target_update_mode = 1
-
-[node name="LevelRender" type="TextureRect" parent="."]
-visible = false
-layout_mode = 0
-offset_left = -73.0
-offset_top = -147.0
-offset_right = 105.0
-offset_bottom = -14.0
-texture = SubResource("ViewportTexture_77arg")
-expand_mode = 1
-
-[node name="Overlay" type="TextureRect" parent="."]
+[node name="Display" type="Control" parent="."]
 visible = false
 layout_mode = 1
 anchors_preset = 8
@@ -259,9 +239,27 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -112.0
-offset_top = -173.0
+offset_top = -188.0
 offset_right = 112.0
-offset_bottom = -10.0
+offset_bottom = -25.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LevelRender" type="TextureRect" parent="Display"]
+layout_mode = 0
+offset_left = 23.0
+offset_top = 18.0
+offset_right = 201.0
+offset_bottom = 151.0
+texture = SubResource("ViewportTexture_77arg")
+expand_mode = 1
+
+[node name="Overlay" type="TextureRect" parent="Display"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("3_rj0an")
+expand_mode = 1
