@@ -13,6 +13,8 @@ func unhover():
 func display(scene):
 	$SubViewportContainer/SubViewport.add_child(scene)
 	$SubViewportContainer/SubViewport.render_target_update_mode = SubViewport.UPDATE_ONCE
+	await get_tree().create_timer(0.01).timeout #await para dar tempo de os inimigos spawnarem nas previews
+	scene.process_mode = PROCESS_MODE_DISABLED
 
 func select():
 	$AnimationPlayer.play("select")

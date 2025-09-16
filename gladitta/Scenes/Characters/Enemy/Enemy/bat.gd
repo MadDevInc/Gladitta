@@ -39,11 +39,11 @@ func launch(dir):
 	velocity.x = dir.x * -250
 
 func _on_r_wall_detector_body_entered(body: Node2D) -> void:
-	if body.is_in_group("Solid"):
+	if body.is_in_group("Solid") and body != self:
 		switch_directions()
 
 func _on_l_wall_detector_body_entered(body: Node2D) -> void:
-	if body.is_in_group("Solid"):
+	if body.is_in_group("Solid") and body != self:
 		switch_directions()
 
 func switch_directions():
