@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://bfna51xr3cyqr"]
+[gd_scene load_steps=29 format=3 uid="uid://bfna51xr3cyqr"]
 
 [ext_resource type="Texture2D" uid="uid://b2r4al27xduqo" path="res://Scenes/Levels/LevelSelection/Textures/menu_stage_hovered.png" id="1_5x1nx"]
 [ext_resource type="Script" path="res://Scenes/Levels/LevelSelection/StageIcon/stage_icon.gd" id="1_cgwyd"]
@@ -157,11 +157,30 @@ tracks/0/keys = {
 "update": 0,
 "values": [Vector2(16, 8)]
 }
-
-[sub_resource type="Animation" id="Animation_qtjmf"]
-resource_name = "unhover"
-length = 0.2
-step = 0.1
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Display:size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(224, 163)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Display:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-96, -180)]
+}
 
 [sub_resource type="Animation" id="Animation_rybe2"]
 resource_name = "hover"
@@ -180,10 +199,45 @@ tracks/0/keys = {
 "values": [Vector2(16, 7), Vector2(16, 8)]
 }
 
+[sub_resource type="Animation" id="Animation_mm8nd"]
+resource_name = "select"
+length = 0.5
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Display:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(224, 163), Vector2(413, 301)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Display:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-96, -180), Vector2(-191, -253)]
+}
+
+[sub_resource type="Animation" id="Animation_qtjmf"]
+resource_name = "unhover"
+length = 0.2
+step = 0.1
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_71ejl"]
 _data = {
 "RESET": SubResource("Animation_g5ujt"),
 "hover": SubResource("Animation_rybe2"),
+"select": SubResource("Animation_mm8nd"),
 "unhover": SubResource("Animation_qtjmf")
 }
 
@@ -231,7 +285,6 @@ libraries = {
 }
 
 [node name="Display" type="Control" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -246,11 +299,16 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="LevelRender" type="TextureRect" parent="Display"]
-layout_mode = 0
-offset_left = 23.0
-offset_top = 18.0
-offset_right = 201.0
-offset_bottom = 151.0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.103
+anchor_top = 0.11
+anchor_right = 0.897
+anchor_bottom = 0.926
+offset_left = -0.0720024
+offset_top = 0.0699997
+offset_right = 0.071991
+offset_bottom = 0.0619965
 texture = SubResource("ViewportTexture_77arg")
 expand_mode = 1
 
@@ -263,3 +321,5 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("3_rj0an")
 expand_mode = 1
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

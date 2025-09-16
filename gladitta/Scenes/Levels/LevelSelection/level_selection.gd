@@ -28,6 +28,8 @@ func _physics_process(_delta: float) -> void:
 		else:
 			current_selection = 0
 		update_hover()
+	if Input.is_action_just_pressed("jump"):
+		$Stages.get_child(current_selection).select()
 
 func update_hover():
 	for child in $Stages.get_children():

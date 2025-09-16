@@ -2,6 +2,8 @@ extends Area2D
 
 signal level_finished
 
+@export_enum("iron", "wood") var door_type = "iron"
+
 @export var locked = true
 
 @onready var reset_lock = locked
@@ -13,7 +15,7 @@ func is_locked():
 
 func unlock():
 	locked = false
-	$AnimatedSprite2D.play("iron")
+	$AnimatedSprite2D.play(door_type)
 
 func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Player"):
