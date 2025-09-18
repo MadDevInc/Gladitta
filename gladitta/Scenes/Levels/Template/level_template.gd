@@ -6,7 +6,8 @@ extends Node2D
 
 func _on_level_ending_level_finished() -> void:
 	$CanvasLayer/Timer.stop()
-	print("Passou de nível!")
+	$CanvasLayer/LevelStats.show()
+	get_tree().paused = true
 
 func _process(_delta: float) -> void:
 	for child in $Enemies.get_children():
