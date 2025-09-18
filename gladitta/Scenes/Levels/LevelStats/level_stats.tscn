@@ -1,0 +1,81 @@
+[gd_scene load_steps=2 format=3 uid="uid://bskjr2emjmkpo"]
+
+[ext_resource type="Script" path="res://Scenes/Levels/LevelStats/level_stats.gd" id="1_4de1v"]
+
+[node name="LevelStats" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_4de1v")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -71.5
+offset_top = -71.5
+offset_right = 71.5
+offset_bottom = 71.5
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.501961)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Background"]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -37.5
+offset_right = 37.5
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Background/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Background/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "00:05"
+
+[node name="ColorRect" type="ColorRect" parent="Background/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+color = Color(0.604672, 0.288354, 1.92523e-07, 1)
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Background/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Background/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "00:05"
+
+[node name="ColorRect" type="ColorRect" parent="Background/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+color = Color(0.680321, 0.680321, 0.680321, 1)
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="Background/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Background/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+text = "00:05"
+
+[node name="ColorRect" type="ColorRect" parent="Background/VBoxContainer/HBoxContainer3"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+color = Color(1, 0.780392, 0, 1)

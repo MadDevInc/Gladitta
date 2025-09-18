@@ -11,6 +11,7 @@
 script = ExtResource("1_sujfq")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+process_mode = 3
 
 [node name="Timer" parent="CanvasLayer" instance=ExtResource("1_y4pis")]
 

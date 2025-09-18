@@ -14,7 +14,6 @@ var direction : Directions = Directions.right
 var was_launched_buffer = 0
 var was_launched = false
 
-
 @onready var player = get_parent().get_parent().get_parent().get_node("Player")
 
 var death_particles_scene = preload("res://Scenes/Characters/Enemy/Enemy/skeleton_death_particles.tscn")
@@ -56,15 +55,10 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func launch(dir):
-	#$LSlopeDetector.enabled = false
-	#$RSlopeDetector.enabled = false
 	was_launched = true
 	was_launched_buffer = 3
 	velocity.y = dir.y * -300
 	velocity.x = dir.x * -250
-	#await get_tree().create_timer(0.1).timeout
-	#$LSlopeDetector.enabled = true
-	#$RSlopeDetector.enabled = true
 
 func _on_r_wall_detector_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Solid") and body != self:
@@ -82,7 +76,6 @@ func switch_directions():
 
 func _on_detector_area_entered(area: Area2D) -> void:
 	if area.is_in_group("Sword"):
-		#kill()
 		pass
 
 func _on_detector_body_entered(body: Node2D) -> void:

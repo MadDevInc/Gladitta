@@ -24,6 +24,10 @@ window/size/window_width_override=960
 window/size/window_height_override=660
 window/stretch/mode="viewport"
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/gamesaver/plugin.cfg")
+
 [global_group]
 
 Player=""

@@ -7,27 +7,10 @@
 layout_mode = 3
 anchors_preset = 0
 offset_right = 183.0
-offset_bottom = 387.0
+offset_bottom = 507.0
 script = ExtResource("1_amrd8")
 
-[node name="TextureRect" type="TextureRect" parent="."]
-custom_minimum_size = Vector2(48, 48)
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -24.0
-offset_top = -37.0
-offset_right = 24.0
-offset_bottom = 11.0
-grow_horizontal = 2
-grow_vertical = 0
-texture = ExtResource("2_1e60v")
-expand_mode = 1
-
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -35,23 +18,65 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="OpenSave" type="Button" parent="VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
 layout_mode = 2
-text = "Abrir Save"
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
-[node name="DeleteSave" type="Button" parent="VBoxContainer"]
+[node name="Title" type="Label" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "Conteúdo do Save:"
+
+[node name="SaveDataDisplay" type="RichTextLabel" parent="ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+text = "{ \"id\": 6, \"moedas\": [0, 0, 1, 2], \"brunao\": \"dev\" }"
+
+[node name="Title2" type="Label" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "Editar o Save:"
+
+[node name="Chave" type="LineEdit" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+placeholder_text = "Chave"
+
+[node name="Valor" type="LineEdit" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+placeholder_text = "Valor"
+
+[node name="Edit" type="Button" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "Sobrescrever Valor"
+
+[node name="Title3" type="Label" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "Local do Save:"
+
+[node name="SavePathDisplay" type="RichTextLabel" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+focus_mode = 2
+text = "C:/Users/Bruno/AppData/Roaming/Godot/app_userdata/gamesaver/save.cfg"
+fit_content = true
+selection_enabled = true
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+
+[node name="OpenSaveFolder" type="Button" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "Abrir Local do Save"
+
+[node name="DeleteSave" type="Button" parent="ScrollContainer/VBoxContainer"]
 layout_mode = 2
 text = "Apagar Save"
 
-[node name="SaveDataDisplay" type="RichTextLabel" parent="VBoxContainer"]
-custom_minimum_size = Vector2(0, 128)
+[node name="TextureRect" type="TextureRect" parent="ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
-text = "{ \"teste1\": 1, \"teste2\": 2 }"
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("2_1e60v")
+expand_mode = 1
 
-[node name="SavePathDisplay" type="RichTextLabel" parent="VBoxContainer"]
-layout_mode = 2
-text = "C:/Users/rosab/AppData/Roaming/Godot/app_userdata/prototipo steam/save.cfg"
-fit_content = true
-
-[connection signal="pressed" from="VBoxContainer/OpenSave" to="." method="_on_open_save_pressed"]
-[connection signal="pressed" from="VBoxContainer/DeleteSave" to="." method="_on_delete_save_pressed"]
+[connection signal="pressed" from="ScrollContainer/VBoxContainer/Edit" to="." method="_on_edit_pressed"]
+[connection signal="pressed" from="ScrollContainer/VBoxContainer/OpenSaveFolder" to="." method="_on_open_save_folder_pressed"]
+[connection signal="pressed" from="ScrollContainer/VBoxContainer/DeleteSave" to="." method="_on_delete_save_pressed"]
