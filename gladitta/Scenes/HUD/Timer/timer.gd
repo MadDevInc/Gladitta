@@ -22,3 +22,6 @@ func stop():
 func reset():
 	set_process(true)
 	timer = 0.0
+
+func get_time():
+	return str(timer)

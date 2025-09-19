@@ -6,7 +6,7 @@ extends Node2D
 
 func _on_level_ending_level_finished() -> void:
 	$CanvasLayer/Timer.stop()
-	$CanvasLayer/LevelStats.show()
+	$CanvasLayer/LevelStats.open()
 	get_tree().paused = true
 
 func _process(_delta: float) -> void:

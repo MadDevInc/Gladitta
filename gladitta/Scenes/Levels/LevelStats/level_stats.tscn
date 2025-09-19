@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://bskjr2emjmkpo"]
+[gd_scene load_steps=3 format=3 uid="uid://bskjr2emjmkpo"]
 
 [ext_resource type="Script" path="res://Scenes/Levels/LevelStats/level_stats.gd" id="1_4de1v"]
+[ext_resource type="FontFile" uid="uid://yccdtkbk8acw" path="res://Assets/Fonts/unifont-17.0.01.otf" id="2_p3qw2"]
 
 [node name="LevelStats" type="Control"]
 process_mode = 2
@@ -40,49 +41,52 @@ grow_vertical = 2
 theme_override_constants/separation = 12
 alignment = 1
 
-[node name="Label" type="Label" parent="Background/VBoxContainer"]
+[node name="Time" type="Label" parent="Background/VBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_p3qw2")
 text = "Tempo Atual"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Background/VBoxContainer"]
+[node name="Bronze" type="HBoxContainer" parent="Background/VBoxContainer"]
 layout_mode = 2
 alignment = 1
 
-[node name="Label" type="Label" parent="Background/VBoxContainer/HBoxContainer"]
+[node name="Label" type="Label" parent="Background/VBoxContainer/Bronze"]
 layout_mode = 2
 text = "00:05"
 
-[node name="ColorRect" type="ColorRect" parent="Background/VBoxContainer/HBoxContainer"]
+[node name="ColorRect" type="ColorRect" parent="Background/VBoxContainer/Bronze"]
 custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 color = Color(0.604672, 0.288354, 1.92523e-07, 1)
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="Background/VBoxContainer"]
+[node name="Silver" type="HBoxContainer" parent="Background/VBoxContainer"]
 layout_mode = 2
 alignment = 1
 
-[node name="Label" type="Label" parent="Background/VBoxContainer/HBoxContainer2"]
+[node name="Label" type="Label" parent="Background/VBoxContainer/Silver"]
 layout_mode = 2
 text = "00:05"
 
-[node name="ColorRect" type="ColorRect" parent="Background/VBoxContainer/HBoxContainer2"]
+[node name="ColorRect" type="ColorRect" parent="Background/VBoxContainer/Silver"]
 custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 color = Color(0.680321, 0.680321, 0.680321, 1)
 
-[node name="HBoxContainer3" type="HBoxContainer" parent="Background/VBoxContainer"]
+[node name="Gold" type="HBoxContainer" parent="Background/VBoxContainer"]
 layout_mode = 2
 alignment = 1
 
-[node name="Label" type="Label" parent="Background/VBoxContainer/HBoxContainer3"]
+[node name="Label" type="Label" parent="Background/VBoxContainer/Gold"]
 layout_mode = 2
 text = "00:05"
 
-[node name="ColorRect" type="ColorRect" parent="Background/VBoxContainer/HBoxContainer3"]
+[node name="ColorRect" type="ColorRect" parent="Background/VBoxContainer/Gold"]
 custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
 size_flags_horizontal = 4

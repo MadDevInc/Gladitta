@@ -7,7 +7,7 @@ var arrow_icon_scene = load("res://Scenes/HUD/ArrowCounter/ArrowIcon/arrow_icon.
 func _ready() -> void:
 	for i in range(player.max_arrows):
 		var arrow_icon_instance = arrow_icon_scene.instantiate()
-		$Slots.add_child(arrow_icon_instance)
+		$HBoxContainer.add_child(arrow_icon_instance)
 
 func _physics_process(_delta: float) -> void:
 	if $HBoxContainer.get_child_count() < player.get_arrow_count():
