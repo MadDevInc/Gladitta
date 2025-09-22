@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cfojmmuiycdn7"
-path="res://.godot/imported/menu_stage_normal.png-bf579bf6506dafdb6ec3de3f4bb28a32.ctex"
+uid="uid://dn7u5atma0kfs"
+path="res://.godot/imported/preview_slot.png-9f495746887f486cf7d722244d03064d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/Levels/LevelSelection/Textures/menu_stage_normal.png"
-dest_files=["res://.godot/imported/menu_stage_normal.png-bf579bf6506dafdb6ec3de3f4bb28a32.ctex"]
+source_file="res://Scenes/Templates/LevelSelectionTemplate/Textures/preview_slot.png"
+dest_files=["res://.godot/imported/preview_slot.png-9f495746887f486cf7d722244d03064d.ctex"]
 
 [params]
 

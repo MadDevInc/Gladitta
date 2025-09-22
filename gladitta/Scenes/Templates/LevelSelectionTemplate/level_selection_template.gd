@@ -1,16 +1,18 @@
 extends Control
 
+@export var levels_folder : String
+
 var current_selection = 0
 
-var stage_icon_scene = preload("res://Scenes/Levels/LevelSelection/StageIcon/stage_icon.tscn")
+var stage_icon_scene = preload("res://Scenes/Templates/LevelSelectionTemplate/StageIcon/stage_icon.tscn")
 
 func _ready() -> void:
-	var files = DirAccess.get_files_at("res://Scenes/Levels/Levels/")
+	var files = DirAccess.get_files_at(levels_folder)
 	for i in range(files.size()):
 		var new_stage_icon = stage_icon_scene.instantiate()
 		$Stages.add_child(new_stage_icon)
 
-		var level_preview = load("res://Scenes/Levels/Levels/level_" + str(i) + ".tscn").instantiate()
+		var level_preview = load(levels_folder + "level_" + str(i) + ".tscn").instantiate()
 		new_stage_icon.display(level_preview)
 	update_hover()
 

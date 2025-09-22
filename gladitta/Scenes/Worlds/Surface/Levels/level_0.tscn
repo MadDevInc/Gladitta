@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://cgnxr1wyr6dvi"]
+
+[ext_resource type="PackedScene" uid="uid://c3wi3k4u6gdm7" path="res://Scenes/Templates/Level/level_template.tscn" id="1_k8vii"]
+
+[node name="Level" instance=ExtResource("1_k8vii")]
+gold_medal = 3.5
+silver_medal = 5.0
+bronze_medal = 10.0
+
+[node name="LevelEnding" parent="." index="1"]
+position = Vector2(281, 152)
+door_type = "wood"
+
+[node name="WorldTileMap" parent="." index="2"]
+tile_map_data = PackedByteArray()
+
+[node name="Player" parent="." index="3"]
+position = Vector2(45, 155)

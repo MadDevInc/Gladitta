@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bskjr2emjmkpo"]
 
-[ext_resource type="Script" path="res://Scenes/Levels/LevelStats/level_stats.gd" id="1_4de1v"]
+[ext_resource type="Script" path="res://Scenes/Templates/Level/LevelStats/level_stats.gd" id="1_4de1v"]
 [ext_resource type="FontFile" uid="uid://yccdtkbk8acw" path="res://Assets/Fonts/unifont-17.0.01.otf" id="2_p3qw2"]
 
 [node name="LevelStats" type="Control"]

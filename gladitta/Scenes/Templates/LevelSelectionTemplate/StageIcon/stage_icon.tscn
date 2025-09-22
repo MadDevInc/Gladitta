@@ -1,8 +1,8 @@
 [gd_scene load_steps=29 format=3 uid="uid://bfna51xr3cyqr"]
 
-[ext_resource type="Texture2D" uid="uid://b2r4al27xduqo" path="res://Scenes/Levels/LevelSelection/Textures/menu_stage_hovered.png" id="1_5x1nx"]
-[ext_resource type="Script" path="res://Scenes/Levels/LevelSelection/StageIcon/stage_icon.gd" id="1_cgwyd"]
-[ext_resource type="Texture2D" uid="uid://dn7u5atma0kfs" path="res://Scenes/Levels/LevelSelection/Textures/preview_slot.png" id="3_rj0an"]
+[ext_resource type="Texture2D" uid="uid://b2r4al27xduqo" path="res://Scenes/Templates/LevelSelectionTemplate/Textures/menu_stage_hovered.png" id="1_5x1nx"]
+[ext_resource type="Script" path="res://Scenes/Templates/LevelSelectionTemplate/StageIcon/stage_icon.gd" id="1_cgwyd"]
+[ext_resource type="Texture2D" uid="uid://dn7u5atma0kfs" path="res://Scenes/Templates/LevelSelectionTemplate/Textures/preview_slot.png" id="3_rj0an"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gppuo"]
 atlas = ExtResource("1_5x1nx")

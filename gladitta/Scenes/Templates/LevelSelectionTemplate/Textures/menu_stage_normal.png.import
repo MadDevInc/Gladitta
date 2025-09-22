@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://8voflvnukgsy"
-path="res://.godot/imported/wood_door.png-0718ece35e6e01ccdc68595522bb7e54.ctex"
+uid="uid://cfojmmuiycdn7"
+path="res://.godot/imported/menu_stage_normal.png-52de363b0ac35614f88131755af9eab7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/Levels/LevelEnding/Textures/wood_door.png"
-dest_files=["res://.godot/imported/wood_door.png-0718ece35e6e01ccdc68595522bb7e54.ctex"]
+source_file="res://Scenes/Templates/LevelSelectionTemplate/Textures/menu_stage_normal.png"
+dest_files=["res://.godot/imported/menu_stage_normal.png-52de363b0ac35614f88131755af9eab7.ctex"]
 
 [params]
 

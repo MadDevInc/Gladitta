@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://b6hynmusdtdm5"]
 
-[ext_resource type="PackedScene" uid="uid://c3wi3k4u6gdm7" path="res://Scenes/Levels/Template/level_template.tscn" id="1_88bcx"]
+[ext_resource type="PackedScene" uid="uid://c3wi3k4u6gdm7" path="res://Scenes/Templates/Level/level_template.tscn" id="1_88bcx"]
 
 [node name="Level" instance=ExtResource("1_88bcx")]
 gold_medal = 3.0

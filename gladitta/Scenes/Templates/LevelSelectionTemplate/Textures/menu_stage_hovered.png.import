@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dn7u5atma0kfs"
-path="res://.godot/imported/preview_slot.png-dc5f9dd22ba7a14f9866bf207fa60313.ctex"
+uid="uid://b2r4al27xduqo"
+path="res://.godot/imported/menu_stage_hovered.png-00b0bd270ea5674d4ad1acafeda4f605.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/Levels/LevelSelection/Textures/preview_slot.png"
-dest_files=["res://.godot/imported/preview_slot.png-dc5f9dd22ba7a14f9866bf207fa60313.ctex"]
+source_file="res://Scenes/Templates/LevelSelectionTemplate/Textures/menu_stage_hovered.png"
+dest_files=["res://.godot/imported/menu_stage_hovered.png-00b0bd270ea5674d4ad1acafeda4f605.ctex"]
 
 [params]
 

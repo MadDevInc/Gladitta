@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b2r4al27xduqo"
-path="res://.godot/imported/menu_stage_hovered.png-8b3148f0d18a1f39aee2791dd684f83e.ctex"
+uid="uid://4nscwipsd6r0"
+path="res://.godot/imported/iron_gate.png-ce3a6f17116f2d652f710cb71cd1f4b1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/Levels/LevelSelection/Textures/menu_stage_hovered.png"
-dest_files=["res://.godot/imported/menu_stage_hovered.png-8b3148f0d18a1f39aee2791dd684f83e.ctex"]
+source_file="res://Scenes/Gadgets/LevelEnding/Textures/iron_gate.png"
+dest_files=["res://.godot/imported/iron_gate.png-ce3a6f17116f2d652f710cb71cd1f4b1.ctex"]
 
 [params]
 

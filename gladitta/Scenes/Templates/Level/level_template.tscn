@@ -1,14 +1,15 @@
 [gd_scene load_steps=7 format=4 uid="uid://c3wi3k4u6gdm7"]
 
-[ext_resource type="Script" path="res://Scenes/Levels/Template/level_template.gd" id="1_sujfq"]
+[ext_resource type="Script" path="res://Scenes/Templates/Level/level_template.gd" id="1_sujfq"]
 [ext_resource type="PackedScene" uid="uid://v4ixk2vs6cpt" path="res://Scenes/HUD/hud.tscn" id="2_bxcl8"]
-[ext_resource type="PackedScene" uid="uid://hq3kndj7ibrr" path="res://Scenes/Levels/LevelEnding/level_ending.tscn" id="3_v0fcr"]
+[ext_resource type="PackedScene" uid="uid://hq3kndj7ibrr" path="res://Scenes/Gadgets/LevelEnding/level_ending.tscn" id="3_v0fcr"]
 [ext_resource type="PackedScene" uid="uid://ddyqss5v87w2q" path="res://Scenes/TileMaps/World/world_tile_map.tscn" id="4_eaww6"]
-[ext_resource type="PackedScene" uid="uid://bskjr2emjmkpo" path="res://Scenes/Levels/LevelStats/level_stats.tscn" id="4_neskj"]
+[ext_resource type="PackedScene" uid="uid://bskjr2emjmkpo" path="res://Scenes/Templates/Level/LevelStats/level_stats.tscn" id="4_neskj"]
 [ext_resource type="PackedScene" uid="uid://dlcsks5urffx5" path="res://Scenes/Characters/Player/player.tscn" id="6_rq5da"]
 
 [node name="LevelTemplate" type="Node2D"]
 script = ExtResource("1_sujfq")
+metadata/_edit_lock_ = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 process_mode = 3
@@ -16,20 +17,24 @@ process_mode = 3
 [node name="HUD" parent="CanvasLayer" node_paths=PackedStringArray("player") instance=ExtResource("2_bxcl8")]
 player = NodePath("../../Player")
 metadata/_edit_vertical_guides_ = [288.0, 32.0]
+metadata/_edit_lock_ = true
 
 [node name="LevelStats" parent="CanvasLayer" instance=ExtResource("4_neskj")]
 visible = false
+metadata/_edit_lock_ = true
 
 [node name="LevelEnding" parent="." instance=ExtResource("3_v0fcr")]
 position = Vector2(273, 208)
 
 [node name="WorldTileMap" parent="." instance=ExtResource("4_eaww6")]
 tile_map_data = PackedByteArray("AAAEAAUAAAAAAAEAAAAEAAYAAAAAAAEAAAAEAAcAAAAAAAEAAAAEAAgAAAAAAAEAAAAEAAkAAAAAAAEAAAAEAAoAAAAAAAEAAAAEAAsAAAAAAAEAAAAEAAwAAAAAAAEAAAAEAA0AAAAAAAEAAAAEAA4AAAAAAAEAAAAEAA8AAAAAAAEAAAAEABAAAAAAAAEAAAAEABEAAAAAAAEAAAAEABIAAAAAAAEAAAAEABMAAAAAAAEAAAAEABQAAAAAAAEAAAAEABUAAAAAAAEAAAAEABYAAAAAAAEAAAAEABcAAAAAAAEAAAAEABgAAAAAAAEAAAAEABkAAAAAAAEAAAAjAAQAAAAAAAEAAAAjAAUAAAAAAAEAAAAjAAYAAAAAAAEAAAAjAAcAAAAAAAEAAAAjAAgAAAAAAAEAAAAjAAkAAAAAAAEAAAAjAAoAAAAAAAEAAAAjAAsAAAAAAAEAAAAjAAwAAAAAAAEAAAAjAA0AAAAAAAEAAAAjAA4AAAAAAAEAAAAjAA8AAAAAAAEAAAAjABAAAAAAAAEAAAAjABEAAAAAAAEAAAAjABIAAAAAAAEAAAAjABMAAAAAAAEAAAAjABQAAAAAAAEAAAAjABUAAAAAAAEAAAAjABYAAAAAAAEAAAAjABcAAAAAAAEAAAAjABgAAAAAAAEAAAAjABkAAAAAAAEAAAAEABoAAAAAAAEAAAAEABsAAAAAAAEAAAAFABsAAAAAAAEAAAAGABsAAAAAAAEAAAAHABsAAAAAAAEAAAAIABsAAAAAAAEAAAAJABsAAAAAAAEAAAAKABsAAAAAAAEAAAALABsAAAAAAAEAAAAMABsAAAAAAAEAAAANABsAAAAAAAEAAAAOABsAAAAAAAEAAAAPABsAAAAAAAEAAAAQABsAAAAAAAEAAAARABsAAAAAAAEAAAASABsAAAAAAAEAAAATABsAAAAAAAEAAAAUABsAAAAAAAEAAAAVABsAAAAAAAEAAAAWABsAAAAAAAEAAAAXABsAAAAAAAEAAAAYABsAAAAAAAEAAAAZABsAAAAAAAEAAAAaABsAAAAAAAEAAAAbABsAAAAAAAEAAAAcABsAAAAAAAEAAAAdABsAAAAAAAEAAAAeABsAAAAAAAEAAAAfABsAAAAAAAEAAAAgABsAAAAAAAEAAAAhABsAAAAAAAEAAAAiABsAAAAAAAEAAAAjABoAAAAAAAEAAAAEAAIAAAAAAAEAAAAEAAMAAAAAAAEAAAAGAAIAAAAAAAEAAAAHAAIAAAAAAAEAAAAIAAIAAAAAAAEAAAAJAAIAAAAAAAEAAAAKAAIAAAAAAAEAAAALAAIAAAAAAAEAAAAMAAIAAAAAAAEAAAANAAIAAAAAAAEAAAAOAAIAAAAAAAEAAAAPAAIAAAAAAAEAAAAQAAIAAAAAAAEAAAARAAIAAAAAAAEAAAASAAIAAAAAAAEAAAAfAAIAAAAAAAEAAAAgAAIAAAAAAAEAAAAhAAIAAAAAAAEAAAAiAAIAAAAAAAEAAAAjAAIAAAAAAAEAAAAjAAMAAAAAAAEAAAAeAAIAAAAAAAEAAAAdAAIAAAAAAAEAAAAcAAIAAAAAAAEAAAAbAAIAAAAAAAEAAAAFAAIAAAAAAAEAAAAaAAIAAAAAAAEAAAAZAAIAAAAAAAEAAAAYAAIAAAAAAAEAAAAXAAIAAAAAAAEAAAAWAAIAAAAAAAEAAAAVAAIAAAAAAAEAAAAUAAIAAAAAAAEAAAATAAIAAAAAAAEAAAAEAAQAAAAAAAEAAAAjABsAAAAAAAEAAAA=")
+metadata/_edit_lock_ = true
 
 [node name="Player" parent="." instance=ExtResource("6_rq5da")]
 position = Vector2(45, 211)
 
 [node name="Enemies" type="Node2D" parent="."]
+metadata/_edit_lock_ = true
 
 [connection signal="level_finished" from="LevelEnding" to="." method="_on_level_ending_level_finished"]
 [connection signal="death" from="Player" to="." method="_on_player_death"]

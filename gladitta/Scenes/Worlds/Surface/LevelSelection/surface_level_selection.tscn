@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://1e31fhh5ldpk"]
+
+[ext_resource type="PackedScene" uid="uid://umwkft7ae34l" path="res://Scenes/Templates/LevelSelectionTemplate/level_selection_template.tscn" id="1_naip0"]
+
+[node name="SurfaceLevelSelection" instance=ExtResource("1_naip0")]
+levels_folder = "res://Scenes/Worlds/Surface/Levels/"

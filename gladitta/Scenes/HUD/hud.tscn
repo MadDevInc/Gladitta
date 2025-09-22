@@ -14,7 +14,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_uvxq3")
-metadata/_edit_vertical_guides_ = [296.0, 24.0]
 
 [node name="Timer" parent="." instance=ExtResource("1_fkydt")]
 layout_mode = 2
@@ -41,10 +40,13 @@ grow_vertical = 0
 theme_override_constants/separation = 16
 
 [node name="ArrowCounter" parent="HBoxContainer" instance=ExtResource("2_wnd36")]
+visible = false
 layout_mode = 2
 
 [node name="BoomerCounter" parent="HBoxContainer" instance=ExtResource("4_23duo")]
+visible = false
 layout_mode = 2
 
 [node name="DashCount" parent="HBoxContainer" instance=ExtResource("5_mhfvq")]
+visible = false
 layout_mode = 2
