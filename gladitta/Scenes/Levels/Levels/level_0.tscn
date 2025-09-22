@@ -9,9 +9,7 @@ gold_medal = 3.5
 silver_medal = 5.0
 bronze_medal = 10.0
 metadata/_edit_lock_ = true
-
-[node name="ArrowCounter" parent="CanvasLayer" index="1"]
-metadata/_edit_vertical_guides_ = [40.0, 160.0]
+metadata/_edit_vertical_guides_ = [296.0]
 
 [node name="Spring" parent="." index="1" instance=ExtResource("3_67kv3")]
 position = Vector2(166, 156)

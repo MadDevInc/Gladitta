@@ -33,9 +33,13 @@ var first_click = false
 var double_click = false
 
 @export var max_arrows = 2
+@export var max_dashes = 1
+@export var max_boomer = 1
 
 @onready var initial_position = self.global_position
 @onready var arrow_count = max_arrows
+@onready var dash_count = max_dashes
+@onready var boomer_count = max_boomer
 
 func _physics_process(delta: float) -> void:
 	$Label.text = "first_click: "  + str(first_click) + "\ndouble_click: " + str(double_click)
@@ -58,21 +62,23 @@ func _physics_process(delta: float) -> void:
 			applied_forces = Vector2.ZERO
 
 		if Input.is_action_pressed("dash_trigger"):
-			if Input.is_action_pressed("jump"):
+			if Input.is_action_pressed("jump") and dash_count > 0:
 				primed_dash = true
 				Engine.time_scale = 0.05
 				$DirectionPivot.show()
 				$DirectionPivot/Bow.hide()
 				$DirectionPivot/Boomerang.hide()
-		if Input.is_action_just_released("dash_trigger") and primed_dash:
+		if Input.is_action_just_released("dash_trigger") and primed_dash and dash_count > 0:
 			Engine.time_scale = 1.0
 			$DirectionPivot.hide()
 			dashing = MAX_DASH_FRAMES
+			dash_count -= 1
 			primed_dash = false
-		elif Input.is_action_just_released("jump") and primed_dash:
+		elif Input.is_action_just_released("jump") and primed_dash and dash_count > 0:
 			Engine.time_scale = 1.0
 			$DirectionPivot.hide()
 			dashing = MAX_DASH_FRAMES
+			dash_count -= 1
 			primed_dash = false
 
 		if Input.is_action_just_pressed("jump") and !Input.is_action_pressed("dash_trigger"):
@@ -86,7 +92,7 @@ func _physics_process(delta: float) -> void:
 			jump_buffer -= 1
 
 		if Input.is_action_just_pressed("boomerang"):
-			if first_click:
+			if first_click and boomer_count > 0:
 				double_click = true
 			else:
 				first_click = true
@@ -245,6 +251,8 @@ func instantiate_boomerang():
 	if shoot_direction.y == 1 and is_on_floor():
 		return
 
+	boomer_count -= 1
+
 	var boomerang_instance = boomerang_scene.instantiate()
 	boomerang_instance.set_direction(direction)
 	get_parent().add_child(boomerang_instance)
@@ -257,11 +265,19 @@ func kill():
 	death_particle_instance.global_position = self.global_position
 	self.global_position = initial_position
 	arrow_count = max_arrows
+	dash_count = max_dashes
+	boomer_count = max_boomer
 	$AnimatedSprite2D.flip_h = false
 	death.emit()
 
 func get_arrow_count():
 	return arrow_count
+
+func get_boomer_count():
+	return boomer_count
+
+func get_dash_count():
+	return dash_count
 
 func _on_detector_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Enemy"):

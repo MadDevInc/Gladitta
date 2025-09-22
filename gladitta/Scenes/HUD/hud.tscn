@@ -1,0 +1,50 @@
+[gd_scene load_steps=6 format=3 uid="uid://v4ixk2vs6cpt"]
+
+[ext_resource type="PackedScene" uid="uid://bfjadmqnpg80t" path="res://Scenes/HUD/Timer/timer.tscn" id="1_fkydt"]
+[ext_resource type="Script" path="res://Scenes/HUD/hud.gd" id="1_uvxq3"]
+[ext_resource type="PackedScene" uid="uid://i65wpc3p3ox8" path="res://Scenes/HUD/ArrowCounter/arrow_counter.tscn" id="2_wnd36"]
+[ext_resource type="PackedScene" uid="uid://c41f841kbsgu3" path="res://Scenes/HUD/BoomerCounter/boomer_counter.tscn" id="4_23duo"]
+[ext_resource type="PackedScene" uid="uid://dwlgkadqb1x8h" path="res://Scenes/HUD/DashCounter/dash_count.tscn" id="5_mhfvq"]
+
+[node name="HUD" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_uvxq3")
+metadata/_edit_vertical_guides_ = [296.0, 24.0]
+
+[node name="Timer" parent="." instance=ExtResource("1_fkydt")]
+layout_mode = 2
+anchors_preset = 0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 248.0
+offset_top = 223.0
+offset_right = 296.0
+offset_bottom = 239.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 24.0
+offset_top = -17.0
+offset_right = -24.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 16
+
+[node name="ArrowCounter" parent="HBoxContainer" instance=ExtResource("2_wnd36")]
+layout_mode = 2
+
+[node name="BoomerCounter" parent="HBoxContainer" instance=ExtResource("4_23duo")]
+layout_mode = 2
+
+[node name="DashCount" parent="HBoxContainer" instance=ExtResource("5_mhfvq")]
+layout_mode = 2

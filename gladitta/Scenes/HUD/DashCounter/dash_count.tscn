@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dwlgkadqb1x8h"]
+
+[ext_resource type="Script" path="res://Scenes/HUD/DashCounter/dash_count.gd" id="1_86eec"]
+
+[node name="DashCount" type="HBoxContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_86eec")

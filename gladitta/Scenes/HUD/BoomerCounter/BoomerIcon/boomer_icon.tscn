@@ -1,0 +1,83 @@
+[gd_scene load_steps=7 format=3 uid="uid://blt5l5a0kk73q"]
+
+[ext_resource type="Script" path="res://Scenes/HUD/BoomerCounter/BoomerIcon/boomer_icon.gd" id="1_3wp8n"]
+[ext_resource type="Texture2D" uid="uid://josgv6eno2nw" path="res://Scenes/Characters/Player/Boomerang/Textures/boomer.png" id="1_yuqgr"]
+
+[sub_resource type="Animation" id="Animation_vf6mc"]
+resource_name = "spawn"
+length = 0.1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05), Vector2(1.5, 1.5), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_ev2xo"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05)]
+}
+
+[sub_resource type="Animation" id="Animation_gie8y"]
+resource_name = "die"
+length = 0.1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.5, 1.5), Vector2(1e-05, 1e-05)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vh5py"]
+_data = {
+"RESET": SubResource("Animation_ev2xo"),
+"die": SubResource("Animation_gie8y"),
+"spawn": SubResource("Animation_vf6mc")
+}
+
+[node name="BoomerIcon" type="Control"]
+custom_minimum_size = Vector2(5, 7)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 5.0
+offset_bottom = 7.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("1_3wp8n")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(2.5, 3.5)
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("1_yuqgr")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_vh5py")
+}
+autoplay = "spawn"
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

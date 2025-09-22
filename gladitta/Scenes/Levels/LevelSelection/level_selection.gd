@@ -14,7 +14,7 @@ func _ready() -> void:
 		new_stage_icon.display(level_preview)
 	update_hover()
 
-func _physics_process(_delta: float) -> void:
+func _process(_delta: float) -> void:
 	$Camera2D.global_position.x = lerp($Camera2D.global_position.x, $Stages.get_child(current_selection).global_position.x + $Stages.get_child(current_selection).size.x/2, 0.1)
 	if Input.is_action_just_pressed("move_left"):
 		if current_selection > 0:
@@ -30,6 +30,8 @@ func _physics_process(_delta: float) -> void:
 		update_hover()
 	if Input.is_action_just_pressed("jump"):
 		$Stages.get_child(current_selection).select()
+		GLOBAL.current_playing_level = current_selection
+		set_process(false)
 
 func update_hover():
 	for child in $Stages.get_children():

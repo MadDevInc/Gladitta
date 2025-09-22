@@ -88,12 +88,16 @@ sprite_frames = SubResource("SpriteFrames_58nbo")
 animation = &"idle"
 
 [node name="RWallDetector" type="Area2D" parent="."]
+collision_layer = 7
+collision_mask = 7
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RWallDetector"]
 position = Vector2(4.25, -0.5)
 shape = SubResource("RectangleShape2D_vk3dr")
 
 [node name="LWallDetector" type="Area2D" parent="."]
+collision_layer = 7
+collision_mask = 7
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LWallDetector"]
 position = Vector2(-4.25, -0.5)
