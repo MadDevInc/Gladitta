@@ -109,7 +109,7 @@ script = ExtResource("1_sjvh3")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_2id0o")
-animation = &"iron"
+animation = &"wood"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.5, 3)

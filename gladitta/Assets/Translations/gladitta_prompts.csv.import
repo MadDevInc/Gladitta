@@ -1,0 +1,17 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://bx7uoqqx3c63y"
+
+[deps]
+
+files=["res://Assets/Translations/gladitta_prompts.pt.translation", "res://Assets/Translations/gladitta_prompts.en.translation", "res://Assets/Translations/gladitta_prompts.zh.translation"]
+
+source_file="res://Assets/Translations/gladitta_prompts.csv"
+dest_files=["res://Assets/Translations/gladitta_prompts.pt.translation", "res://Assets/Translations/gladitta_prompts.en.translation", "res://Assets/Translations/gladitta_prompts.zh.translation"]
+
+[params]
+
+compress=true
+delimiter=0

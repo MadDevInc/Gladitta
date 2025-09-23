@@ -21,4 +21,5 @@ func select():
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "select":
-		get_tree().change_scene_to_file("res://Scenes/Levels/Levels/level_" + str(self.get_index()) + ".tscn")
+		get_tree().change_scene_to_file(get_parent().get_parent().levels_folder + "level_" + str(self.get_index()) + ".tscn")
+		

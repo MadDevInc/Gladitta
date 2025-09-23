@@ -22,8 +22,12 @@ func open():
 		obtained_medal = 2
 	elif level_time < silver_time:
 		obtained_medal = 1
+	elif level_time < bronze_time:
+		obtained_medal = 0
+	else:
+		obtained_medal = -1
 
-	if GLOBAL.current_playing_level > GLOBAL.player_progress.size():
+	if GLOBAL.current_playing_level > GLOBAL.player_progress.size() - 1:
 		var stats = {
 			"time" : level_time,
 			"medal": obtained_medal

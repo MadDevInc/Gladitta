@@ -2,7 +2,7 @@ extends Area2D
 
 signal level_finished
 
-@export_enum("iron", "wood") var door_type = "iron"
+@export_enum("iron", "wood") var door_type = "wood"
 
 @export var locked = true
 
