@@ -8,6 +8,7 @@ var max_selection = 0
 var stage_icon_scene = preload("res://Scenes/Templates/LevelSelectionTemplate/StageIcon/stage_icon.tscn")
 
 func _ready() -> void:
+	SAVEMANAGER.load_game()
 	var files = DirAccess.get_files_at(levels_folder)
 	for i in range(files.size()):
 		var new_stage_icon = stage_icon_scene.instantiate()
@@ -43,3 +44,7 @@ func update_hover():
 			child.hover()
 		else:
 			child.unhover()
+
+	if GLOBAL.player_progress.size() > 0:
+		$Camera2D/BestTimeDisplay.set_time(GLOBAL.player_progress[current_selection].time)
+		$Camera2D/MedalDisplay.set_medal(GLOBAL.player_progress[current_selection].medal)

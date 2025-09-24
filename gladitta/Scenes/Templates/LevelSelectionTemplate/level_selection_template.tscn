@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://umwkft7ae34l"]
+[gd_scene load_steps=4 format=3 uid="uid://umwkft7ae34l"]
 
 [ext_resource type="Script" path="res://Scenes/Templates/LevelSelectionTemplate/level_selection_template.gd" id="1_ya1lc"]
+[ext_resource type="PackedScene" uid="uid://bfy1tswjxa1f5" path="res://Scenes/Templates/LevelSelectionTemplate/BestTimeDisplay/best_time_display.tscn" id="2_skho7"]
+[ext_resource type="PackedScene" uid="uid://b6eh6oblbunxf" path="res://Scenes/Templates/LevelSelectionTemplate/MedalDisplay/medal_display.tscn" id="3_swq8g"]
 
 [node name="LevelSelection" type="Control"]
 layout_mode = 3
@@ -25,3 +27,15 @@ alignment = 1
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(0, 120)
+
+[node name="BestTimeDisplay" parent="Camera2D" instance=ExtResource("2_skho7")]
+offset_left = -160.0
+offset_top = -120.0
+offset_right = -11.0
+offset_bottom = -103.0
+
+[node name="MedalDisplay" parent="Camera2D" instance=ExtResource("3_swq8g")]
+offset_left = 90.0
+offset_top = -120.0
+offset_right = 160.0
+offset_bottom = -96.0
