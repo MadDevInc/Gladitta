@@ -108,7 +108,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"hover",
-"speed": 36.0
+"speed": 12.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -140,7 +140,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"unhover",
-"speed": 36.0
+"speed": 12.0
 }]
 
 [sub_resource type="Animation" id="Animation_g5ujt"]
@@ -276,8 +276,6 @@ render_target_update_mode = 0
 position = Vector2(16, 8)
 sprite_frames = SubResource("SpriteFrames_r5i6e")
 animation = &"hover"
-frame = 8
-frame_progress = 1.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

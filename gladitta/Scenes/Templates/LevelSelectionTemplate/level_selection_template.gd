@@ -3,6 +3,7 @@ extends Control
 @export var levels_folder : String
 
 var current_selection = 0
+var max_selection = 0
 
 var stage_icon_scene = preload("res://Scenes/Templates/LevelSelectionTemplate/StageIcon/stage_icon.tscn")
 
@@ -17,15 +18,16 @@ func _ready() -> void:
 	update_hover()
 
 func _process(_delta: float) -> void:
-	$Camera2D.global_position.x = lerp($Camera2D.global_position.x, $Stages.get_child(current_selection).global_position.x + $Stages.get_child(current_selection).size.x/2, 0.1)
+	if $Stages.get_child_count() > 0:
+		$Camera2D.global_position.x = lerp($Camera2D.global_position.x, $Stages.get_child(current_selection).global_position.x + $Stages.get_child(current_selection).size.x/2, 0.1)
 	if Input.is_action_just_pressed("move_left"):
 		if current_selection > 0:
 			current_selection -= 1
 		else:
-			current_selection = $Stages.get_child_count() - 1
+			current_selection = max_selection
 		update_hover()
 	if Input.is_action_just_pressed("move_right"):
-		if current_selection < $Stages.get_child_count() - 1:
+		if current_selection < max_selection:
 			current_selection += 1
 		else:
 			current_selection = 0
