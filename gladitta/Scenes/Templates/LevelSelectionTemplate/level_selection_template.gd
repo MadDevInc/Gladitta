@@ -8,7 +8,10 @@ var max_selection = 0
 var stage_icon_scene = preload("res://Scenes/Templates/LevelSelectionTemplate/StageIcon/stage_icon.tscn")
 
 func _ready() -> void:
+#ESSA REGIÃO DEVE SER REMOVIDA É APENAS PARA TESTE
 	SAVEMANAGER.load_game()
+	TranslationServer.set_locale("zh")
+#FIM DA REGIAO DE TESTE
 	var files = DirAccess.get_files_at(levels_folder)
 	for i in range(files.size()):
 		var new_stage_icon = stage_icon_scene.instantiate()

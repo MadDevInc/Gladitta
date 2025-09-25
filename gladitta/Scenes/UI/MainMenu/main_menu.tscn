@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://cqcmb1t3ut0cs"]
+
+[ext_resource type="Script" path="res://Scenes/MainMenu/main_menu.gd" id="1_xd8mk"]
+[ext_resource type="PackedScene" uid="uid://s0lqj25qsa0c" path="res://Scenes/UI/Buttons/UIButton/ui_button.tscn" id="2_y716p"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_xd8mk")
+
+[node name="PauseMenuButton" parent="." instance=ExtResource("2_y716p")]
+layout_mode = 1
+script = null
