@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=4 uid="uid://cgnxr1wyr6dvi"]
+[gd_scene load_steps=3 format=4 uid="uid://cgnxr1wyr6dvi"]
 
 [ext_resource type="PackedScene" uid="uid://c3wi3k4u6gdm7" path="res://Scenes/Templates/Level/level_template.tscn" id="1_k8vii"]
+[ext_resource type="PackedScene" uid="uid://bl8fsnxhtuf6d" path="res://Scenes/UI/ButtonPrompt/button_prompt.tscn" id="2_jg7vr"]
 
 [node name="Level" instance=ExtResource("1_k8vii")]
 gold_medal = 3.5
@@ -16,12 +17,8 @@ position = Vector2(273, 144)
 [node name="Player" parent="." index="3"]
 position = Vector2(44, 147)
 
-[node name="Label" type="Label" parent="." index="5"]
-offset_left = 40.0
+[node name="ButtonPrompt" parent="." index="5" instance=ExtResource("2_jg7vr")]
 offset_top = 119.0
-offset_right = 280.0
+offset_right = 320.0
 offset_bottom = 135.0
-theme_override_font_sizes/font_size = 16
 text = "ButtonPrompt.Walk"
-horizontal_alignment = 1
-vertical_alignment = 1

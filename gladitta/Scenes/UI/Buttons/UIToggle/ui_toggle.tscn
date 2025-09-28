@@ -1,4 +1,6 @@
-[gd_scene load_steps=9 format=3 uid="uid://butgnwfcpj5ls"]
+[gd_scene load_steps=10 format=3 uid="uid://butgnwfcpj5ls"]
+
+[ext_resource type="Script" path="res://Scenes/UI/Buttons/UIToggle/ui_toggle.gd" id="1_tomoe"]
 
 [sub_resource type="Animation" id="Animation_akrbc"]
 length = 0.001
@@ -155,6 +157,7 @@ layout_mode = 3
 anchors_preset = 10
 anchor_right = 1.0
 grow_horizontal = 2
+script = ExtResource("1_tomoe")
 
 [node name="Title" type="Label" parent="."]
 custom_minimum_size = Vector2(0, 8)

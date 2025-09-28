@@ -1,17 +1,106 @@
-[gd_scene load_steps=3 format=3 uid="uid://cqcmb1t3ut0cs"]
+[gd_scene load_steps=7 format=3 uid="uid://cqcmb1t3ut0cs"]
 
-[ext_resource type="Script" path="res://Scenes/MainMenu/main_menu.gd" id="1_xd8mk"]
+[ext_resource type="Script" path="res://Scenes/UI/MainMenu/main_menu.gd" id="1_diyx0"]
 [ext_resource type="PackedScene" uid="uid://s0lqj25qsa0c" path="res://Scenes/UI/Buttons/UIButton/ui_button.tscn" id="2_y716p"]
 
+[sub_resource type="Animation" id="Animation_viirf"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_fxusu"]
+resource_name = "fade_in"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_uy2gp"]
+resource_name = "fade_out"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_76cpq"]
+_data = {
+"RESET": SubResource("Animation_viirf"),
+"fade_in": SubResource("Animation_fxusu"),
+"fade_out": SubResource("Animation_uy2gp")
+}
+
 [node name="MainMenu" type="Control"]
+modulate = Color(1, 1, 1, 0)
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_xd8mk")
+script = ExtResource("1_diyx0")
 
-[node name="PauseMenuButton" parent="." instance=ExtResource("2_y716p")]
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
-script = null
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="Title" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "GLADITTA"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Play" parent="VBoxContainer" instance=ExtResource("2_y716p")]
+layout_mode = 2
+title = "Menu.Play"
+
+[node name="Options" parent="VBoxContainer" instance=ExtResource("2_y716p")]
+layout_mode = 2
+title = "Menu.Settings"
+
+[node name="Quit" parent="VBoxContainer" instance=ExtResource("2_y716p")]
+layout_mode = 2
+title = "Menu.QuitGame"
+
+[node name="Transition" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_76cpq")
+}
+autoplay = "fade_in"
+
+[connection signal="selected" from="VBoxContainer/Play" to="." method="_on_play_selected"]
+[connection signal="selected" from="VBoxContainer/Quit" to="." method="_on_quit_selected"]
+[connection signal="animation_finished" from="Transition" to="." method="_on_transition_animation_finished"]

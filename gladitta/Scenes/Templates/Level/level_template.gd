@@ -1,5 +1,6 @@
 extends Node2D
 
+@export var dev_medal = 0.0
 @export var gold_medal = 0.0
 @export var silver_medal = 0.0
 @export var bronze_medal = 0.0

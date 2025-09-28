@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://bl8fsnxhtuf6d"]
+
+[ext_resource type="Script" path="res://Scenes/UI/ButtonPrompt/button_prompt.gd" id="1_n6oa4"]
+
+[node name="ButtonPrompt" type="Label"]
+offset_right = 96.0
+offset_bottom = 16.0
+text = "ButtonPrompt"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+script = ExtResource("1_n6oa4")
