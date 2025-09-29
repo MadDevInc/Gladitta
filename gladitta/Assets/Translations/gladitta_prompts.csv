@@ -1,8 +1,6 @@
 ,pt,en,zh
 BestTimeDisplay.Title,Melhor Tempo:,Best Time:,最佳时间:
 ,,,
-,,,
-,,,
 ButtonPrompt.Walk,use ⬅️ ➡️ para mover,use ⬅️ ➡️ to move,按下 ⬅️ ➡️ 移动
 ButtonPrompt.WalkX,use ⬅️ ➡️ para mover,use ⬅️ ➡️ to move,按下 ⬅️ ➡️ 移动
 ButtonPrompt.WalkP,use ⬅️ ➡️ para mover,use ⬅️ ➡️ to move,按下 ⬅️ ➡️ 移动
@@ -10,3 +8,26 @@ ButtonPrompt.WalkP,use ⬅️ ➡️ para mover,use ⬅️ ➡️ to move,按下
 ButtonPrompt.Jump,pressione Espaço para pular,press Spacebar to jump,按下空格键跳跃
 ButtonPrompt.JumpX,pressione A para pular,press A to jump,按下A键跳跃
 ButtonPrompt.JumpP,pressione X para pular,press X to jump,按下X键跳跃
+,,,
+ButtonPrompt.Attack,pressione Botão Esquerdo do Mouse para atacar,press Left Mouse Click to attack,按下鼠标左键攻击
+ButtonPrompt.AttackX,pressione X para atacar,press X to attack,按下X键进行攻击
+ButtonPrompt.AttackP,pressione ☐ para atacar,press ☐ to attack,按下☐键进行攻击
+,,,
+ButtonPrompt.Reset,pressione R para reiniciar,,
+ButtonPrompt.ResetX,pressione LB para reiniciar,,
+ButtonPrompt.ResetP,pressione R1 para reiniciar,,
+,,,
+ButtonPrompt.Objective,elimine todos os inimigos para avançar!,defeat all enemies to advance!,消灭所有敌人来前进！
+,,,
+Menu.Play,JOGAR,PLAY,开始游戏
+Menu.Settings,OPÇÕES,SETTINGS,设置 
+Menu.QuitGame,SAIR,QUIT,退出游戏
+Menu.Resume,RETOMAR,RESUME,继续游戏
+Menu.QuitLevel,SAIR DO NÍVEL,QUIT LEVEL,退出关
+Menu.QuitMenu,SAIR PARA O MENU,QUIT TO MENU,返回主菜单
+,,,
+,,,
+,,,
+Options.Language,IDIOMA,LANGUAGE,语言 
+Options.Music,MÚSICA,MUSIC,音乐
+Options.Sounds,SONS,SOUNDS,音效
