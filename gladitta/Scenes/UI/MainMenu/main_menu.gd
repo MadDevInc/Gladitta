@@ -4,11 +4,34 @@ var current_selection = 0
 
 var next_scene = ""
 
+func _ready() -> void:
+	update_hover()
+
 func _physics_process(delta: float) -> void:
-	pass
+	if Input.is_action_just_pressed("move_down"):
+		if current_selection < $VBoxContainer.get_child_count() - 1:
+			current_selection += 1
+		else:
+			current_selection = 0
+		update_hover()
+	if Input.is_action_just_pressed("move_up"):
+		if current_selection > 0:
+			current_selection -= 1
+		else:
+			current_selection = $VBoxContainer.get_child_count() - 1
+		update_hover()
+	if Input.is_action_just_pressed("jump"):
+		$VBoxContainer.get_child(current_selection).select()
+
+func update_hover():
+	for child in $VBoxContainer.get_children():
+		if child.get_index() == current_selection:
+			child.focus()
+		else:
+			child.unfocus()
 
 func _on_play_selected() -> void:
-	next_scene = load("res://Scenes/Worlds/Surface/LevelSelection/surface_level_selection.tscn")
+	next_scene = "res://Scenes/Worlds/Surface/LevelSelection/surface_level_selection.tscn"
 	$Transition.play("fade_out")
 
 func _on_quit_selected() -> void:

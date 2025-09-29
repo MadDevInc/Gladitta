@@ -9,8 +9,8 @@ var stage_icon_scene = preload("res://Scenes/Templates/LevelSelectionTemplate/St
 
 func _ready() -> void:
 #ESSA REGIÃO DEVE SER REMOVIDA É APENAS PARA TESTE
-	SAVEMANAGER.load_game()
-	TranslationServer.set_locale("zh")
+	#SAVEMANAGER.load_game()
+	#TranslationServer.set_locale("zh")
 #FIM DA REGIAO DE TESTE
 	var files = DirAccess.get_files_at(levels_folder)
 	for i in range(files.size()):

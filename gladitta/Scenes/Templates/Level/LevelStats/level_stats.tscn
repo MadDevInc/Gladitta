@@ -20,35 +20,43 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -88.0
-offset_top = -88.0
-offset_right = 88.0
-offset_bottom = 88.0
+offset_left = -110.0
+offset_top = -110.0
+offset_right = 110.0
+offset_bottom = 110.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.501961)
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Background"]
+[node name="Time" type="Label" parent="Background"]
 layout_mode = 1
-anchors_preset = 13
-anchor_left = 0.5
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -37.5
-offset_right = 37.5
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 24.0
 grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/separation = 12
-alignment = 1
-
-[node name="Time" type="Label" parent="Background/VBoxContainer"]
-layout_mode = 2
 theme_override_fonts/font = ExtResource("2_p3qw2")
 text = "Tempo Atual"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="VBoxContainer" type="VBoxContainer" parent="Background"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -37.5
+offset_top = -57.0
+offset_right = 37.5
+offset_bottom = 57.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 12
+alignment = 1
+
 [node name="Bronze" type="HBoxContainer" parent="Background/VBoxContainer"]
+modulate = Color(1, 1, 1, 0.12549)
 layout_mode = 2
 alignment = 1
 
@@ -64,6 +72,7 @@ size_flags_vertical = 4
 color = Color(0.604672, 0.288354, 1.92523e-07, 1)
 
 [node name="Silver" type="HBoxContainer" parent="Background/VBoxContainer"]
+modulate = Color(1, 1, 1, 0.12549)
 layout_mode = 2
 alignment = 1
 
@@ -79,6 +88,7 @@ size_flags_vertical = 4
 color = Color(0.680321, 0.680321, 0.680321, 1)
 
 [node name="Gold" type="HBoxContainer" parent="Background/VBoxContainer"]
+modulate = Color(1, 1, 1, 0.12549)
 layout_mode = 2
 alignment = 1
 
@@ -92,3 +102,20 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 color = Color(1, 0.780392, 0, 1)
+
+[node name="Developer" type="HBoxContainer" parent="Background/VBoxContainer"]
+visible = false
+modulate = Color(1, 1, 1, 0.12549)
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="Background/VBoxContainer/Developer"]
+layout_mode = 2
+text = "00:05"
+
+[node name="ColorRect" type="ColorRect" parent="Background/VBoxContainer/Developer"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+color = Color(0.321569, 0.737255, 1, 1)
