@@ -36,7 +36,6 @@ func open():
 			if child.get_index() <= obtained_medal:
 				child.modulate.a = 1.0
 	if obtained_medal >= 3:
-		print()
 		$Background/VBoxContainer/Developer.show()
 
 	if GLOBAL.current_playing_level > GLOBAL.player_progress.size() - 1:
@@ -58,6 +57,9 @@ func _process(_delta: float) -> void:
 		get_tree().paused = false
 		get_tree().reload_current_scene()
 	if Input.is_action_just_pressed("jump"):
+		get_tree().paused = false
+		GLOBAL.current_playing_level += 1
 		get_tree().change_scene_to_file("res://Scenes/Worlds/Surface/Levels/level_" + str(GLOBAL.current_playing_level + 1) + ".tscn")
 	if Input.is_action_just_pressed("shoot"):
+		get_tree().paused = false
 		get_tree().change_scene_to_file("res://Scenes/Worlds/Surface/LevelSelection/surface_level_selection.tscn")

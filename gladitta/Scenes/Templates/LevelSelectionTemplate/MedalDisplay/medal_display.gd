@@ -3,6 +3,6 @@ extends Control
 func set_medal(medals):
 	for child in $HBoxContainer.get_children():
 		if child.get_index() <= medals:
-			child.show()
+			child.modulate.a = 1.0
 		else:
-			child.hide()
+			child.modulate.a = 0.125

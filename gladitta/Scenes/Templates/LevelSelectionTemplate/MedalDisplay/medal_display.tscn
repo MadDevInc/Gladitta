@@ -18,6 +18,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="ColorRect" type="ColorRect" parent="HBoxContainer"]
+modulate = Color(1, 1, 1, 0.125)
 custom_minimum_size = Vector2(20, 20)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -25,6 +26,7 @@ size_flags_vertical = 4
 color = Color(0.604672, 0.288354, 1.92523e-07, 1)
 
 [node name="ColorRect2" type="ColorRect" parent="HBoxContainer"]
+modulate = Color(1, 1, 1, 0.125)
 custom_minimum_size = Vector2(20, 20)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -32,6 +34,7 @@ size_flags_vertical = 4
 color = Color(0.678431, 0.678431, 0.678431, 1)
 
 [node name="ColorRect3" type="ColorRect" parent="HBoxContainer"]
+modulate = Color(1, 1, 1, 0.125)
 custom_minimum_size = Vector2(20, 20)
 layout_mode = 2
 size_flags_horizontal = 4

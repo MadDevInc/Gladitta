@@ -95,6 +95,7 @@ size_flags_vertical = 4
 color = Color(1, 0.780392, 0, 1)
 
 [node name="Developer" type="HBoxContainer" parent="Background/VBoxContainer"]
+visible = false
 modulate = Color(1, 1, 1, 0.12549)
 layout_mode = 2
 alignment = 1

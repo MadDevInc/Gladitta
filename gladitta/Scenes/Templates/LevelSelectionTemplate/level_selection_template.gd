@@ -19,6 +19,9 @@ func _ready() -> void:
 
 		var level_preview = load(levels_folder + "level_" + str(i) + ".tscn").instantiate()
 		new_stage_icon.display(level_preview)
+
+	max_selection = GLOBAL.player_progress.size() - 1
+
 	update_hover()
 
 func _process(_delta: float) -> void:
