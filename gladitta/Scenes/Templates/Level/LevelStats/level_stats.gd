@@ -38,7 +38,7 @@ func open():
 	if obtained_medal >= 3:
 		$Background/VBoxContainer/Developer.show()
 
-	if GLOBAL.current_playing_level > GLOBAL.player_progress.size() - 1:
+	if GLOBAL.current_playing_level == GLOBAL.player_progress.size():
 		var stats = {
 			"time" : level_time,
 			"medal": obtained_medal

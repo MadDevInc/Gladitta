@@ -11,7 +11,9 @@ config_version=5
 [application]
 
 config/name="Gladitta"
-run/main_scene="res://ambiente_de_teste.tscn"
+run/main_scene="res://Scenes/UI/MainMenu/main_menu.tscn"
+config/use_custom_user_dir=true
+config/custom_user_dir_name="MadDev/Gladitta"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 run/max_fps=60
 config/icon="res://icon.svg"

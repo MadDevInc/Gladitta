@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://dqc56xn0gsu4u"]
+
+[node name="SaveDisplay" type="RichTextLabel"]
+custom_minimum_size = Vector2(0, 64)
+offset_right = 96.0
+offset_bottom = 64.0
+text = "nenhum save encontrado"

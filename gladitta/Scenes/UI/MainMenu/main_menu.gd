@@ -7,7 +7,7 @@ var next_scene = ""
 func _ready() -> void:
 	update_hover()
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if Input.is_action_just_pressed("move_down"):
 		if current_selection < $VBoxContainer.get_child_count() - 1:
 			current_selection += 1

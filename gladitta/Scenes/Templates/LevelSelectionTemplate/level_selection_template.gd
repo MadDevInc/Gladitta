@@ -20,11 +20,12 @@ func _ready() -> void:
 		var level_preview = load(levels_folder + "level_" + str(i) + ".tscn").instantiate()
 		new_stage_icon.display(level_preview)
 
-	max_selection = GLOBAL.player_progress.size() - 1
+	max_selection = GLOBAL.player_progress.size()
 
 	update_hover()
 
 func _process(_delta: float) -> void:
+	print(current_selection)
 	if $Stages.get_child_count() > 0:
 		$Camera2D.global_position.x = lerp($Camera2D.global_position.x, $Stages.get_child(current_selection).global_position.x + $Stages.get_child(current_selection).size.x/2, 0.1)
 	if Input.is_action_just_pressed("move_left"):
@@ -51,6 +52,9 @@ func update_hover():
 		else:
 			child.unhover()
 
-	if GLOBAL.player_progress.size() > 0:
+	if current_selection < GLOBAL.player_progress.size():
 		$Camera2D/BestTimeDisplay.set_time(GLOBAL.player_progress[current_selection].time)
 		$Camera2D/MedalDisplay.set_medal(GLOBAL.player_progress[current_selection].medal)
+	else:
+		$Camera2D/BestTimeDisplay.set_time(0.0)
+		$Camera2D/MedalDisplay.set_medal(-1)

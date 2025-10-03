@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://drgxkhuopv6cf"]
+[gd_scene load_steps=5 format=3 uid="uid://drgxkhuopv6cf"]
 
 [ext_resource type="Script" path="res://addons/gamesaver/save_dock.gd" id="1_amrd8"]
-[ext_resource type="Texture2D" uid="uid://delav4hm6nyij" path="res://addons/gamesaver/maddev_logo_claro.png" id="2_1e60v"]
+[ext_resource type="Texture2D" uid="uid://delav4hm6nyij" path="res://addons/gamesaver/icons/maddev_logo_claro.png" id="2_1e60v"]
+[ext_resource type="Texture2D" uid="uid://bvv7q05ld2cf" path="res://addons/gamesaver/icons/remove_icon.png" id="2_reibg"]
+[ext_resource type="Texture2D" uid="uid://cyiqmrhktb7ag" path="res://addons/gamesaver/icons/add_icon.png" id="3_1ha2n"]
 
 [node name="Save" type="Control"]
 layout_mode = 3
@@ -24,13 +26,40 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Title" type="Label" parent="ScrollContainer/VBoxContainer"]
+visible = false
 layout_mode = 2
 text = "Conteúdo do Save:"
 
-[node name="SaveDataDisplay" type="RichTextLabel" parent="ScrollContainer/VBoxContainer"]
+[node name="ManageSlots" type="HBoxContainer" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/ManageSlots"]
+custom_minimum_size = Vector2(118, 0)
+layout_mode = 2
+text = "Save Slots:"
+
+[node name="RemoveSlot" type="Button" parent="ScrollContainer/VBoxContainer/ManageSlots"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+icon = ExtResource("2_reibg")
+
+[node name="AddSlot" type="Button" parent="ScrollContainer/VBoxContainer/ManageSlots"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+icon = ExtResource("3_1ha2n")
+
+[node name="TabContainer" type="TabContainer" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+current_tab = 0
+
+[node name="Save" type="RichTextLabel" parent="ScrollContainer/VBoxContainer/TabContainer"]
 custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
-text = "{ \"id\": 6, \"moedas\": [0, 0, 1, 2], \"brunao\": \"dev\" }"
+text = "nenhum save encontrado"
+metadata/_tab_index = 0
 
 [node name="Title2" type="Label" parent="ScrollContainer/VBoxContainer"]
 layout_mode = 2
@@ -55,7 +84,7 @@ text = "Local do Save:"
 [node name="SavePathDisplay" type="RichTextLabel" parent="ScrollContainer/VBoxContainer"]
 layout_mode = 2
 focus_mode = 2
-text = "C:/Users/Bruno/AppData/Roaming/Godot/app_userdata/gamesaver/save.cfg"
+text = "C:/Users/rosab/AppData/Roaming/MadDev/ProjectModules/"
 fit_content = true
 selection_enabled = true
 deselect_on_focus_loss_enabled = false
@@ -77,6 +106,8 @@ size_flags_vertical = 4
 texture = ExtResource("2_1e60v")
 expand_mode = 1
 
+[connection signal="pressed" from="ScrollContainer/VBoxContainer/ManageSlots/RemoveSlot" to="." method="_on_remove_slot_pressed"]
+[connection signal="pressed" from="ScrollContainer/VBoxContainer/ManageSlots/AddSlot" to="." method="_on_add_slot_pressed"]
 [connection signal="pressed" from="ScrollContainer/VBoxContainer/Edit" to="." method="_on_edit_pressed"]
 [connection signal="pressed" from="ScrollContainer/VBoxContainer/OpenSaveFolder" to="." method="_on_open_save_folder_pressed"]
 [connection signal="pressed" from="ScrollContainer/VBoxContainer/DeleteSave" to="." method="_on_delete_save_pressed"]
