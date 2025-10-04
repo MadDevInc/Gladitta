@@ -17,8 +17,9 @@ position = Vector2(273, 160)
 [node name="Player" parent="." index="3"]
 position = Vector2(44, 163)
 
-[node name="ButtonPrompt" parent="." index="5" instance=ExtResource("3_u3itm")]
+[node name="ButtonPrompt" parent="." index="6" instance=ExtResource("3_u3itm")]
+offset_left = 40.0
 offset_top = 103.0
-offset_right = 320.0
+offset_right = 280.0
 offset_bottom = 119.0
 text = "ButtonPrompt.Jump"

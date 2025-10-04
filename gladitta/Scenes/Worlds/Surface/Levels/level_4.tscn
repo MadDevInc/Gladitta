@@ -21,11 +21,11 @@ position = Vector2(91, 180)
 [node name="EnemySpawner2" parent="Enemies" index="1" instance=ExtResource("2_g06qa")]
 position = Vector2(187, 172)
 
-[node name="Label" type="Label" parent="." index="5"]
+[node name="Label" type="Label" parent="." index="6"]
 offset_left = 40.0
-offset_top = 87.0
+offset_top = 95.0
 offset_right = 280.0
-offset_bottom = 103.0
+offset_bottom = 111.0
 text = "ButtonPrompt.Objective"
 horizontal_alignment = 1
 vertical_alignment = 1

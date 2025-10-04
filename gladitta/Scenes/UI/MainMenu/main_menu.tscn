@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://cqcmb1t3ut0cs"]
+[gd_scene load_steps=8 format=3 uid="uid://cqcmb1t3ut0cs"]
 
 [ext_resource type="Script" path="res://Scenes/UI/MainMenu/main_menu.gd" id="1_diyx0"]
 [ext_resource type="PackedScene" uid="uid://s0lqj25qsa0c" path="res://Scenes/UI/Buttons/UIButton/ui_button.tscn" id="2_y716p"]
+[ext_resource type="PackedScene" uid="uid://3mhm84kopwwm" path="res://Scenes/UI/Options/options.tscn" id="3_ppspk"]
 
 [sub_resource type="Animation" id="Animation_viirf"]
 length = 0.001
@@ -76,7 +77,7 @@ text = "GLADITTA"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="Menu" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -86,17 +87,26 @@ grow_vertical = 2
 theme_override_constants/separation = 16
 alignment = 1
 
-[node name="Play" parent="VBoxContainer" instance=ExtResource("2_y716p")]
+[node name="Play" parent="Menu" instance=ExtResource("2_y716p")]
 layout_mode = 2
 title = "Menu.Play"
 
-[node name="Options" parent="VBoxContainer" instance=ExtResource("2_y716p")]
+[node name="Options" parent="Menu" instance=ExtResource("2_y716p")]
 layout_mode = 2
 title = "Menu.Settings"
 
-[node name="Quit" parent="VBoxContainer" instance=ExtResource("2_y716p")]
+[node name="Quit" parent="Menu" instance=ExtResource("2_y716p")]
 layout_mode = 2
 title = "Menu.QuitGame"
+
+[node name="Options" parent="." instance=ExtResource("3_ppspk")]
+visible = false
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+grow_horizontal = 1
+grow_vertical = 1
 
 [node name="Transition" type="AnimationPlayer" parent="."]
 libraries = {
@@ -104,6 +114,7 @@ libraries = {
 }
 autoplay = "fade_in"
 
-[connection signal="selected" from="VBoxContainer/Play" to="." method="_on_play_selected"]
-[connection signal="selected" from="VBoxContainer/Quit" to="." method="_on_quit_selected"]
+[connection signal="selected" from="Menu/Play" to="." method="_on_play_selected"]
+[connection signal="selected" from="Menu/Options" to="." method="_on_options_selected"]
+[connection signal="selected" from="Menu/Quit" to="." method="_on_quit_selected"]
 [connection signal="animation_finished" from="Transition" to="." method="_on_transition_animation_finished"]

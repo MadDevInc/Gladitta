@@ -25,7 +25,6 @@ func _ready() -> void:
 	update_hover()
 
 func _process(_delta: float) -> void:
-	print(current_selection)
 	if $Stages.get_child_count() > 0:
 		$Camera2D.global_position.x = lerp($Camera2D.global_position.x, $Stages.get_child(current_selection).global_position.x + $Stages.get_child(current_selection).size.x/2, 0.1)
 	if Input.is_action_just_pressed("move_left"):

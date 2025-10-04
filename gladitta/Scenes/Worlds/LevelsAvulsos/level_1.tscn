@@ -26,5 +26,5 @@ direction = -1
 [node name="EnemySpawner3" parent="Enemies" index="2" instance=ExtResource("2_ui2x5")]
 position = Vector2(140, 180)
 
-[node name="Spikes" parent="." index="5" instance=ExtResource("3_sgbyg")]
+[node name="Spikes" parent="." index="6" instance=ExtResource("3_sgbyg")]
 tile_map_data = PackedByteArray("AAAKABcAAwABAAAAAAALABcAAwABAAAAAAAMABcAAwABAAAAAAAaABgAAwABAAAAAAAbABgAAwABAAAAAAA=")

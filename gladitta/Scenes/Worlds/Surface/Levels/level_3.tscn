@@ -14,7 +14,7 @@ position = Vector2(273, 160)
 [node name="Player" parent="." index="3"]
 position = Vector2(45, 163)
 
-[node name="ButtonPrompt" parent="." index="5" instance=ExtResource("2_xdq8d")]
+[node name="ButtonPrompt" parent="." index="6" instance=ExtResource("2_xdq8d")]
 offset_left = 40.0
 offset_top = 103.0
 offset_right = 280.0

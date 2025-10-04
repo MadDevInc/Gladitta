@@ -74,12 +74,14 @@ func _physics_process(delta: float) -> void:
 			dashing = MAX_DASH_FRAMES
 			dash_count -= 1
 			primed_dash = false
+			get_parent().shake_camera()
 		elif Input.is_action_just_released("jump") and primed_dash and dash_count > 0:
 			Engine.time_scale = 1.0
 			$DirectionPivot.hide()
 			dashing = MAX_DASH_FRAMES
 			dash_count -= 1
 			primed_dash = false
+			get_parent().shake_camera()
 
 		if Input.is_action_just_pressed("jump") and !Input.is_action_pressed("dash_trigger"):
 			if is_on_floor():
@@ -201,6 +203,7 @@ func launch(dir):
 func _on_sword_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Enemy"):
 		body.kill()
+		get_parent().shake_camera()
 	if body != self:
 		if $Sword.position.y == 0 and is_on_floor():
 			return
@@ -232,6 +235,7 @@ func instantiate_arrow():
 	if shoot_direction.y == 1 and is_on_floor():
 		return
 
+	get_parent().shake_camera()
 	arrow_count -= 1
 
 	var arrow_instance = arrow_scene.instantiate()
@@ -251,6 +255,7 @@ func instantiate_boomerang():
 	if shoot_direction.y == 1 and is_on_floor():
 		return
 
+	get_parent().shake_camera()
 	boomer_count -= 1
 
 	var boomerang_instance = boomerang_scene.instantiate()
