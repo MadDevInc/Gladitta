@@ -21,7 +21,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_fxusu"]
 resource_name = "fade_in"
-length = 0.5
+length = 0.6
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -37,7 +37,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_uy2gp"]
 resource_name = "fade_out"
-length = 0.5
+length = 0.6
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -70,9 +70,9 @@ script = ExtResource("1_diyx0")
 
 [node name="Title" type="Label" parent="."]
 layout_mode = 2
-offset_top = 51.0
+offset_top = 19.0
 offset_right = 320.0
-offset_bottom = 67.0
+offset_bottom = 35.0
 text = "GLADITTA"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -101,12 +101,7 @@ title = "Menu.QuitGame"
 
 [node name="Options" parent="." instance=ExtResource("3_ppspk")]
 visible = false
-layout_mode = 0
-anchors_preset = 0
-anchor_right = 0.0
-anchor_bottom = 0.0
-grow_horizontal = 1
-grow_vertical = 1
+layout_mode = 1
 
 [node name="Transition" type="AnimationPlayer" parent="."]
 libraries = {
@@ -117,4 +112,5 @@ autoplay = "fade_in"
 [connection signal="selected" from="Menu/Play" to="." method="_on_play_selected"]
 [connection signal="selected" from="Menu/Options" to="." method="_on_options_selected"]
 [connection signal="selected" from="Menu/Quit" to="." method="_on_quit_selected"]
+[connection signal="closed" from="Options" to="." method="_on_options_closed"]
 [connection signal="animation_finished" from="Transition" to="." method="_on_transition_animation_finished"]

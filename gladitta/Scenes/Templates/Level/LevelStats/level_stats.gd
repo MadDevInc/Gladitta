@@ -56,10 +56,13 @@ func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("reset"):
 		get_tree().paused = false
 		get_tree().reload_current_scene()
+		set_process(false)
 	if Input.is_action_just_pressed("jump"):
 		get_tree().paused = false
 		GLOBAL.current_playing_level += 1
 		get_tree().change_scene_to_file("res://Scenes/Worlds/Surface/Levels/level_" + str(GLOBAL.current_playing_level + 1) + ".tscn")
+		set_process(false)
 	if Input.is_action_just_pressed("shoot"):
 		get_tree().paused = false
 		get_tree().change_scene_to_file("res://Scenes/Worlds/Surface/LevelSelection/surface_level_selection.tscn")
+		set_process(false)

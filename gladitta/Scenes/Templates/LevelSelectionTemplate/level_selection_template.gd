@@ -20,7 +20,8 @@ func _ready() -> void:
 		var level_preview = load(levels_folder + "level_" + str(i) + ".tscn").instantiate()
 		new_stage_icon.display(level_preview)
 
-	max_selection = GLOBAL.player_progress.size()
+	if GLOBAL.player_progress.size() > 0:
+		max_selection = GLOBAL.player_progress.size()
 
 	update_hover()
 

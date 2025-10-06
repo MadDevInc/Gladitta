@@ -273,6 +273,7 @@ func kill():
 	dash_count = max_dashes
 	boomer_count = max_boomer
 	$AnimatedSprite2D.flip_h = false
+	Engine.time_scale = 1.0
 	death.emit()
 
 func get_arrow_count():

@@ -9,6 +9,8 @@ var flying : bool
 var moving : bool
 var direction : Directions = Directions.right
 
+var switch_safe_guard = 2
+
 #was_launched precisa de um buffer pra garantir que o check is_on_floor
 #na linha25  não flipe a variável no instante em que ela muda
 var was_launched_buffer = 0
@@ -33,7 +35,10 @@ func _physics_process(delta: float) -> void:
 
 		$AnimatedSprite2D.play("run")
 
-		if !was_launched:
+		if switch_safe_guard > 0:
+			switch_safe_guard -= 1
+
+		if !was_launched and switch_safe_guard <= 0:
 			if $LSlopeDetector.get_collider() == null and direction == Directions.left:
 				switch_directions()
 			

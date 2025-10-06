@@ -36,7 +36,8 @@ func _on_play_selected() -> void:
 	$Transition.play("fade_out")
 
 func _on_options_selected() -> void:
-	$Menu/Options.open()
+	$Menu.hide()
+	$Options.open()
 
 func _on_quit_selected() -> void:
 	get_tree().quit()
@@ -44,3 +45,6 @@ func _on_quit_selected() -> void:
 func _on_transition_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "fade_out":
 		get_tree().change_scene_to_file(next_scene)
+
+func _on_options_closed() -> void:
+	$Menu.show()

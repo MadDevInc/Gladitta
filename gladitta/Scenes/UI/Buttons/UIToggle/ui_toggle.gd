@@ -26,24 +26,24 @@ func hover_up():
 func set_value(new_value):
 	value = new_value
 	if value:
-		$HBoxContainer/Value.text = "MENU_YES"
+		$HBoxContainer/Value.text = "Options.Yes"
 	else:
-		$HBoxContainer/Value.text = "MENU_NO"
+		$HBoxContainer/Value.text = "Options.No"
 
 func add_value():
 	value = !value
 	if value:
-		$HBoxContainer/Value.text = "MENU_YES"
+		$HBoxContainer/Value.text = "Options.Yes"
 	else:
-		$HBoxContainer/Value.text = "MENU_NO"
+		$HBoxContainer/Value.text = "Options.No"
 	$change_value_anims.play("add_value")
 
 func remove_value():
 	value = !value
 	if value:
-		$HBoxContainer/Value.text = "MENU_YES"
+		$HBoxContainer/Value.text = "Options.Yes"
 	else:
-		$HBoxContainer/Value.text = "MENU_NO"
+		$HBoxContainer/Value.text = "Options.No"
 	$change_value_anims.play("remove_value")
 
 func get_value():
