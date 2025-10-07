@@ -33,3 +33,7 @@ Options.Sounds,SONS,SOUNDS,音效
 Options.Back,VOLTAR,BACK,
 Options.Yes,SIM,YES,
 Options.No,NÃO,NO,
+,,,
+WorldSelection.Surface,SUPERFÍCIE,SURFACE,地面
+WorldSelection.Dungeon,MASMORRA,DUNGEON,地下城
+WorldSelection.Depths,PROFUNDEZAS,DEPTHS,深渊

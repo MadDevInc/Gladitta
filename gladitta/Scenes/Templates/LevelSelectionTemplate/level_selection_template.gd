@@ -16,6 +16,8 @@ func _ready() -> void:
 	for i in range(files.size()):
 		var new_stage_icon = stage_icon_scene.instantiate()
 		$Stages.add_child(new_stage_icon)
+		if i < GLOBAL.player_progress.size():
+			new_stage_icon.set_medal(GLOBAL.player_progress[i].medal)
 
 		var level_preview = load(levels_folder + "level_" + str(i) + ".tscn").instantiate()
 		new_stage_icon.display(level_preview)
@@ -27,7 +29,7 @@ func _ready() -> void:
 
 func _process(_delta: float) -> void:
 	if $Stages.get_child_count() > 0:
-		$Camera2D.global_position.x = lerp($Camera2D.global_position.x, $Stages.get_child(current_selection).global_position.x + $Stages.get_child(current_selection).size.x/2, 0.1)
+		$Camera2D.global_position.x = lerp($Camera2D.global_position.x, $Stages.get_child(current_selection).global_position.x + $Stages.get_child(current_selection).size.x/2, 0.5)
 	if Input.is_action_just_pressed("move_left"):
 		if current_selection > 0:
 			current_selection -= 1
