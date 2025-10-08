@@ -17,7 +17,6 @@ func display(scene):
 	scene.process_mode = PROCESS_MODE_DISABLED
 
 func set_medal(medal_idx):
-	print(medal_idx)
 	match medal_idx:
 		0:
 			$AnimatedSprite2D.modulate = Color("9a4a00")

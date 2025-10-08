@@ -1,10 +1,65 @@
-[gd_scene load_steps=4 format=3 uid="uid://umwkft7ae34l"]
+[gd_scene load_steps=8 format=3 uid="uid://umwkft7ae34l"]
 
 [ext_resource type="Script" path="res://Scenes/Templates/LevelSelectionTemplate/level_selection_template.gd" id="1_ya1lc"]
 [ext_resource type="PackedScene" uid="uid://bfy1tswjxa1f5" path="res://Scenes/Templates/LevelSelectionTemplate/BestTimeDisplay/best_time_display.tscn" id="2_skho7"]
 [ext_resource type="PackedScene" uid="uid://b6eh6oblbunxf" path="res://Scenes/Templates/LevelSelectionTemplate/MedalDisplay/medal_display.tscn" id="3_swq8g"]
 
+[sub_resource type="Animation" id="Animation_a63vi"]
+resource_name = "fade_in"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_60rde"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_28bog"]
+resource_name = "fade_out"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ejsaa"]
+_data = {
+"RESET": SubResource("Animation_60rde"),
+"fade_in": SubResource("Animation_a63vi"),
+"fade_out": SubResource("Animation_28bog")
+}
+
 [node name="LevelSelection" type="Control"]
+modulate = Color(1, 1, 1, 0)
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -39,3 +94,11 @@ offset_left = 90.0
 offset_top = -120.0
 offset_right = 160.0
 offset_bottom = -96.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ejsaa")
+}
+autoplay = "fade_in"
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

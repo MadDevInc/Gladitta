@@ -20,7 +20,7 @@ ButtonPrompt.ResetP,pressione R1 para reiniciar,press R1 to reset,按下R1键跳
 ButtonPrompt.Objective,elimine todos os inimigos para avançar!,defeat all enemies to advance!,消灭所有敌人来前进！
 ,,,
 Menu.Play,JOGAR,PLAY,开始游戏
-Menu.Settings,OPÇÕES,SETTINGS,设置 
+Menu.Settings,OPÇÕES,SETTINGS,设置
 Menu.QuitGame,SAIR,QUIT,退出游戏
 Menu.Resume,RETOMAR,RESUME,继续游戏
 Menu.QuitLevel,SAIR DO NÍVEL,QUIT LEVEL,退出关

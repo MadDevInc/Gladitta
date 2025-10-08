@@ -7,11 +7,9 @@ var max_selection = 0
 
 var stage_icon_scene = preload("res://Scenes/Templates/LevelSelectionTemplate/StageIcon/stage_icon.tscn")
 
+var next_scene
+
 func _ready() -> void:
-#ESSA REGIÃO DEVE SER REMOVIDA É APENAS PARA TESTE
-	#SAVEMANAGER.load_game()
-	#TranslationServer.set_locale("zh")
-#FIM DA REGIAO DE TESTE
 	var files = DirAccess.get_files_at(levels_folder)
 	for i in range(files.size()):
 		var new_stage_icon = stage_icon_scene.instantiate()
@@ -46,6 +44,9 @@ func _process(_delta: float) -> void:
 		$Stages.get_child(current_selection).select()
 		GLOBAL.current_playing_level = current_selection
 		set_process(false)
+	if Input.is_action_just_pressed("shoot"):
+		transition_to("res://Scenes/UI/WorldSelection/world_selection.tscn")
+		set_process(false)
 
 func update_hover():
 	for child in $Stages.get_children():
@@ -60,3 +61,11 @@ func update_hover():
 	else:
 		$Camera2D/BestTimeDisplay.set_time(0.0)
 		$Camera2D/MedalDisplay.set_medal(-1)
+
+func transition_to(new_scene):
+	next_scene = new_scene
+	$AnimationPlayer.play("fade_out")
+
+func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+	if anim_name == "fade_out":
+		get_tree().change_scene_to_file(next_scene)

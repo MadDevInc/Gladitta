@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://b6yg11l3mt7w1"]
+[gd_scene load_steps=4 format=3 uid="uid://b6yg11l3mt7w1"]
 
+[ext_resource type="Script" path="res://Scenes/UI/PauseMenu/pause_menu.gd" id="1_0yhs1"]
 [ext_resource type="PackedScene" uid="uid://s0lqj25qsa0c" path="res://Scenes/UI/Buttons/UIButton/ui_button.tscn" id="1_37oyc"]
+[ext_resource type="PackedScene" uid="uid://3mhm84kopwwm" path="res://Scenes/UI/Options/options.tscn" id="2_fkngi"]
 
 [node name="PauseMenu" type="Control"]
 layout_mode = 3
@@ -9,8 +11,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_0yhs1")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="Menu" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -20,18 +23,29 @@ grow_vertical = 2
 theme_override_constants/separation = 16
 alignment = 1
 
-[node name="UIButton" parent="VBoxContainer" instance=ExtResource("1_37oyc")]
+[node name="Resume" parent="Menu" instance=ExtResource("1_37oyc")]
 layout_mode = 2
 title = "Menu.Resume"
 
-[node name="UIButton4" parent="VBoxContainer" instance=ExtResource("1_37oyc")]
+[node name="QuitLevel" parent="Menu" instance=ExtResource("1_37oyc")]
 layout_mode = 2
 title = "Menu.QuitLevel"
 
-[node name="UIButton2" parent="VBoxContainer" instance=ExtResource("1_37oyc")]
+[node name="Settings" parent="Menu" instance=ExtResource("1_37oyc")]
 layout_mode = 2
 title = "Menu.Settings"
 
-[node name="UIButton3" parent="VBoxContainer" instance=ExtResource("1_37oyc")]
+[node name="Quit" parent="Menu" instance=ExtResource("1_37oyc")]
 layout_mode = 2
 title = "Menu.QuitMenu"
+
+[node name="Options" parent="." instance=ExtResource("2_fkngi")]
+visible = false
+layout_mode = 0
+anchors_preset = 0
+
+[connection signal="selected" from="Menu/Resume" to="." method="_on_resume_selected"]
+[connection signal="selected" from="Menu/QuitLevel" to="." method="_on_quit_level_selected"]
+[connection signal="selected" from="Menu/Settings" to="." method="_on_settings_selected"]
+[connection signal="selected" from="Menu/Quit" to="." method="_on_quit_selected"]
+[connection signal="closed" from="Options" to="." method="_on_options_closed"]
