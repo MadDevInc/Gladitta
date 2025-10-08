@@ -3,7 +3,7 @@ extends CharacterBody2D
 
 const SPEED = 75.0
 
-var dir
+var dir = Vector2(1, -1)
 
 var shooter
 
@@ -18,9 +18,11 @@ func set_shooter(node):
 	shooter = null
 
 func set_direction(new_dir):
+	
 	dir = new_dir
 
 func _physics_process(_delta: float) -> void:
+	#print(velocity)
 	velocity = dir * SPEED
 
 	if velocity.x > 0 or velocity.y < 0:

@@ -20,7 +20,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 0.501961)
+color = Color(0.341176, 0.447059, 0.466667, 1)
 
 [node name="Time" type="Label" parent="Background"]
 layout_mode = 1
@@ -56,7 +56,7 @@ layout_mode = 2
 text = "00:05"
 
 [node name="ColorRect" type="ColorRect" parent="Background/VBoxContainer/Bronze"]
-custom_minimum_size = Vector2(30, 30)
+custom_minimum_size = Vector2(20, 20)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -72,7 +72,7 @@ layout_mode = 2
 text = "00:05"
 
 [node name="ColorRect" type="ColorRect" parent="Background/VBoxContainer/Silver"]
-custom_minimum_size = Vector2(30, 30)
+custom_minimum_size = Vector2(20, 20)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -88,7 +88,7 @@ layout_mode = 2
 text = "00:05"
 
 [node name="ColorRect" type="ColorRect" parent="Background/VBoxContainer/Gold"]
-custom_minimum_size = Vector2(30, 30)
+custom_minimum_size = Vector2(20, 20)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -105,7 +105,7 @@ layout_mode = 2
 text = "00:05"
 
 [node name="ColorRect" type="ColorRect" parent="Background/VBoxContainer/Developer"]
-custom_minimum_size = Vector2(30, 30)
+custom_minimum_size = Vector2(20, 20)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
