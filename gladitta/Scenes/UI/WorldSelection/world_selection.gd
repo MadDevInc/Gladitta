@@ -5,6 +5,12 @@ var max_selection = 2
 
 var next_scene
 
+func _ready() -> void:
+	if GLOBAL.finished_surface:
+		current_selection = 1
+	elif GLOBAL.finished_dungeon:
+		current_selection = 2
+
 func _physics_process(_delta: float) -> void:
 	if $Worlds.get_child_count() > 0:
 		$Camera2D.global_position.x = lerp($Camera2D.global_position.x, $Worlds.get_child(current_selection).global_position.x + $Worlds.get_child(current_selection).size.x/2, 0.1)
@@ -24,6 +30,8 @@ func _process(_delta: float) -> void:
 		select_level(current_selection)
 		GLOBAL.current_playing_level = current_selection
 		set_process(false)
+	if Input.is_action_just_pressed("shoot"):
+		transition_to("res://Scenes/UI/MainMenu/main_menu.tscn")
 
 func select_level(idx):
 	match idx:

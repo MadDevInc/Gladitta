@@ -17,6 +17,14 @@ ButtonPrompt.Reset,pressione R para reiniciar,press R to reset,按下 R 键进�
 ButtonPrompt.ResetX,pressione LB para reiniciar,press LB to reset,按下LB键跳跃
 ButtonPrompt.ResetP,pressione R1 para reiniciar,press R1 to reset,按下R1键跳跃
 ,,,
+ButtonPrompt.Pogo,⬇️ + Botão Esquerdo do Mouse,⬇️ + Left Mouse Click,
+ButtonPrompt.PogoX,⬇️ + X,⬇️ + X,
+ButtonPrompt.PogoP,⬇️ + ☐,⬇️ + ☐,
+,,,
+ButtonPrompt.Bow,"segure Botão Esquerdo do Mouse para mirar, solte para atirar","hold Left Mouse Click to aim, release to shoot",
+ButtonPrompt.BowX,"segure B, solte para atirar","hold B to aim, release to shoot",
+ButtonPrompt.BowP,"segure ○, solte para atirar","hold ○ to aim, release to shoot",
+,,,
 ButtonPrompt.Objective,elimine todos os inimigos para avançar!,defeat all enemies to advance!,消灭所有敌人来前进！
 ,,,
 Menu.Play,JOGAR,PLAY,开始游戏
@@ -33,7 +41,3 @@ Options.Sounds,SONS,SOUNDS,音效
 Options.Back,VOLTAR,BACK,
 Options.Yes,SIM,YES,
 Options.No,NÃO,NO,
-,,,
-WorldSelection.Surface,SUPERFÍCIE,SURFACE,地面
-WorldSelection.Dungeon,MASMORRA,DUNGEON,地下城
-WorldSelection.Depths,PROFUNDEZAS,DEPTHS,深渊

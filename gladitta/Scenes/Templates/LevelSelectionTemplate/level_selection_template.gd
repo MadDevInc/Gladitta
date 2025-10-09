@@ -10,6 +10,9 @@ var stage_icon_scene = preload("res://Scenes/Templates/LevelSelectionTemplate/St
 var next_scene
 
 func _ready() -> void:
+	if GLOBAL.finished_surface or GLOBAL.finished_dungeon:
+		transition_to("res://Scenes/UI/WorldSelection/world_selection.tscn")
+
 	var files = DirAccess.get_files_at(levels_folder)
 	for i in range(files.size()):
 		var new_stage_icon = stage_icon_scene.instantiate()

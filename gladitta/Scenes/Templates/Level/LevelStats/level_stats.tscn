@@ -18,6 +18,10 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 44.0
+offset_top = 33.0
+offset_right = -44.0
+offset_bottom = -33.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.341176, 0.447059, 0.466667, 1)
@@ -117,6 +121,7 @@ offset_left = 228.0
 offset_top = 220.0
 offset_right = 316.0
 offset_bottom = 236.0
+theme_override_font_sizes/font_size = 16
 text = "X continuar"
 
 [node name="Label2" type="Label" parent="."]

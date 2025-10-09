@@ -4,6 +4,13 @@ var current_playing_level = 0
 
 var player_progress = []
 
+var finished_surface = false
+var finished_dungeon = false
+
+var unlock_bow = false
+var unlock_boomer = false
+var unlock_dash = false
+
 var joy_type = "keyboard"
 
 func _input(event: InputEvent) -> void:

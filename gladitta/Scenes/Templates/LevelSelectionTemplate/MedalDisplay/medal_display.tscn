@@ -5,7 +5,7 @@
 [node name="MedalDisplay" type="Control"]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 70.0
+offset_right = 92.0
 offset_bottom = 24.0
 script = ExtResource("1_a3j5p")
 
@@ -16,6 +16,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+alignment = 2
 
 [node name="ColorRect" type="ColorRect" parent="HBoxContainer"]
 modulate = Color(1, 1, 1, 0.125)
@@ -40,3 +41,11 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 color = Color(1, 0.780392, 0, 1)
+
+[node name="ColorRect4" type="ColorRect" parent="HBoxContainer"]
+modulate = Color(1, 1, 1, 0.125)
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+color = Color(0.321569, 0.737255, 1, 1)

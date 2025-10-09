@@ -4,3 +4,7 @@
 
 [node name="SurfaceLevelSelection" instance=ExtResource("1_naip0")]
 levels_folder = "res://Scenes/Worlds/Surface/Levels/"
+
+[node name="MedalDisplay" parent="Camera2D" index="1"]
+offset_left = 60.0
+offset_right = 156.0
