@@ -5,11 +5,13 @@ extends Control
 @onready var gold_time = get_parent().get_parent().gold_medal
 @onready var dev_time = get_parent().get_parent().dev_medal
 
+var intro_animation_finished = false
+
 func _ready() -> void:
-	$Background/VBoxContainer/Bronze/Label.text = str(bronze_time).pad_decimals(3)
-	$Background/VBoxContainer/Silver/Label.text = str(silver_time).pad_decimals(3)
-	$Background/VBoxContainer/Gold/Label.text = str(gold_time).pad_decimals(3)
-	$Background/VBoxContainer/Developer/Label.text = str(dev_time).pad_decimals(3)
+	$Background/VBoxContainer/Bronze/HBoxContainer/Label.text = str(bronze_time).pad_decimals(3)
+	$Background/VBoxContainer/Silver/HBoxContainer/Label.text = str(silver_time).pad_decimals(3)
+	$Background/VBoxContainer/Gold/HBoxContainer/Label.text = str(gold_time).pad_decimals(3)
+	$Background/VBoxContainer/Developer/HBoxContainer/Label.text = str(dev_time).pad_decimals(3)
 
 func open():
 	self.show()
@@ -31,12 +33,18 @@ func open():
 	else:
 		obtained_medal = -1
 
-	if obtained_medal >= 0:
-		for child in $Background/VBoxContainer.get_children():
-			if child.get_index() <= obtained_medal:
-				child.modulate.a = 1.0
 	if obtained_medal >= 3:
 		$Background/VBoxContainer/Developer.show()
+
+	match obtained_medal:
+		0:
+			$AnimationPlayer.play("bronze")
+		1:
+			$AnimationPlayer.play("silver")
+		2:
+			$AnimationPlayer.play("gold")
+		3:
+			$AnimationPlayer.play("developer")
 
 	if GLOBAL.current_playing_level == GLOBAL.player_progress.size():
 		var stats = {
@@ -59,12 +67,18 @@ func _process(_delta: float) -> void:
 		set_process(false)
 
 	if Input.is_action_just_pressed("jump"):
+		if !intro_animation_finished:
+			intro_animation_finished = true
+			$AnimationPlayer.playback_speed = 10.0
+			return
 		get_tree().paused = false
 		GLOBAL.current_playing_level += 1
 		if GLOBAL.current_playing_level == 9:
 			GLOBAL.finished_surface = true
+			get_tree().change_scene_to_file("res://Scenes/UI/WorldSelection/world_selection.tscn")
 		elif GLOBAL.current_playing_level == 19:
 			GLOBAL.finished_dungeon = true
+			get_tree().change_scene_to_file("res://Scenes/UI/WorldSelection/world_selection.tscn")
 		else:
 			get_tree().change_scene_to_file("res://Scenes/Worlds/Surface/Levels/level_" + str(GLOBAL.current_playing_level) + ".tscn")
 		set_process(false)
@@ -77,3 +91,6 @@ func _process(_delta: float) -> void:
 		get_tree().paused = false
 		get_tree().change_scene_to_file("res://Scenes/Worlds/Surface/LevelSelection/surface_level_selection.tscn")
 		set_process(false)
+
+func _on_animation_player_animation_finished(_anim_name: StringName) -> void:
+	intro_animation_finished = true

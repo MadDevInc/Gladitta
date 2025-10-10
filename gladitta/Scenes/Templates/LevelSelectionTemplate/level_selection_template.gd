@@ -1,5 +1,6 @@
 extends Control
 
+@export var world_id : int = 0
 @export var levels_folder : String
 
 var current_selection = 0
@@ -20,7 +21,7 @@ func _ready() -> void:
 		if i < GLOBAL.player_progress.size():
 			new_stage_icon.set_medal(GLOBAL.player_progress[i].medal)
 
-		var level_preview = load(levels_folder + "level_" + str(i) + ".tscn").instantiate()
+		var level_preview = load(levels_folder + "level_" + str(i + 10 * world_id) + ".tscn").instantiate()
 		new_stage_icon.display(level_preview)
 
 	if GLOBAL.player_progress.size() > 0:
@@ -45,7 +46,7 @@ func _process(_delta: float) -> void:
 		update_hover()
 	if Input.is_action_just_pressed("jump"):
 		$Stages.get_child(current_selection).select()
-		GLOBAL.current_playing_level = current_selection
+		GLOBAL.current_playing_level = current_selection + world_id * 10
 		set_process(false)
 	if Input.is_action_just_pressed("shoot"):
 		transition_to("res://Scenes/UI/WorldSelection/world_selection.tscn")

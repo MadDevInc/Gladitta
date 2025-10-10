@@ -19,13 +19,13 @@ func display(scene):
 func set_medal(medal_idx):
 	match medal_idx:
 		0:
-			$AnimatedSprite2D.modulate = Color("9a4a00")
+			$AnimatedSprite2D.self_modulate = Color("aa644d")
 		1:
-			$AnimatedSprite2D.modulate = Color("adadad")
+			$AnimatedSprite2D.self_modulate = Color("788374")
 		2:
-			$AnimatedSprite2D.modulate = Color("ffc700")
+			$AnimatedSprite2D.self_modulate = Color("bf9d2c")
 		3:
-			$AnimatedSprite2D.modulate = Color("52bcff")
+			$AnimatedSprite2D.self_modulate = Color("477a7a")
 
 func select():
 	$AnimationPlayer.play("select")

@@ -1,7 +1,568 @@
-[gd_scene load_steps=3 format=3 uid="uid://bskjr2emjmkpo"]
+[gd_scene load_steps=28 format=3 uid="uid://bskjr2emjmkpo"]
 
 [ext_resource type="Script" path="res://Scenes/Templates/Level/LevelStats/level_stats.gd" id="1_4de1v"]
 [ext_resource type="FontFile" uid="uid://yccdtkbk8acw" path="res://Assets/Fonts/unifont-17.0.01.otf" id="2_p3qw2"]
+[ext_resource type="Texture2D" uid="uid://clc8gwo67jtpy" path="res://Scenes/Templates/LevelSelectionTemplate/MedalDisplay/Textures/medalhas4.png" id="3_lfgs1"]
+[ext_resource type="Texture2D" uid="uid://dbk2rp7ol3ius" path="res://Scenes/Templates/LevelSelectionTemplate/MedalDisplay/Textures/medal_shine.png" id="4_icibs"]
+[ext_resource type="Texture2D" uid="uid://bfx146aq737be" path="res://Scenes/Templates/LevelSelectionTemplate/MedalDisplay/Textures/medalhas3.png" id="4_v86qp"]
+[ext_resource type="Texture2D" uid="uid://pinb2xg8nqxx" path="res://Scenes/Templates/LevelSelectionTemplate/MedalDisplay/Textures/medalhas2.png" id="5_3eu4j"]
+[ext_resource type="Texture2D" uid="uid://cuvw2lpa46sex" path="res://Scenes/Templates/LevelSelectionTemplate/MedalDisplay/Textures/medalhas1.png" id="6_cye2w"]
+[ext_resource type="PackedScene" uid="uid://bl8fsnxhtuf6d" path="res://Scenes/UI/ButtonPrompt/button_prompt.tscn" id="7_gtjd6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7taut"]
+atlas = ExtResource("4_icibs")
+region = Rect2(0, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a5uqa"]
+atlas = ExtResource("4_icibs")
+region = Rect2(20, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pr53v"]
+atlas = ExtResource("4_icibs")
+region = Rect2(40, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xaofq"]
+atlas = ExtResource("4_icibs")
+region = Rect2(60, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ygfhn"]
+atlas = ExtResource("4_icibs")
+region = Rect2(80, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jkqip"]
+atlas = ExtResource("4_icibs")
+region = Rect2(100, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e272u"]
+atlas = ExtResource("4_icibs")
+region = Rect2(120, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ru8vr"]
+atlas = ExtResource("4_icibs")
+region = Rect2(140, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ndogy"]
+atlas = ExtResource("4_icibs")
+region = Rect2(160, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ljp65"]
+atlas = ExtResource("4_icibs")
+region = Rect2(180, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0denf"]
+atlas = ExtResource("4_icibs")
+region = Rect2(200, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vy4sr"]
+atlas = ExtResource("4_icibs")
+region = Rect2(220, 0, 20, 20)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pwlqw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7taut")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a5uqa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pr53v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xaofq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ygfhn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jkqip")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e272u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ru8vr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ndogy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ljp65")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0denf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vy4sr")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
+[sub_resource type="Animation" id="Animation_4ibq0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Background/VBoxContainer/Bronze/HBoxContainer:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Background/VBoxContainer/Bronze/HBoxContainer:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.12549)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Background/VBoxContainer/Silver/HBoxContainer:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.12549)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Background/VBoxContainer/Silver/HBoxContainer:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Background/VBoxContainer/Gold/HBoxContainer:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.12549)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Background/VBoxContainer/Gold/HBoxContainer:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Background/VBoxContainer/Developer:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Background/VBoxContainer/Developer/HBoxContainer:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.12549)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Background/VBoxContainer/Developer/HBoxContainer:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_6t72w"]
+resource_name = "bronze"
+length = 0.2
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Background/VBoxContainer/Bronze/HBoxContainer:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-16, 0), Vector2(4, 0), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Background/VBoxContainer/Bronze/HBoxContainer:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.12549), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Background/VBoxContainer/Silver/HBoxContainer:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.12549)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Background/VBoxContainer/Silver/HBoxContainer:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Background/VBoxContainer/Gold/HBoxContainer:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.12549)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Background/VBoxContainer/Gold/HBoxContainer:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_hhnor"]
+resource_name = "developer"
+length = 1.4
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Background/VBoxContainer/Bronze/HBoxContainer:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-16, 0), Vector2(4, 0), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Background/VBoxContainer/Bronze/HBoxContainer:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.12549), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Background/VBoxContainer/Silver/HBoxContainer:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.12549), Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Background/VBoxContainer/Silver/HBoxContainer:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.55, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-16, 0), Vector2(-16, 0), Vector2(4, 0), Vector2(0, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Background/VBoxContainer/Gold/HBoxContainer:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.12549), Color(1, 1, 1, 0.12549), Color(1, 1, 1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Background/VBoxContainer/Gold/HBoxContainer:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.8, 0.95, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-16, 0), Vector2(-16, 0), Vector2(4, 0), Vector2(0, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Background/VBoxContainer/Developer:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Background/VBoxContainer/Developer/HBoxContainer:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(1.2, 1.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.12549), Color(1, 1, 1, 1)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Background/VBoxContainer/Developer/HBoxContainer:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 1.2, 1.35, 1.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-16, 0), Vector2(-16, 0), Vector2(4, 0), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_tb5tm"]
+resource_name = "gold"
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Background/VBoxContainer/Bronze/HBoxContainer:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-16, 0), Vector2(4, 0), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Background/VBoxContainer/Bronze/HBoxContainer:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.12549), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Background/VBoxContainer/Silver/HBoxContainer:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.12549), Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Background/VBoxContainer/Silver/HBoxContainer:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.55, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-16, 0), Vector2(-16, 0), Vector2(4, 0), Vector2(0, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Background/VBoxContainer/Gold/HBoxContainer:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.12549), Color(1, 1, 1, 0.12549), Color(1, 1, 1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Background/VBoxContainer/Gold/HBoxContainer:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.8, 0.95, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-16, 0), Vector2(-16, 0), Vector2(4, 0), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_nlysi"]
+resource_name = "silver"
+length = 0.6
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Background/VBoxContainer/Bronze/HBoxContainer:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-16, 0), Vector2(4, 0), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Background/VBoxContainer/Bronze/HBoxContainer:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.12549), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Background/VBoxContainer/Silver/HBoxContainer:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.12549), Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Background/VBoxContainer/Silver/HBoxContainer:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.55, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-16, 0), Vector2(-16, 0), Vector2(4, 0), Vector2(0, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Background/VBoxContainer/Gold/HBoxContainer:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.12549)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Background/VBoxContainer/Gold/HBoxContainer:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_e6uu8"]
+_data = {
+"RESET": SubResource("Animation_4ibq0"),
+"bronze": SubResource("Animation_6t72w"),
+"developer": SubResource("Animation_hhnor"),
+"gold": SubResource("Animation_tb5tm"),
+"silver": SubResource("Animation_nlysi")
+}
 
 [node name="LevelStats" type="Control"]
 process_mode = 2
@@ -18,13 +579,9 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 44.0
-offset_top = 33.0
-offset_right = -44.0
-offset_bottom = -33.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.341176, 0.447059, 0.466667, 1)
+color = Color(0.0705882, 0.0392157, 0.0980392, 1)
 
 [node name="Time" type="Label" parent="Background"]
 layout_mode = 1
@@ -43,106 +600,156 @@ anchors_preset = 13
 anchor_left = 0.5
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -37.0
-offset_right = 37.0
+offset_left = -116.0
+offset_right = 32.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 12
+theme_override_constants/separation = 8
 alignment = 1
 
-[node name="Bronze" type="HBoxContainer" parent="Background/VBoxContainer"]
-modulate = Color(1, 1, 1, 0.12549)
-layout_mode = 2
-alignment = 1
-
-[node name="Label" type="Label" parent="Background/VBoxContainer/Bronze"]
-layout_mode = 2
-text = "00:05"
-
-[node name="ColorRect" type="ColorRect" parent="Background/VBoxContainer/Bronze"]
-custom_minimum_size = Vector2(20, 20)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-color = Color(0.604672, 0.288354, 1.92523e-07, 1)
-
-[node name="Silver" type="HBoxContainer" parent="Background/VBoxContainer"]
-modulate = Color(1, 1, 1, 0.12549)
-layout_mode = 2
-alignment = 1
-
-[node name="Label" type="Label" parent="Background/VBoxContainer/Silver"]
-layout_mode = 2
-text = "00:05"
-
-[node name="ColorRect" type="ColorRect" parent="Background/VBoxContainer/Silver"]
-custom_minimum_size = Vector2(20, 20)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-color = Color(0.680321, 0.680321, 0.680321, 1)
-
-[node name="Gold" type="HBoxContainer" parent="Background/VBoxContainer"]
-modulate = Color(1, 1, 1, 0.12549)
-layout_mode = 2
-alignment = 1
-
-[node name="Label" type="Label" parent="Background/VBoxContainer/Gold"]
-layout_mode = 2
-text = "00:05"
-
-[node name="ColorRect" type="ColorRect" parent="Background/VBoxContainer/Gold"]
-custom_minimum_size = Vector2(20, 20)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-color = Color(1, 0.780392, 0, 1)
-
-[node name="Developer" type="HBoxContainer" parent="Background/VBoxContainer"]
+[node name="Developer" type="Control" parent="Background/VBoxContainer"]
 visible = false
-modulate = Color(1, 1, 1, 0.12549)
+custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
-alignment = 1
 
-[node name="Label" type="Label" parent="Background/VBoxContainer/Developer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Background/VBoxContainer/Developer"]
+modulate = Color(1, 1, 1, 0.12549)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 2
+
+[node name="Label" type="Label" parent="Background/VBoxContainer/Developer/HBoxContainer"]
 layout_mode = 2
 text = "00:05"
 
-[node name="ColorRect" type="ColorRect" parent="Background/VBoxContainer/Developer"]
+[node name="TextureRect" type="TextureRect" parent="Background/VBoxContainer/Developer/HBoxContainer"]
+clip_children = 2
 custom_minimum_size = Vector2(20, 20)
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-color = Color(0.321569, 0.737255, 1, 1)
+texture = ExtResource("3_lfgs1")
 
-[node name="Label" type="Label" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Background/VBoxContainer/Developer/HBoxContainer/TextureRect"]
+position = Vector2(10, 10)
+sprite_frames = SubResource("SpriteFrames_pwlqw")
+autoplay = "default"
+frame_progress = 0.111606
+
+[node name="Gold" type="Control" parent="Background/VBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Background/VBoxContainer/Gold"]
+modulate = Color(1, 1, 1, 0.12549)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 2
+
+[node name="Label" type="Label" parent="Background/VBoxContainer/Gold/HBoxContainer"]
+layout_mode = 2
+text = "00:05"
+
+[node name="TextureRect" type="TextureRect" parent="Background/VBoxContainer/Gold/HBoxContainer"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+texture = ExtResource("4_v86qp")
+
+[node name="Silver" type="Control" parent="Background/VBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Background/VBoxContainer/Silver"]
+modulate = Color(1, 1, 1, 0.12549)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 2
+
+[node name="Label" type="Label" parent="Background/VBoxContainer/Silver/HBoxContainer"]
+layout_mode = 2
+text = "00:05"
+
+[node name="TextureRect" type="TextureRect" parent="Background/VBoxContainer/Silver/HBoxContainer"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+texture = ExtResource("5_3eu4j")
+
+[node name="Bronze" type="Control" parent="Background/VBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Background/VBoxContainer/Bronze"]
+modulate = Color(1, 1, 1, 0.12549)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 2
+
+[node name="Label" type="Label" parent="Background/VBoxContainer/Bronze/HBoxContainer"]
+layout_mode = 2
+text = "00:05"
+
+[node name="TextureRect" type="TextureRect" parent="Background/VBoxContainer/Bronze/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("6_cye2w")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_e6uu8")
+}
+
+[node name="ContinuePrompt" parent="." instance=ExtResource("7_gtjd6")]
 layout_mode = 0
 offset_left = 228.0
-offset_top = 220.0
+offset_top = 182.0
 offset_right = 316.0
 offset_bottom = 236.0
-theme_override_font_sizes/font_size = 16
-text = "X continuar"
+text = "LevelStats.Continue"
+vertical_alignment = 2
 
-[node name="Label2" type="Label" parent="."]
-layout_mode = 0
-offset_left = 4.0
-offset_top = 220.0
-offset_right = 92.0
-offset_bottom = 236.0
-text = "〇 voltar"
-
-[node name="Label3" type="Label" parent="."]
+[node name="ResetPrompt" parent="." instance=ExtResource("7_gtjd6")]
 layout_mode = 1
-anchors_preset = 8
+anchors_preset = 7
 anchor_left = 0.5
-anchor_top = 0.5
+anchor_top = 1.0
 anchor_right = 0.5
-anchor_bottom = 0.5
+anchor_bottom = 1.0
 offset_left = -44.0
-offset_top = 100.0
+offset_top = -58.0
 offset_right = 44.0
-offset_bottom = 116.0
+offset_bottom = -4.0
 grow_horizontal = 2
-grow_vertical = 2
-text = "R1 reiniciar"
+grow_vertical = 0
+text = "LevelStats.Reset"
+vertical_alignment = 2
+
+[node name="BackPrompt" parent="." instance=ExtResource("7_gtjd6")]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -156.0
+offset_top = -58.0
+offset_right = -68.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "LevelStats.Back"
+vertical_alignment = 2
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

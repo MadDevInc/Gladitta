@@ -1,9 +1,10 @@
-[gd_scene load_steps=30 format=3 uid="uid://bfna51xr3cyqr"]
+[gd_scene load_steps=44 format=3 uid="uid://bfna51xr3cyqr"]
 
 [ext_resource type="Texture2D" uid="uid://b2r4al27xduqo" path="res://Scenes/Templates/LevelSelectionTemplate/Textures/menu_stage_hovered.png" id="1_5x1nx"]
 [ext_resource type="Script" path="res://Scenes/Templates/LevelSelectionTemplate/StageIcon/stage_icon.gd" id="1_cgwyd"]
 [ext_resource type="Texture2D" uid="uid://dyxbd4us7v665" path="res://Scenes/Templates/LevelSelectionTemplate/Textures/menu_stage_line.png" id="2_5xxka"]
 [ext_resource type="Texture2D" uid="uid://dn7u5atma0kfs" path="res://Scenes/Templates/LevelSelectionTemplate/Textures/preview_slot.png" id="3_rj0an"]
+[ext_resource type="Texture2D" uid="uid://dbk2rp7ol3ius" path="res://Scenes/Templates/LevelSelectionTemplate/MedalDisplay/Textures/medal_shine.png" id="4_gleyw"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_b7cka"]
 atlas = ExtResource("1_5x1nx")
@@ -144,6 +145,98 @@ animations = [{
 "speed": 12.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_7taut"]
+atlas = ExtResource("4_gleyw")
+region = Rect2(0, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a5uqa"]
+atlas = ExtResource("4_gleyw")
+region = Rect2(20, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pr53v"]
+atlas = ExtResource("4_gleyw")
+region = Rect2(40, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xaofq"]
+atlas = ExtResource("4_gleyw")
+region = Rect2(60, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ygfhn"]
+atlas = ExtResource("4_gleyw")
+region = Rect2(80, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jkqip"]
+atlas = ExtResource("4_gleyw")
+region = Rect2(100, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e272u"]
+atlas = ExtResource("4_gleyw")
+region = Rect2(120, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ru8vr"]
+atlas = ExtResource("4_gleyw")
+region = Rect2(140, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ndogy"]
+atlas = ExtResource("4_gleyw")
+region = Rect2(160, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ljp65"]
+atlas = ExtResource("4_gleyw")
+region = Rect2(180, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0denf"]
+atlas = ExtResource("4_gleyw")
+region = Rect2(200, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vy4sr"]
+atlas = ExtResource("4_gleyw")
+region = Rect2(220, 0, 20, 20)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_e2xa5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7taut")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a5uqa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pr53v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xaofq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ygfhn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jkqip")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e272u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ru8vr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ndogy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ljp65")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0denf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vy4sr")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
 [sub_resource type="Animation" id="Animation_g5ujt"]
 length = 0.001
 tracks/0/type = "value"
@@ -278,10 +371,16 @@ position = Vector2(16, 8)
 texture = ExtResource("2_5xxka")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-modulate = Color(0.960784, 0.913725, 0.74902, 1)
+self_modulate = Color(0.960784, 0.913725, 0.74902, 1)
+clip_children = 2
 position = Vector2(16, 8)
 sprite_frames = SubResource("SpriteFrames_r5i6e")
 animation = &"hover"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_e2xa5")
+autoplay = "default"
+frame_progress = 0.974943
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

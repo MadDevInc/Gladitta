@@ -1,6 +1,103 @@
-[gd_scene load_steps=2 format=3 uid="uid://b6eh6oblbunxf"]
+[gd_scene load_steps=20 format=3 uid="uid://b6eh6oblbunxf"]
 
 [ext_resource type="Script" path="res://Scenes/Templates/LevelSelectionTemplate/MedalDisplay/medal_display.gd" id="1_a3j5p"]
+[ext_resource type="Texture2D" uid="uid://cuvw2lpa46sex" path="res://Scenes/Templates/LevelSelectionTemplate/MedalDisplay/Textures/medalhas1.png" id="2_f8l8y"]
+[ext_resource type="Texture2D" uid="uid://pinb2xg8nqxx" path="res://Scenes/Templates/LevelSelectionTemplate/MedalDisplay/Textures/medalhas2.png" id="3_xmwaf"]
+[ext_resource type="Texture2D" uid="uid://bfx146aq737be" path="res://Scenes/Templates/LevelSelectionTemplate/MedalDisplay/Textures/medalhas3.png" id="4_ld8un"]
+[ext_resource type="Texture2D" uid="uid://clc8gwo67jtpy" path="res://Scenes/Templates/LevelSelectionTemplate/MedalDisplay/Textures/medalhas4.png" id="5_kwatq"]
+[ext_resource type="Texture2D" uid="uid://dbk2rp7ol3ius" path="res://Scenes/Templates/LevelSelectionTemplate/MedalDisplay/Textures/medal_shine.png" id="6_dkb0j"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7taut"]
+atlas = ExtResource("6_dkb0j")
+region = Rect2(0, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a5uqa"]
+atlas = ExtResource("6_dkb0j")
+region = Rect2(20, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pr53v"]
+atlas = ExtResource("6_dkb0j")
+region = Rect2(40, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xaofq"]
+atlas = ExtResource("6_dkb0j")
+region = Rect2(60, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ygfhn"]
+atlas = ExtResource("6_dkb0j")
+region = Rect2(80, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jkqip"]
+atlas = ExtResource("6_dkb0j")
+region = Rect2(100, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e272u"]
+atlas = ExtResource("6_dkb0j")
+region = Rect2(120, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ru8vr"]
+atlas = ExtResource("6_dkb0j")
+region = Rect2(140, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ndogy"]
+atlas = ExtResource("6_dkb0j")
+region = Rect2(160, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ljp65"]
+atlas = ExtResource("6_dkb0j")
+region = Rect2(180, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0denf"]
+atlas = ExtResource("6_dkb0j")
+region = Rect2(200, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vy4sr"]
+atlas = ExtResource("6_dkb0j")
+region = Rect2(220, 0, 20, 20)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ensok"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7taut")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a5uqa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pr53v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xaofq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ygfhn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jkqip")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e272u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ru8vr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ndogy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ljp65")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0denf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vy4sr")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
 
 [node name="MedalDisplay" type="Control"]
 layout_mode = 3
@@ -14,39 +111,35 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_bottom = -4.0
 grow_horizontal = 2
 grow_vertical = 2
 alignment = 2
 
-[node name="ColorRect" type="ColorRect" parent="HBoxContainer"]
-modulate = Color(1, 1, 1, 0.125)
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer"]
 custom_minimum_size = Vector2(20, 20)
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-color = Color(0.604672, 0.288354, 1.92523e-07, 1)
+texture = ExtResource("2_f8l8y")
 
-[node name="ColorRect2" type="ColorRect" parent="HBoxContainer"]
-modulate = Color(1, 1, 1, 0.125)
+[node name="TextureRect2" type="TextureRect" parent="HBoxContainer"]
 custom_minimum_size = Vector2(20, 20)
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-color = Color(0.678431, 0.678431, 0.678431, 1)
+texture = ExtResource("3_xmwaf")
 
-[node name="ColorRect3" type="ColorRect" parent="HBoxContainer"]
-modulate = Color(1, 1, 1, 0.125)
+[node name="TextureRect3" type="TextureRect" parent="HBoxContainer"]
 custom_minimum_size = Vector2(20, 20)
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-color = Color(1, 0.780392, 0, 1)
+texture = ExtResource("4_ld8un")
 
-[node name="ColorRect4" type="ColorRect" parent="HBoxContainer"]
+[node name="TextureRect4" type="TextureRect" parent="HBoxContainer"]
 visible = false
-modulate = Color(1, 1, 1, 0.125)
+clip_children = 2
 custom_minimum_size = Vector2(20, 20)
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-color = Color(0.321569, 0.737255, 1, 1)
+texture = ExtResource("5_kwatq")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="HBoxContainer/TextureRect4"]
+position = Vector2(10, 10)
+sprite_frames = SubResource("SpriteFrames_ensok")
+autoplay = "default"
+frame_progress = 0.553583

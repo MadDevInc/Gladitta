@@ -5,7 +5,8 @@ var current_selection = 0
 var next_scene = ""
 
 func _ready() -> void:
-	SAVEMANAGER.load_game()
+	if GameSaver.save_exists():
+		SAVEMANAGER.load_game()
 	update_hover()
 
 func _physics_process(_delta: float) -> void:

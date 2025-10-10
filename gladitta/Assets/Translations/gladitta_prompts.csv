@@ -14,7 +14,7 @@ ButtonPrompt.AttackX,pressione X para atacar,press X to attack,按下X键进行�
 ButtonPrompt.AttackP,pressione ☐ para atacar,press ☐ to attack,按下☐键进行攻击
 ,,,
 ButtonPrompt.Reset,pressione R para reiniciar,press R to reset,按下 R 键进行重置
-ButtonPrompt.ResetX,pressione LB para reiniciar,press LB to reset,按下LB键跳跃
+ButtonPrompt.ResetX,pressione RB para reiniciar,press RB to reset,按下RB键跳跃
 ButtonPrompt.ResetP,pressione R1 para reiniciar,press R1 to reset,按下R1键跳跃
 ,,,
 ButtonPrompt.Pogo,⬇️ + Botão Esquerdo do Mouse,⬇️ + Left Mouse Click,
@@ -45,3 +45,15 @@ Options.No,NÃO,NO,
 WorldSelection.Surface,SUPERFíCIE,SURFACE,地表
 WorldSelection.Dungeon,MASMORRA,DUNGEONS,地牢
 WorldSelection.Depths,PROFUNDEZAS,DEPTHS,深渊
+,,,
+LevelStats.Continue,Barra de Espaço continuar,Spacebar continue,
+LevelStats.ContinueX,A continuar,A continue,
+LevelStats.ContinueP,X continuar,X continue,
+,,,
+LevelStats.Reset,R reiniciar,R reset,
+LevelStats.ResetX,RB reiniciar,RB reset,
+LevelStats.ResetP,R1 reiniciar,R1 reset,
+,,,
+LevelStats.Back,Botão Esquerdo do Mouse voltar,Left Mouse Click back,
+LevelStats.BackX,B voltar,B back,
+LevelStats.BackP,○ voltar,○ back,
