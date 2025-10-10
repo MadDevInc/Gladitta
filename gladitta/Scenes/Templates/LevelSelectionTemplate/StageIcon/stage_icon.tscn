@@ -377,7 +377,8 @@ position = Vector2(16, 8)
 sprite_frames = SubResource("SpriteFrames_r5i6e")
 animation = &"hover"
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="AnimatedSprite2D"]
+[node name="Shine" type="AnimatedSprite2D" parent="AnimatedSprite2D"]
+visible = false
 sprite_frames = SubResource("SpriteFrames_e2xa5")
 autoplay = "default"
 frame_progress = 0.974943
