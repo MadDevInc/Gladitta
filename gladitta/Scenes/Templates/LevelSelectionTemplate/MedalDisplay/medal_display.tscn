@@ -43,6 +43,7 @@ size_flags_vertical = 4
 color = Color(1, 0.780392, 0, 1)
 
 [node name="ColorRect4" type="ColorRect" parent="HBoxContainer"]
+visible = false
 modulate = Color(1, 1, 1, 0.125)
 custom_minimum_size = Vector2(20, 20)
 layout_mode = 2

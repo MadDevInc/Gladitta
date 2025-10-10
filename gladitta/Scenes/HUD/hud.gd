@@ -4,7 +4,7 @@ extends Control
 
 func _ready() -> void:
 	if GLOBAL.current_playing_level > 9:
-		GLOBAL.unlock_bow
+		GLOBAL.unlock_bow = true
 	if GLOBAL.current_playing_level:
 		pass
 

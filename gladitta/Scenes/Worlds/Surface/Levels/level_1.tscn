@@ -4,7 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://bl8fsnxhtuf6d" path="res://Scenes/UI/ButtonPrompt/button_prompt.tscn" id="3_u3itm"]
 
 [node name="Level" instance=ExtResource("1_88bcx")]
-gold_medal = 3.0
+dev_medal = 2.4
+gold_medal = 3.2
 silver_medal = 5.0
 bronze_medal = 7.5
 

@@ -1,6 +1,8 @@
 extends Control
 
 func set_medal(medals):
+	if medals == 3:
+		$HBoxContainer/ColorRect4.hide()
 	for child in $HBoxContainer.get_children():
 		if child.get_index() <= medals:
 			child.modulate.a = 1.0

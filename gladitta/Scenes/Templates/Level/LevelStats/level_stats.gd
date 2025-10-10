@@ -66,7 +66,7 @@ func _process(_delta: float) -> void:
 		elif GLOBAL.current_playing_level == 19:
 			GLOBAL.finished_dungeon = true
 		else:
-			get_tree().change_scene_to_file("res://Scenes/Worlds/Surface/Levels/level_" + str(GLOBAL.current_playing_level + 1) + ".tscn")
+			get_tree().change_scene_to_file("res://Scenes/Worlds/Surface/Levels/level_" + str(GLOBAL.current_playing_level) + ".tscn")
 		set_process(false)
 
 	if Input.is_action_just_pressed("shoot"):

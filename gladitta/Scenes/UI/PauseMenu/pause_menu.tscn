@@ -43,6 +43,10 @@ title = "Menu.QuitMenu"
 visible = false
 layout_mode = 0
 anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+grow_horizontal = 1
+grow_vertical = 1
 
 [connection signal="selected" from="Menu/Resume" to="." method="_on_resume_selected"]
 [connection signal="selected" from="Menu/QuitLevel" to="." method="_on_quit_level_selected"]
