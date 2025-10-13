@@ -26,6 +26,7 @@ func set_medal(medal_idx):
 			$AnimatedSprite2D.self_modulate = Color("bf9d2c")
 		3:
 			$AnimatedSprite2D.self_modulate = Color("477a7a")
+			$AnimatedSprite2D/Shine.show()
 
 func select():
 	$AnimationPlayer.play("select")

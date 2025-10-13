@@ -1,7 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://w4no5iraxgcw"]
+[gd_scene load_steps=3 format=3 uid="uid://w4no5iraxgcw"]
 
 [ext_resource type="PackedScene" uid="uid://umwkft7ae34l" path="res://Scenes/Templates/LevelSelectionTemplate/level_selection_template.tscn" id="1_anvtx"]
+[ext_resource type="PackedScene" uid="uid://bfna51xr3cyqr" path="res://Scenes/Templates/LevelSelectionTemplate/StageIcon/stage_icon.tscn" id="2_d2tb5"]
 
 [node name="LevelSelection" instance=ExtResource("1_anvtx")]
 world_id = 1
 levels_folder = "res://Scenes/Worlds/Dungeon/Levels/"
+
+[node name="StageIcon" parent="Stages" index="0" instance=ExtResource("2_d2tb5")]
+layout_mode = 2
