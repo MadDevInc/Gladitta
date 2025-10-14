@@ -8,18 +8,27 @@ extends Control
 var intro_animation_finished = false
 
 func _ready() -> void:
-	$Background/VBoxContainer/Bronze/HBoxContainer/Label.text = str(bronze_time).pad_decimals(3)
-	$Background/VBoxContainer/Silver/HBoxContainer/Label.text = str(silver_time).pad_decimals(3)
-	$Background/VBoxContainer/Gold/HBoxContainer/Label.text = str(gold_time).pad_decimals(3)
-	$Background/VBoxContainer/Developer/HBoxContainer/Label.text = str(dev_time).pad_decimals(3)
+	if bronze_time < 10:
+		$Frame/VBoxContainer/Bronze/HBoxContainer/Label.text = "0"
+	if silver_time < 10:
+		$Frame/VBoxContainer/Silver/HBoxContainer/Label.text = "0"
+	if gold_time < 10:
+		$Frame/VBoxContainer/Gold/HBoxContainer/Label.text = "0"
+	if dev_time < 10:
+		$Frame/VBoxContainer/Developer/HBoxContainer/Label.text = "0"
+
+	$Frame/VBoxContainer/Bronze/HBoxContainer/Label.text += str(bronze_time).pad_decimals(3)
+	$Frame/VBoxContainer/Silver/HBoxContainer/Label.text += str(silver_time).pad_decimals(3)
+	$Frame/VBoxContainer/Gold/HBoxContainer/Label.text += str(gold_time).pad_decimals(3)
+	$Frame/VBoxContainer/Developer/HBoxContainer/Label.text += str(dev_time).pad_decimals(3)
 
 func open():
 	self.show()
 	var level_time = get_parent().get_node("HUD").get_time()
 	if level_time < 10:
-		$Background/Time.text = "0" + str(level_time).pad_decimals(3)
+		$Frame/Time.text = "0" + str(level_time).pad_decimals(3)
 	else:
-		$Background/Time.text = str(level_time).pad_decimals(3)
+		$Frame/Time.text = str(level_time).pad_decimals(3)
 
 	var obtained_medal = 0
 	if level_time < dev_time:
@@ -34,7 +43,7 @@ func open():
 		obtained_medal = -1
 
 	if obtained_medal >= 3:
-		$Background/VBoxContainer/Developer.show()
+		$Frame/VBoxContainer/Developer.show()
 
 	match obtained_medal:
 		0:
@@ -69,14 +78,14 @@ func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("jump"):
 		if !intro_animation_finished:
 			intro_animation_finished = true
-			$AnimationPlayer.playback_speed = 10.0
+			$AnimationPlayer.speed_scale = 10.0
 			return
 		get_tree().paused = false
 		GLOBAL.current_playing_level += 1
-		if GLOBAL.current_playing_level == 9:
+		if GLOBAL.current_playing_level == 10:
 			GLOBAL.finished_surface = true
 			get_tree().change_scene_to_file("res://Scenes/UI/WorldSelection/world_selection.tscn")
-		elif GLOBAL.current_playing_level == 19:
+		elif GLOBAL.current_playing_level == 20:
 			GLOBAL.finished_dungeon = true
 			get_tree().change_scene_to_file("res://Scenes/UI/WorldSelection/world_selection.tscn")
 		else:

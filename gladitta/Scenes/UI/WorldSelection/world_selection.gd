@@ -38,7 +38,7 @@ func select_level(idx):
 		0:
 			transition_to("res://Scenes/Worlds/Surface/LevelSelection/surface_level_selection.tscn")
 		1:
-			transition_to("res://Scenes/Worlds/Surface/LevelSelection/surface_level_selection.tscn")
+			transition_to("res://Scenes/Worlds/Dungeon/LevelSelection/dungeon_level_selection.tscn")
 		2:
 			transition_to("res://Scenes/Worlds/Surface/LevelSelection/surface_level_selection.tscn")
 

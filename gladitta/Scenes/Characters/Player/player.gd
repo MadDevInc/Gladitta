@@ -32,6 +32,8 @@ var was_dashing = false
 var first_click = false
 var double_click = false
 
+var use_sword_once = false
+
 @export var max_arrows = 2
 @export var max_dashes = 1
 @export var max_boomer = 1
@@ -201,6 +203,7 @@ func launch(dir):
 	applied_forces.x = dir.x * -250
 
 func _on_sword_body_entered(body: Node2D) -> void:
+
 	if body.is_in_group("Enemy"):
 		body.kill()
 		get_parent().shake_camera()
@@ -208,10 +211,13 @@ func _on_sword_body_entered(body: Node2D) -> void:
 		if $Sword.position.y == 0 and is_on_floor():
 			return
 
-		if $Sword.position.y == 0 and !is_on_floor():
-			launch(Vector2($Sword.position.x/8, 0.25))
-		else:
-			launch(Vector2($Sword.position.x/8, 0.875 * sign($Sword.position.y)))
+		if !use_sword_once:
+			if $Sword.position.y == 0 and !is_on_floor():
+				use_sword_once = true
+				launch(Vector2($Sword.position.x/8, 0.25))
+			else:
+				use_sword_once = true
+				launch(Vector2($Sword.position.x/8, 0.875 * sign($Sword.position.y)))
 
 func move_sword(new_direction):
 	if $Sword/AnimationPlayer.is_playing():
@@ -308,3 +314,7 @@ func _on_detector_body_entered(body: Node2D) -> void:
 
 func _on_double_click_timeout() -> void:
 	first_click = false
+
+func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+	if anim_name == "attack":
+		use_sword_once = false

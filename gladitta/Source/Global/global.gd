@@ -28,3 +28,6 @@ func _input(event: InputEvent) -> void:
 			joy_type = "playstation"
 		else:
 			joy_type = "xbox"
+
+func _process(delta: float) -> void:
+	print(current_playing_level)

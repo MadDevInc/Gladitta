@@ -11,20 +11,24 @@ var stage_icon_scene = preload("res://Scenes/Templates/LevelSelectionTemplate/St
 var next_scene
 
 func _ready() -> void:
-	if GLOBAL.finished_surface or GLOBAL.finished_dungeon:
+	if GLOBAL.finished_surface and world_id == 1:
 		transition_to("res://Scenes/UI/WorldSelection/world_selection.tscn")
+		GLOBAL.finished_surface = false
+	if GLOBAL.finished_dungeon and world_id == 2:
+		transition_to("res://Scenes/UI/WorldSelection/world_selection.tscn")
+		GLOBAL.finished_dungeon = false
 
 	var files = DirAccess.get_files_at(levels_folder)
 	for i in range(files.size()):
 		var new_stage_icon = stage_icon_scene.instantiate()
 		$Stages.add_child(new_stage_icon)
 		if i < GLOBAL.player_progress.size():
-			new_stage_icon.set_medal(GLOBAL.player_progress[i].medal)
+			new_stage_icon.set_medal(GLOBAL.player_progress[i * world_id].medal)
 
 		var level_preview = load(levels_folder + "level_" + str(i + 10 * world_id) + ".tscn").instantiate()
 		new_stage_icon.display(level_preview)
 
-	if GLOBAL.player_progress.size() > 0:
+	if GLOBAL.player_progress.size() > 0 + world_id * 10:
 		max_selection = GLOBAL.player_progress.size()
 
 	update_hover()

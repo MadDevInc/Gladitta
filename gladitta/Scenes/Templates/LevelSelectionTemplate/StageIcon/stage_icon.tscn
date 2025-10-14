@@ -381,7 +381,7 @@ animation = &"hover"
 visible = false
 sprite_frames = SubResource("SpriteFrames_e2xa5")
 autoplay = "default"
-frame_progress = 0.974943
+frame_progress = 0.274772
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
