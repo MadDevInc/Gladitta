@@ -10,26 +10,32 @@ var stage_icon_scene = preload("res://Scenes/Templates/LevelSelectionTemplate/St
 
 var next_scene
 
+var level_count = 10
+
 func _ready() -> void:
+	print(GLOBAL.finished_dungeon)
 	if GLOBAL.finished_surface and world_id == 1:
-		transition_to("res://Scenes/UI/WorldSelection/world_selection.tscn")
 		GLOBAL.finished_surface = false
-	if GLOBAL.finished_dungeon and world_id == 2:
 		transition_to("res://Scenes/UI/WorldSelection/world_selection.tscn")
+	if GLOBAL.finished_dungeon and world_id == 2:
 		GLOBAL.finished_dungeon = false
+		transition_to("res://Scenes/UI/WorldSelection/world_selection.tscn")
 
 	var files = DirAccess.get_files_at(levels_folder)
 	for i in range(files.size()):
 		var new_stage_icon = stage_icon_scene.instantiate()
 		$Stages.add_child(new_stage_icon)
-		if i < GLOBAL.player_progress.size():
-			new_stage_icon.set_medal(GLOBAL.player_progress[i * world_id].medal)
+		if i + level_count * world_id < GLOBAL.player_progress.size():
+			new_stage_icon.set_medal(GLOBAL.player_progress[i + level_count * world_id].medal)
 
-		var level_preview = load(levels_folder + "level_" + str(i + 10 * world_id) + ".tscn").instantiate()
+		var level_preview = load(levels_folder + "level_" + str(i + level_count * world_id) + ".tscn").instantiate()
 		new_stage_icon.display(level_preview)
 
-	if GLOBAL.player_progress.size() > 0 + world_id * 10:
+	if GLOBAL.player_progress.size() > 0 + world_id * level_count:
 		max_selection = GLOBAL.player_progress.size()
+		max_selection = clamp(max_selection, 0, ((world_id + 1) * level_count - 1))
+
+	print(max_selection)
 
 	update_hover()
 
@@ -50,7 +56,7 @@ func _process(_delta: float) -> void:
 		update_hover()
 	if Input.is_action_just_pressed("jump"):
 		$Stages.get_child(current_selection).select()
-		GLOBAL.current_playing_level = current_selection + world_id * 10
+		GLOBAL.current_playing_level = current_selection + world_id * level_count
 		set_process(false)
 	if Input.is_action_just_pressed("shoot"):
 		transition_to("res://Scenes/UI/WorldSelection/world_selection.tscn")

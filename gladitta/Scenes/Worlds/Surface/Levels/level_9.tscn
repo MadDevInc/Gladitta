@@ -21,7 +21,7 @@ position = Vector2(273, 152)
 position = Vector2(45, 139)
 
 [node name="EnemySpawner" parent="Enemies" index="0" instance=ExtResource("2_qqdkc")]
-position = Vector2(167, 140)
+position = Vector2(163, 140)
 moving = true
 direction = -1
 

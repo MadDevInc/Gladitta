@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://cur55mkndr5k6" path="res://Scenes/Characters/Enemy/EnemySpawner/enemy_spawner.tscn" id="2_g06qa"]
 
 [node name="LevelTemplate" instance=ExtResource("1_7htyo")]
-dev_medal = 2.25
+dev_medal = 2.41
 gold_medal = 3.2
 silver_medal = 5.0
 bronze_medal = 7.5
