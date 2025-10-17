@@ -18,8 +18,11 @@ func _process(_delta: float) -> void:
 		$LevelEnding.unlock()
 
 func _on_player_death() -> void:
+	print("chamou player death no level template")
 	$CanvasLayer/HUD.reset_timer()
 	$LevelEnding.reset()
+	$ResetReminder/AnimationPlayer.stop()
+	$ResetReminder/AnimationPlayer.play("reminder")
 
 func shake_camera():
 	$Camera2D/AnimationPlayer.play("shake")
