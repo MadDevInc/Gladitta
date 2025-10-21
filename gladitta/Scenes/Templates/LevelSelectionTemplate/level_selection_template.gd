@@ -14,11 +14,9 @@ var level_count = 10
 
 func _ready() -> void:
 	print(GLOBAL.finished_dungeon)
-	if GLOBAL.finished_surface and world_id == 1:
-		GLOBAL.finished_surface = false
+	if GLOBAL.finished_surface:
 		transition_to("res://Scenes/UI/WorldSelection/world_selection.tscn")
-	if GLOBAL.finished_dungeon and world_id == 2:
-		GLOBAL.finished_dungeon = false
+	if GLOBAL.finished_dungeon:
 		transition_to("res://Scenes/UI/WorldSelection/world_selection.tscn")
 
 	var files = DirAccess.get_files_at(levels_folder)

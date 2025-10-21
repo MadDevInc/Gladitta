@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://pfhcyqcvqf1f"]
+
+[ext_resource type="PackedScene" uid="uid://umwkft7ae34l" path="res://Scenes/Templates/LevelSelectionTemplate/level_selection_template.tscn" id="1_4c5k3"]
+
+[node name="DepthsLevelSelection" instance=ExtResource("1_4c5k3")]
+world_id = 2
+levels_folder = "res://Scenes/Worlds/Depths/Levels/"

@@ -69,47 +69,48 @@ func open():
 
 	SAVEMANAGER.save_game()
 
-func _process(_delta: float) -> void:
-	if Input.is_action_just_pressed("reset"):
-		get_tree().paused = false
-		get_tree().reload_current_scene()
-		set_process(false)
+func _input(_event: InputEvent) -> void:
+	if self.visible:
+		if Input.is_action_just_pressed("reset"):
+			get_tree().paused = false
+			get_tree().reload_current_scene()
+			set_process(false)
 
-	if Input.is_action_just_pressed("jump"):
-		if !intro_animation_finished:
-			intro_animation_finished = true
-			$AnimationPlayer.speed_scale = 10.0
-			return
-		get_tree().paused = false
-		GLOBAL.current_playing_level += 1
-		if GLOBAL.current_playing_level == 10:
-			GLOBAL.finished_surface = true
-			get_tree().change_scene_to_file("res://Scenes/UI/WorldSelection/world_selection.tscn")
-		elif GLOBAL.current_playing_level == 20:
-			GLOBAL.finished_dungeon = true
-			get_tree().change_scene_to_file("res://Scenes/UI/WorldSelection/world_selection.tscn")
-		else:
-			if GLOBAL.current_playing_level > 20:
-				get_tree().change_scene_to_file("res://Scenes/Worlds/Depths/Levels/level_" + str(GLOBAL.current_playing_level) + ".tscn")
-			elif GLOBAL.current_playing_level > 10:
-				get_tree().change_scene_to_file("res://Scenes/Worlds/Dungeon/Levels/level_" + str(GLOBAL.current_playing_level) + ".tscn")
+		if Input.is_action_just_pressed("jump"):
+			if !intro_animation_finished:
+				intro_animation_finished = true
+				$AnimationPlayer.speed_scale = 10.0
+				return
+			get_tree().paused = false
+			GLOBAL.current_playing_level += 1
+			if GLOBAL.current_playing_level == 10:
+				GLOBAL.finished_surface = true
+				get_tree().change_scene_to_file("res://Scenes/Worlds/Surface/LevelSelection/surface_level_selection.tscn")
+			elif GLOBAL.current_playing_level == 20:
+				GLOBAL.finished_dungeon = true
+				get_tree().change_scene_to_file("res://Scenes/Worlds/Dungeon/LevelSelection/dungeon_level_selection.tscn")
 			else:
-				get_tree().change_scene_to_file("res://Scenes/Worlds/Surface/Levels/level_" + str(GLOBAL.current_playing_level) + ".tscn")
-		set_process(false)
+				if GLOBAL.current_playing_level > 20:
+					get_tree().change_scene_to_file("res://Scenes/Worlds/Depths/Levels/level_" + str(GLOBAL.current_playing_level) + ".tscn")
+				elif GLOBAL.current_playing_level > 10:
+					get_tree().change_scene_to_file("res://Scenes/Worlds/Dungeon/Levels/level_" + str(GLOBAL.current_playing_level) + ".tscn")
+				else:
+					get_tree().change_scene_to_file("res://Scenes/Worlds/Surface/Levels/level_" + str(GLOBAL.current_playing_level) + ".tscn")
+			set_process(false)
 
-	if Input.is_action_just_pressed("shoot"):
-		if GLOBAL.current_playing_level == 10:
-			GLOBAL.finished_surface = true
-		elif GLOBAL.current_playing_level == 20:
-			GLOBAL.finished_dungeon = true
-		get_tree().paused = false
-		if GLOBAL.current_playing_level > 20:
-			get_tree().change_scene_to_file("res://Scenes/Worlds/Depths/LevelSelection/depths_level_selection.tscn")
-		elif GLOBAL.current_playing_level > 10:
-			get_tree().change_scene_to_file("res://Scenes/Worlds/Dungeon/LevelSelection/dungeon_level_selection.tscn")
-		else:
-			get_tree().change_scene_to_file("res://Scenes/Worlds/Surface/LevelSelection/surface_level_selection.tscn")
-		set_process(false)
+		if Input.is_action_just_pressed("shoot"):
+			if GLOBAL.current_playing_level == 10:
+				GLOBAL.finished_surface = true
+			elif GLOBAL.current_playing_level == 20:
+				GLOBAL.finished_dungeon = true
+			get_tree().paused = false
+			if GLOBAL.current_playing_level > 20:
+				get_tree().change_scene_to_file("res://Scenes/Worlds/Depths/LevelSelection/depths_level_selection.tscn")
+			elif GLOBAL.current_playing_level > 10:
+				get_tree().change_scene_to_file("res://Scenes/Worlds/Dungeon/LevelSelection/dungeon_level_selection.tscn")
+			else:
+				get_tree().change_scene_to_file("res://Scenes/Worlds/Surface/LevelSelection/surface_level_selection.tscn")
+			set_process(false)
 
 func _on_animation_player_animation_finished(_anim_name: StringName) -> void:
 	intro_animation_finished = true

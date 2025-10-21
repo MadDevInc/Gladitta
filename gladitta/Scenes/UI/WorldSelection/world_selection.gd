@@ -8,8 +8,10 @@ var next_scene
 func _ready() -> void:
 	if GLOBAL.finished_surface:
 		current_selection = 1
+		GLOBAL.finished_surface = false
 	elif GLOBAL.finished_dungeon:
 		current_selection = 2
+		GLOBAL.finished_dungeon = false
 
 func _physics_process(_delta: float) -> void:
 	if $Worlds.get_child_count() > 0:
