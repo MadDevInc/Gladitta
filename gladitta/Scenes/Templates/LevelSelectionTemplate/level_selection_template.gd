@@ -13,7 +13,10 @@ var next_scene
 var level_count = 10
 
 func _ready() -> void:
-	print(GLOBAL.finished_dungeon)
+	if current_selection < level_count - 1:
+		current_selection = GLOBAL.current_playing_level
+	print("current selction on level selection template: ", current_selection)
+
 	if GLOBAL.finished_surface:
 		transition_to("res://Scenes/UI/WorldSelection/world_selection.tscn")
 	if GLOBAL.finished_dungeon:
@@ -29,11 +32,11 @@ func _ready() -> void:
 		var level_preview = load(levels_folder + "level_" + str(i + level_count * world_id) + ".tscn").instantiate()
 		new_stage_icon.display(level_preview)
 
-	if GLOBAL.player_progress.size() > 0 + world_id * level_count:
-		max_selection = GLOBAL.player_progress.size()
+	if GLOBAL.player_progress.size() > 0:
+		max_selection = GLOBAL.player_progress.size() - world_id * level_count
 		max_selection = clamp(max_selection, 0, ((world_id + 1) * level_count - 1))
 
-	print(max_selection)
+	print("max selection no level selection template " + str(max_selection))
 
 	update_hover()
 
@@ -68,8 +71,8 @@ func update_hover():
 			child.unhover()
 
 	if current_selection < GLOBAL.player_progress.size():
-		$Camera2D/BestTimeDisplay.set_time(GLOBAL.player_progress[current_selection].time)
-		$Camera2D/MedalDisplay.set_medal(GLOBAL.player_progress[current_selection].medal)
+		$Camera2D/BestTimeDisplay.set_time(GLOBAL.player_progress[current_selection + level_count * world_id].time)
+		$Camera2D/MedalDisplay.set_medal(GLOBAL.player_progress[current_selection + level_count * world_id].medal)
 	else:
 		$Camera2D/BestTimeDisplay.set_time(0.0)
 		$Camera2D/MedalDisplay.set_medal(-1)

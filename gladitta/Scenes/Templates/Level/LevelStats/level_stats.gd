@@ -90,9 +90,9 @@ func _input(_event: InputEvent) -> void:
 				GLOBAL.finished_dungeon = true
 				get_tree().change_scene_to_file("res://Scenes/Worlds/Dungeon/LevelSelection/dungeon_level_selection.tscn")
 			else:
-				if GLOBAL.current_playing_level > 20:
+				if GLOBAL.current_playing_level >= 20:
 					get_tree().change_scene_to_file("res://Scenes/Worlds/Depths/Levels/level_" + str(GLOBAL.current_playing_level) + ".tscn")
-				elif GLOBAL.current_playing_level > 10:
+				elif GLOBAL.current_playing_level >= 10:
 					get_tree().change_scene_to_file("res://Scenes/Worlds/Dungeon/Levels/level_" + str(GLOBAL.current_playing_level) + ".tscn")
 				else:
 					get_tree().change_scene_to_file("res://Scenes/Worlds/Surface/Levels/level_" + str(GLOBAL.current_playing_level) + ".tscn")

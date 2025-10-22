@@ -30,7 +30,6 @@ func _process(_delta: float) -> void:
 			current_selection = 0
 	if Input.is_action_just_pressed("jump"):
 		select_level(current_selection)
-		GLOBAL.current_playing_level = current_selection
 		set_process(false)
 	if Input.is_action_just_pressed("shoot"):
 		transition_to("res://Scenes/UI/MainMenu/main_menu.tscn")

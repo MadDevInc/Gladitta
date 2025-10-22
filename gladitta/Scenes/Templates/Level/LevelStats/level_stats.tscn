@@ -542,14 +542,12 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 4
 alignment = 2
 
 [node name="Label" type="Label" parent="Frame/VBoxContainer/Developer/HBoxContainer"]
 layout_mode = 2
 
 [node name="TextureRect" type="TextureRect" parent="Frame/VBoxContainer/Developer/HBoxContainer"]
-custom_minimum_size = Vector2(20, 20)
 layout_mode = 2
 texture = ExtResource("3_lfgs1")
 

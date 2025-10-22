@@ -90,7 +90,8 @@ offset_right = -11.0
 offset_bottom = -103.0
 
 [node name="MedalDisplay" parent="Camera2D" instance=ExtResource("3_swq8g")]
-offset_left = 90.0
+custom_minimum_size = Vector2(92, 24)
+offset_left = 68.0
 offset_top = -120.0
 offset_right = 160.0
 offset_bottom = -96.0

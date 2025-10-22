@@ -3,7 +3,6 @@ extends Control
 @export var player : CharacterBody2D
 
 func _ready() -> void:
-	print(GLOBAL.current_playing_level)
 	if GLOBAL.current_playing_level > 9:
 		GLOBAL.unlock_bow = true
 	if GLOBAL.current_playing_level:
