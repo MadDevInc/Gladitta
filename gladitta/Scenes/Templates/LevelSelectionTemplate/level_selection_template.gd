@@ -70,7 +70,8 @@ func update_hover():
 		else:
 			child.unhover()
 
-	if current_selection < GLOBAL.player_progress.size():
+	if current_selection < GLOBAL.player_progress.size() - level_count * world_id:
+		print("level sleection template player_progress.size: ", GLOBAL.player_progress.size())
 		$Camera2D/BestTimeDisplay.set_time(GLOBAL.player_progress[current_selection + level_count * world_id].time)
 		$Camera2D/MedalDisplay.set_medal(GLOBAL.player_progress[current_selection + level_count * world_id].medal)
 	else:

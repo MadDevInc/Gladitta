@@ -2,6 +2,8 @@ extends Node
 
 var current_playing_level = 0
 
+var current_player_world = 0
+
 var player_progress = []
 
 var finished_surface = false

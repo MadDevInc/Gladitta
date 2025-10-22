@@ -6,6 +6,8 @@ var max_selection = 2
 var next_scene
 
 func _ready() -> void:
+	GLOBAL.current_playing_level = 0
+
 	if GLOBAL.finished_surface:
 		current_selection = 1
 		GLOBAL.finished_surface = false
@@ -35,6 +37,7 @@ func _process(_delta: float) -> void:
 		transition_to("res://Scenes/UI/MainMenu/main_menu.tscn")
 
 func select_level(idx):
+	GLOBAL.current_player_world = idx
 	match idx:
 		0:
 			transition_to("res://Scenes/Worlds/Surface/LevelSelection/surface_level_selection.tscn")

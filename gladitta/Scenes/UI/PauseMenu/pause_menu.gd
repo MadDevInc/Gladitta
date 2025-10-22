@@ -34,7 +34,7 @@ func _on_resume_selected() -> void:
 	get_tree().paused = false
 
 func _on_quit_level_selected() -> void:
-	pass # Replace with function body.
+	pass
 
 func _on_settings_selected() -> void:
 	$Options.open()

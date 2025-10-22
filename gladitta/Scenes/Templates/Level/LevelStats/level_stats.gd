@@ -104,9 +104,9 @@ func _input(_event: InputEvent) -> void:
 			elif GLOBAL.current_playing_level == 20:
 				GLOBAL.finished_dungeon = true
 			get_tree().paused = false
-			if GLOBAL.current_playing_level > 20:
+			if GLOBAL.current_playing_world == 2:
 				get_tree().change_scene_to_file("res://Scenes/Worlds/Depths/LevelSelection/depths_level_selection.tscn")
-			elif GLOBAL.current_playing_level > 10:
+			elif GLOBAL.current_playing_world == 1:
 				get_tree().change_scene_to_file("res://Scenes/Worlds/Dungeon/LevelSelection/dungeon_level_selection.tscn")
 			else:
 				get_tree().change_scene_to_file("res://Scenes/Worlds/Surface/LevelSelection/surface_level_selection.tscn")
